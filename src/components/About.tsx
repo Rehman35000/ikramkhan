@@ -1,7 +1,13 @@
+'use client';
+
+import { useState } from 'react';
 import Image from 'next/image';
 import AnimatedSection from './AnimatedSection';
+import SchedulingModal from './SchedulingModal';
 
 export default function About() {
+  const [schedulingOpen, setSchedulingOpen] = useState(false);
+
   return (
     <section id="about" className="relative py-24 sm:py-32 px-4 sm:px-8 lg:px-16 bg-white">
       <div className="max-w-6xl mx-auto">
@@ -37,7 +43,7 @@ export default function About() {
             </div>
           </AnimatedSection>
 
-          <AnimatedSection className="flex flex-col items-center gap-8">
+          <div className="flex flex-col items-center gap-8">
             <div className="relative w-80 h-80 sm:w-96 sm:h-96">
               <div className="absolute -inset-4 bg-gradient-to-br from-accent/20 via-accent/5 to-transparent rounded-[2rem] blur-2xl" />
               <div className="relative w-full h-full rounded-[2rem] border border-border overflow-hidden shadow-2xl">
@@ -49,8 +55,9 @@ export default function About() {
                 />
               </div>
             </div>
-            <a
-              href="mailto:ikramullah35000@gmail.com?subject=Book%201-to-1%20Meeting%20with%20Ikram%20Khan&body=Hi%20Ikram%2C%0A%0AI%27d%20like%20to%20schedule%20a%201-to-1%20meeting%20with%20you."
+            <button
+              type="button"
+              onClick={() => setSchedulingOpen(true)}
               className="inline-flex items-center gap-2.5 rounded-full px-8 py-3.5 text-sm sm:text-base font-bold text-white transition-all duration-300 hover:-translate-y-0.5 shadow-lg"
               style={{ background: '#e53935', boxShadow: '0 8px 24px rgba(229,57,53,0.3)' }}
             >
@@ -61,10 +68,12 @@ export default function About() {
                 <line x1="3" y1="10" x2="21" y2="10" />
               </svg>
               Book 1-to-1 Meeting
-            </a>
-          </AnimatedSection>
+            </button>
+          </div>
         </div>
       </div>
+
+      <SchedulingModal isOpen={schedulingOpen} onClose={() => setSchedulingOpen(false)} />
     </section>
   );
 }

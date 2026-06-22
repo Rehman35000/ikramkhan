@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import Image from 'next/image';
+import { useTypewriter } from '@/hooks/useTypewriter';
 
 const stats = [
   { value: '50+', label: 'Projects Delivered' },
@@ -35,6 +36,12 @@ const floatingCards = [
 ];
 
 export default function Hero() {
+  const heading = useTypewriter(
+    ['AI Power Solution', 'Website', 'Application', 'Apps', 'More'],
+    100,
+    50,
+    2000
+  );
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -126,7 +133,13 @@ export default function Hero() {
                   />
                 </span>
                 <br />
-                Applications
+                <span className="inline-block min-w-[8ch] relative">
+                  {heading}
+                  <span
+                    className="absolute -top-0.5 -right-2 w-0.5 h-full animate-pulse"
+                    style={{ background: '#e53935' }}
+                  />
+                </span>
               </h1>
             </div>
 
@@ -171,23 +184,7 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Trust line */}
-            <div className="animate-on-mount opacity-0 translate-y-8 animate-[fadeInUp_0.6s_ease-out_forwards]">
-              <div className="flex items-center gap-2.5 justify-center lg:justify-start text-xs" style={{ color: '#888' }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="10" />
-                  <line x1="2" y1="12" x2="22" y2="12" />
-                  <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
-                </svg>
-                <span>Available Worldwide</span>
-                <span className="w-1 h-1 rounded-full" style={{ background: '#888' }} />
-                <span>Dubai</span>
-                <span className="w-1 h-1 rounded-full" style={{ background: '#888' }} />
-                <span>Muscat</span>
-                <span className="w-1 h-1 rounded-full" style={{ background: '#888' }} />
-                <span>New York</span>
-              </div>
-            </div>
+
           </div>
 
           {/* Right Side - Premium Visual */}

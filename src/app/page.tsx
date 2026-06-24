@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
+import AIServices from "@/components/AIServices";
 import AtelierBrief from "@/components/AtelierBrief";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
@@ -16,6 +17,7 @@ export default function Home() {
       <main>
         <Hero />
         <Services />
+        <AIServices />
         <AtelierBrief />
         <About />
         <Skills />

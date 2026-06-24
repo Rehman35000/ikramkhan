@@ -2,67 +2,22 @@ import AnimatedSection from './AnimatedSection';
 
 const projects = [
   {
-    title: 'StoreOne',
+    title: 'Universal Link Education',
     img: '/image1.png',
     description:
-      'A full-featured e-commerce platform with AI-powered product recommendations, real-time inventory management, and seamless checkout experience.',
-    tags: ['Next.js', 'AI', 'Stripe', 'Tailwind CSS'],
-    links: { demo: '#', github: '#' },
-    gradient: 'from-red-500/10 to-rose-500/10',
+      'A comprehensive education platform connecting students with universal learning resources, courses, and academic guidance for holistic development.',
+    tags: ['Next.js', 'Education', 'Tailwind CSS', 'Web App'],
+    links: { demo: 'https://www.universallinkeducation.com/', github: '#' },
+    gradient: 'from-blue-500/10 to-sky-500/10',
   },
   {
-    title: 'StoreTwo',
-    img: '/image1.png',
+    title: 'Fashion Hubb',
+    img: '/image2.png',
     description:
-      'Multi-vendor marketplace with AI-driven vendor matching, dynamic pricing, and automated order routing across global suppliers.',
-    tags: ['React', 'Node.js', 'AI', 'MongoDB'],
-    links: { demo: '#', github: '#' },
-    gradient: 'from-orange-500/10 to-amber-500/10',
-  },
-  {
-    title: 'StoreThree',
-    img: '/image1.png',
-    description:
-      'AI-powered dropshipping automation platform with smart product sourcing, competitor analysis, and auto-fulfillment pipelines.',
-    tags: ['Next.js', 'Python', 'AI Agents', 'PostgreSQL'],
-    links: { demo: '#', github: '#' },
-    gradient: 'from-yellow-500/10 to-lime-500/10',
-  },
-  {
-    title: 'StoreFour',
-    img: '/image1.png',
-    description:
-      'Enterprise e-commerce suite with AI chatbot support, predictive analytics dashboard, and automated marketing campaign engine.',
-    tags: ['Next.js', 'TypeScript', 'AI Chat', 'Redis'],
-    links: { demo: '#', github: '#' },
-    gradient: 'from-green-500/10 to-emerald-500/10',
-  },
-  {
-    title: 'StoreFive',
-    img: '/image1.png',
-    description:
-      'Subscription-based e-commerce platform with AI churn prediction, personalized recurring orders, and smart inventory forecasting.',
-    tags: ['React', 'AI/ML', 'Node.js', 'Tailwind CSS'],
-    links: { demo: '#', github: '#' },
-    gradient: 'from-cyan-500/10 to-blue-500/10',
-  },
-  {
-    title: 'StoreSix',
-    img: '/image1.png',
-    description:
-      'AI-powered visual search and recommendation engine for fashion e-commerce with virtual try-on and style matching.',
-    tags: ['Next.js', 'AI Vision', 'TypeScript', 'TensorFlow'],
-    links: { demo: '#', github: '#' },
-    gradient: 'from-indigo-500/10 to-purple-500/10',
-  },
-  {
-    title: 'StoreSeven',
-    img: '/image1.png',
-    description:
-      'Cross-border e-commerce automation platform with AI translation, currency optimization, and smart logistics coordination.',
-    tags: ['Next.js', 'AI Agents', 'Blockchain', 'AWS'],
-    links: { demo: '#', github: '#' },
-    gradient: 'from-purple-500/10 to-pink-500/10',
+      'A modern fashion e-commerce platform showcasing curated collections with seamless shopping experience and style inspiration.',
+    tags: ['Next.js', 'Fashion', 'Tailwind CSS', 'E-commerce'],
+    links: { demo: 'https://fashion-hubb-silk.vercel.app/', github: '#' },
+    gradient: 'from-pink-500/10 to-rose-500/10',
   },
 ];
 

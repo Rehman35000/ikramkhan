@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import AnimatedSection from './AnimatedSection';
 
 const projectOptions = [
@@ -32,8 +32,24 @@ export default function AtelierBrief() {
   const [open, setOpen] = useState(false);
   const [industry, setIndustry] = useState('');
   const [industryOpen, setIndustryOpen] = useState(false);
-  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '', success: '' });
+  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
   const [sent, setSent] = useState(false);
+
+  const projectDropdownRef = useRef<HTMLDivElement>(null);
+  const industryDropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (projectDropdownRef.current && !projectDropdownRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+      if (industryDropdownRef.current && !industryDropdownRef.current.contains(e.target as Node)) {
+        setIndustryOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -135,7 +151,7 @@ export default function AtelierBrief() {
                 <label className="block text-sm font-medium mb-1.5" style={{ color: '#666' }}>
                   Industry
                 </label>
-                <div className="relative">
+              <div className="relative" ref={industryDropdownRef}>
                   <button
                     type="button"
                     onClick={() => setIndustryOpen(!industryOpen)}
@@ -275,8 +291,6 @@ export default function AtelierBrief() {
                     </label>
                     <textarea
                       rows={2}
-                      value={form.success}
-                      onChange={(e) => setForm({ ...form, success: e.target.value })}
                       className="w-full px-4 py-2.5 rounded-lg border text-sm transition-colors focus:outline-none resize-none"
                       style={{ background: '#fafafa', borderColor: '#e5e7eb', color: '#111' }}
                       placeholder="Describe the outcome you&apos;re working towards..."

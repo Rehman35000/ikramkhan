@@ -5,9 +5,10 @@ import { useEffect, useRef, useState, ReactNode } from 'react';
 interface Props {
   children: ReactNode;
   className?: string;
+  delay?: number;
 }
 
-export default function AnimatedSection({ children, className = '' }: Props) {
+export default function AnimatedSection({ children, className = '', delay = 0 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -34,6 +35,7 @@ export default function AnimatedSection({ children, className = '' }: Props) {
       className={`transition-all duration-700 ease-out ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       } ${className}`}
+      style={{ transitionDelay: `${delay * 1000}ms` }}
     >
       {children}
     </div>

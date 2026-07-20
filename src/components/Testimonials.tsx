@@ -4,22 +4,22 @@ import { motion, type Variants } from 'framer-motion';
 
 const testimonials = [
   {
-    quote: 'IKANOVA transformed our vision into a platform that exceeded every expectation. Their engineering team is world-class.',
-    name: 'Sarah Chen',
-    role: 'CTO',
-    company: 'TechVault Inc',
+    quote: 'Afand Yar, CEO, worked with us professionally and handled the entire project on time. He explained every step clearly, analyzed our requirements well, and provided great and fast service. Always available for any queries — highly recommended!',
+    name: 'Afand Yar',
+    role: 'Chief Executive Officer',
+    company: 'TechVentures',
   },
   {
-    quote: 'Working with IKANOVA felt like having an extension of our own team. They delivered on time, on budget, and with exceptional quality.',
-    name: 'Marcus Rodriguez',
+    quote: 'IKANOVA delivered a flawless e-commerce platform for us. The team was responsive, detail-oriented, and met every deadline. Their communication throughout the project was outstanding.',
+    name: 'Ayesha Khan',
     role: 'Founder',
-    company: 'DataFlow',
+    company: 'StyleNest',
   },
   {
-    quote: 'The AI solutions they built for us gave us a competitive edge we never thought possible. Truly innovative partners.',
-    name: 'Elena Kowalski',
-    role: 'VP Engineering',
-    company: 'CloudNine',
+    quote: 'The hospital website they built exceeded our expectations. Professional team, clean design, and delivered ahead of schedule. They are always available whenever we need support or updates.',
+    name: 'Dr. Tariq Mehmood',
+    role: 'Director',
+    company: 'St. Elizabeth Hospital',
   },
 ];
 

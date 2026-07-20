@@ -15,24 +15,6 @@ const projects = [
     featured: true,
   },
   {
-    title: 'NovaDash',
-    category: 'Analytics',
-    tech: 'React / Node.js',
-    color: 'bg-red-500',
-  },
-  {
-    title: 'PulseAI',
-    category: 'AI Platform',
-    tech: 'Next.js / TensorFlow',
-    color: 'bg-rose-500',
-  },
-  {
-    title: 'CloudForge',
-    category: 'DevOps',
-    tech: 'Go / Docker / K8s',
-    color: 'bg-red-700',
-  },
-  {
     title: 'Fashion Hub',
     category: 'E-Commerce',
     tech: 'Next.js / Stripe',
@@ -142,7 +124,7 @@ export default function FeaturedProjects() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-3 gap-4"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-4"
         >
           {others.map((project) => {
             const Wrapper = project.link ? motion.a : motion.div;

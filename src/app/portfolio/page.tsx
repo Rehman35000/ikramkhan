@@ -8,7 +8,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 
-const categories = ['All', 'Web App', 'AI/ML', 'SaaS', 'E-Commerce', 'Mobile', 'EdTech']
+const categories = ['All', 'Web App', 'AI/ML', 'SaaS', 'E-Commerce', 'Mobile', 'EdTech', 'Healthcare']
 
 const projects = [
   {
@@ -21,30 +21,6 @@ const projects = [
     logo: '/projects/universal-link-logo.png',
     link: 'https://www.universallinkeducation.com/',
     featured: true,
-  },
-  {
-    title: 'NovaDash',
-    subtitle: 'Analytics Dashboard',
-    description: 'Real-time analytics with interactive dashboards and AI-powered insights.',
-    category: 'Web App',
-    tech: ['React', 'D3.js', 'Node.js'],
-    color: 'bg-red-500',
-  },
-  {
-    title: 'PulseAI',
-    subtitle: 'AI Platform',
-    description: 'Enterprise AI for natural language processing and predictive analytics.',
-    category: 'AI/ML',
-    tech: ['Next.js', 'Python', 'TensorFlow'],
-    color: 'bg-rose-500',
-  },
-  {
-    title: 'CloudForge',
-    subtitle: 'DevOps Platform',
-    description: 'Cloud infrastructure with automated CI/CD and container orchestration.',
-    category: 'SaaS',
-    tech: ['Go', 'Docker', 'Kubernetes'],
-    color: 'bg-red-700',
   },
   {
     title: 'Fashion Hub',
@@ -60,36 +36,12 @@ const projects = [
     title: 'St. Elizabeth Hospital',
     subtitle: 'Healthcare Platform',
     description: 'Hospital website with doctor directory, departments, patient info, and WooCommerce for donations.',
-    category: 'Mobile',
+    category: 'Healthcare',
     tech: ['WordPress', 'WooCommerce', 'Elementor'],
     image: '/projects/st-elizabeth-hero.jpg',
     logo: '/projects/st-elizabeth-logo.png',
     link: 'https://st-elizabethhyderabad.com/',
     color: 'bg-red-600',
-  },
-  {
-    title: 'ShopStream',
-    subtitle: 'E-Commerce',
-    description: 'Modern e-commerce with real-time inventory and payment processing.',
-    category: 'E-Commerce',
-    tech: ['Next.js', 'Stripe', 'MongoDB'],
-    color: 'bg-red-400',
-  },
-  {
-    title: 'MediConnect',
-    subtitle: 'Healthcare App',
-    description: 'Telemedicine platform connecting patients with healthcare providers.',
-    category: 'Mobile',
-    tech: ['React Native', 'Firebase'],
-    color: 'bg-red-800',
-  },
-  {
-    title: 'FinTrack',
-    subtitle: 'Finance Dashboard',
-    description: 'Personal finance management with budgeting and investment tracking.',
-    category: 'Web App',
-    tech: ['Vue.js', 'Python', 'PostgreSQL'],
-    color: 'bg-rose-600',
   },
 ]
 

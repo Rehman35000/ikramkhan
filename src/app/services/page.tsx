@@ -9,56 +9,9 @@ import MagneticButton from '@/components/MagneticButton'
 
 const services = [
   {
-    title: 'Web Development',
-    description: 'Custom web applications, SPAs, and full-stack solutions built with modern frameworks.',
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
-      </svg>
-    ),
-    features: [
-      'Custom web applications & SPAs',
-      'React, Next.js, and Vue.js development',
-      'Node.js and Python backend engineering',
-      'PostgreSQL, MongoDB, and Redis databases',
-      'Progressive Web Apps (PWA)',
-    ],
-  },
-  {
-    title: 'Mobile App Development',
-    description: 'Native and cross-platform mobile applications that deliver seamless experiences.',
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
-      </svg>
-    ),
-    features: [
-      'React Native & Flutter cross-platform apps',
-      'Native Swift (iOS) & Kotlin (Android) development',
-      'Offline-first architecture & data sync',
-      'Push notifications & real-time features',
-      'App Store & Play Store submission',
-    ],
-  },
-  {
-    title: 'UI/UX Design',
-    description: 'User-centered design that transforms complex problems into intuitive interfaces.',
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
-      </svg>
-    ),
-    features: [
-      'User research & persona development',
-      'Wireframing & interactive prototyping',
-      'Design system creation & documentation',
-      'Usability testing & iteration',
-      'Responsive & mobile-first design',
-    ],
-  },
-  {
-    title: 'AI Solutions',
-    description: 'Intelligent systems using machine learning, NLP, and computer vision.',
+    title: 'AI Development',
+    description: 'Custom machine learning models, NLP, computer vision, and intelligent automation solutions.',
+    href: '/services/ai-development',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
@@ -68,40 +21,94 @@ const services = [
       'Custom machine learning model development',
       'Natural language processing & chatbots',
       'Computer vision & image recognition',
-      'AI agent orchestration & automation',
       'Predictive analytics & recommendation engines',
+      'MLOps & model deployment pipelines',
     ],
   },
   {
-    title: 'SaaS Development',
-    description: 'End-to-end SaaS platforms from multi-tenant architecture to subscription billing.',
+    title: 'Web Development',
+    description: 'High-performance websites and web applications built with modern frameworks.',
+    href: '/services/web-development',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
       </svg>
     ),
     features: [
-      'Multi-tenant architecture & data isolation',
-      'Subscription billing & payment integration',
-      'Role-based access control & permissions',
-      'Analytics dashboards & reporting',
-      'White-label solutions & customization',
+      'Custom web applications & SPAs',
+      'Next.js, React, and TypeScript development',
+      'Headless CMS & API-first architecture',
+      'Performance optimization & Core Web Vitals',
+      'Progressive Web Apps (PWA)',
     ],
   },
   {
-    title: 'Cloud Solutions',
-    description: 'Cloud-native infrastructure across AWS, Azure, and GCP for reliability and scale.',
+    title: 'Mobile App Development',
+    description: 'Cross-platform and native mobile applications that users love.',
+    href: '/services/mobile-app-development',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
       </svg>
     ),
     features: [
-      'AWS, Azure, and GCP architecture design',
-      'Cloud migration & modernization',
-      'Infrastructure as Code (Terraform, Pulumi)',
-      'CI/CD pipeline setup & DevOps practices',
-      'Cost optimization & performance monitoring',
+      'React Native & Flutter cross-platform apps',
+      'Native Swift (iOS) & Kotlin (Android)',
+      'Offline-first architecture & data sync',
+      'Push notifications & engagement features',
+      'App Store optimization & submission',
+    ],
+  },
+  {
+    title: 'UI/UX Design',
+    description: 'User-centered design that transforms complex problems into intuitive interfaces.',
+    href: '/services/ui-ux-design',
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
+      </svg>
+    ),
+    features: [
+      'User research & persona development',
+      'Wireframing & interactive prototyping',
+      'Design system creation & documentation',
+      'Usability testing & A/B testing',
+      'WCAG accessibility compliance',
+    ],
+  },
+  {
+    title: 'ERP Development',
+    description: 'Custom enterprise resource planning systems for unified business operations.',
+    href: '/services/erp-development',
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 003.75-.615A2.993 2.993 0 009.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 002.25 1.016c.896 0 1.7-.393 2.25-1.016a3.001 3.001 0 003.75.614m-16.5 0a3.004 3.004 0 01-.621-4.72L4.318 3.44A1.5 1.5 0 015.378 3h13.243a1.5 1.5 0 011.06.44l1.19 1.189a3 3 0 01-.621 4.72m-13.5 8.65h3.75a.75.75 0 00.75-.75V13.5a.75.75 0 00-.75-.75H6.75a.75.75 0 00-.75.75v3.75c0 .415.336.75.75.75z" />
+      </svg>
+    ),
+    features: [
+      'Finance, HR, inventory & CRM modules',
+      'Real-time dashboards & reporting',
+      'Workflow automation & approvals',
+      'Multi-currency & tax compliance',
+      'Custom integrations with existing tools',
+    ],
+  },
+  {
+    title: 'Custom Software Development',
+    description: 'Bespoke software solutions designed around your unique business requirements.',
+    href: '/services/custom-software-development',
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M11.42 15.17l-5.384 3.07a1.5 1.5 0 01-2.176-1.565l.82-5.978a1.5 1.5 0 01.552-1.12l5.384-3.07m2.804-1.617l5.384-3.07a1.5 1.5 0 012.176 1.565l-.82 5.978a1.5 1.5 0 01-.552 1.12l-5.384 3.07m-2.804 1.617L11.42 15.17m0 0l-5.384 3.07" />
+        <circle cx="12" cy="12" r="3" />
+      </svg>
+    ),
+    features: [
+      'Tailored to your exact workflows',
+      'Full ownership of code & IP',
+      'Seamless integration with existing tools',
+      'Scalable, maintainable architecture',
+      'Long-term partnership & support',
     ],
   },
 ]
@@ -194,13 +201,13 @@ export default function ServicesPage() {
 
                 <MagneticButton strength={0.15}>
                   <Link
-                    href="/contact"
+                    href={service.href}
                     className="inline-flex items-center gap-2 text-xs font-semibold tracking-wider uppercase transition-colors duration-300 group/link"
                     style={{ color: '#52525b' }}
                     onMouseEnter={(e) => { e.currentTarget.style.color = '#d4a843'; }}
                     onMouseLeave={(e) => { e.currentTarget.style.color = '#52525b'; }}
                   >
-                    Get Started
+                    Learn more
                     <svg className="w-3 h-3 transition-transform duration-200 group-hover/link:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                     </svg>

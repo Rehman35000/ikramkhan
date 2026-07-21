@@ -2,6 +2,9 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { motion } from 'framer-motion';
+import { useState } from 'react';
+import MagneticButton from './MagneticButton';
 
 const navLinks = [
   { label: 'Home', href: '/' },
@@ -42,7 +45,7 @@ const socialLinks = [
   },
   {
     label: 'WhatsApp',
-    href: 'https://wa.me/15551234567',
+    href: 'https://wa.me/923098660810',
     icon: (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
@@ -62,60 +65,86 @@ const socialLinks = [
 
 export default function Footer() {
   const pathname = usePathname();
+  const [email, setEmail] = useState('');
 
   return (
-    <footer style={{ borderTop: '1px solid rgba(207,175,74,0.08)', background: '#111' }}>
-      <div className="max-w-6xl mx-auto px-6 py-16">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
-          <div className="space-y-4">
-            <Link href="/" className="flex items-center gap-2">
+    <footer style={{ borderTop: '1px solid rgba(255,255,255,0.04)', background: '#09090b' }}>
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">
+          {/* Brand */}
+          <div className="lg:col-span-4 space-y-5">
+            <Link href="/" className="flex items-center gap-3">
               <div
-                className="w-7 h-7 rounded-md flex items-center justify-center"
-                style={{ background: 'linear-gradient(135deg, #CFAF4A, #e0c56a)', boxShadow: '0 0 12px rgba(207,175,74,0.2)' }}
+                className="w-9 h-9 rounded-xl flex items-center justify-center"
+                style={{ background: 'linear-gradient(135deg, #d4a843, #e8c564)', boxShadow: '0 0 20px rgba(212,168,67,0.2)' }}
               >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#09090b" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2" />
                   <line x1="12" y1="22" x2="12" y2="15.5" />
                   <polyline points="22 8.5 12 15.5 2 8.5" />
                 </svg>
               </div>
-              <span className="text-sm font-bold" style={{ color: '#f5f5f5' }}>IKANOVA</span>
+              <span className="text-sm font-bold tracking-[0.15em] uppercase" style={{ color: '#fafafa' }}>IKANOVA</span>
             </Link>
-            <p className="text-sm leading-relaxed max-w-xs" style={{ color: '#666' }}>
-              Software development company building web apps, mobile apps, and AI-powered solutions.
+            <p className="text-sm leading-[1.7] max-w-xs" style={{ color: '#71717a' }}>
+              Software development company building web apps, mobile apps, and AI-powered solutions for businesses worldwide.
             </p>
-            <div className="flex gap-2">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-8 h-8 rounded-md flex items-center justify-center transition-all duration-300 hover:scale-110"
-                  style={{ background: 'rgba(207,175,74,0.06)', color: '#666', border: '1px solid rgba(207,175,74,0.08)' }}
-                  aria-label={social.label}
-                  onMouseEnter={(e) => { e.currentTarget.style.color = '#CFAF4A'; e.currentTarget.style.borderColor = 'rgba(207,175,74,0.2)'; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.color = '#666'; e.currentTarget.style.borderColor = 'rgba(207,175,74,0.08)'; }}
+
+            {/* Newsletter */}
+            <div className="pt-2">
+              <p className="text-xs font-semibold tracking-wider uppercase mb-3" style={{ color: '#a1a1aa' }}>Stay updated</p>
+              <div className="flex gap-2">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="your@email.com"
+                  className="flex-1 px-4 py-2.5 rounded-xl text-sm placeholder-[#3f3f46] focus:outline-none transition-all"
+                  style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', color: '#fafafa' }}
+                />
+                <button
+                  className="px-4 py-2.5 rounded-xl text-xs font-semibold tracking-wider uppercase transition-all duration-300 hover:shadow-[0_0_20px_rgba(212,168,67,0.2)]"
+                  style={{ background: 'linear-gradient(135deg, #d4a843, #e8c564)', color: '#09090b' }}
                 >
-                  {social.icon}
-                </a>
+                  Join
+                </button>
+              </div>
+            </div>
+
+            <div className="flex gap-2 pt-1">
+              {socialLinks.map((social) => (
+                <MagneticButton key={social.label} strength={0.3}>
+                  <a
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-300"
+                    style={{ background: 'rgba(255,255,255,0.03)', color: '#52525b', border: '1px solid rgba(255,255,255,0.04)' }}
+                    onMouseEnter={(e) => { e.currentTarget.style.color = '#d4a843'; e.currentTarget.style.borderColor = 'rgba(212,168,67,0.15)'; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.color = '#52525b'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.04)'; }}
+                    aria-label={social.label}
+                  >
+                    {social.icon}
+                  </a>
+                </MagneticButton>
               ))}
             </div>
           </div>
 
-          <div className="space-y-4">
-            <h4 className="text-xs font-semibold uppercase tracking-wider" style={{ color: '#CFAF4A' }}>
+          {/* Navigation */}
+          <div className="lg:col-span-2">
+            <h4 className="text-[11px] font-semibold uppercase tracking-[0.2em] mb-5" style={{ color: '#d4a843' }}>
               Navigation
             </h4>
-            <nav className="flex flex-col gap-2">
+            <nav className="flex flex-col gap-2.5">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   className="text-sm transition-colors duration-300"
-                  style={{ color: pathname === link.href ? '#f5f5f5' : '#666' }}
-                  onMouseEnter={(e) => { if (pathname !== link.href) e.currentTarget.style.color = '#CFAF4A'; }}
-                  onMouseLeave={(e) => { if (pathname !== link.href) e.currentTarget.style.color = '#666'; }}
+                  style={{ color: pathname === link.href ? '#fafafa' : '#52525b' }}
+                  onMouseEnter={(e) => { if (pathname !== link.href) e.currentTarget.style.color = '#d4a843'; }}
+                  onMouseLeave={(e) => { if (pathname !== link.href) e.currentTarget.style.color = '#52525b'; }}
                 >
                   {link.label}
                 </Link>
@@ -123,19 +152,20 @@ export default function Footer() {
             </nav>
           </div>
 
-          <div className="space-y-4">
-            <h4 className="text-xs font-semibold uppercase tracking-wider" style={{ color: '#CFAF4A' }}>
+          {/* Services */}
+          <div className="lg:col-span-3">
+            <h4 className="text-[11px] font-semibold uppercase tracking-[0.2em] mb-5" style={{ color: '#d4a843' }}>
               Services
             </h4>
-            <nav className="flex flex-col gap-2">
+            <nav className="flex flex-col gap-2.5">
               {serviceLinks.map((service) => (
                 <Link
                   key={service}
                   href="/services"
                   className="text-sm transition-colors duration-300"
-                  style={{ color: '#666' }}
-                  onMouseEnter={(e) => { e.currentTarget.style.color = '#CFAF4A'; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.color = '#666'; }}
+                  style={{ color: '#52525b' }}
+                  onMouseEnter={(e) => { e.currentTarget.style.color = '#d4a843'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.color = '#52525b'; }}
                 >
                   {service}
                 </Link>
@@ -143,19 +173,20 @@ export default function Footer() {
             </nav>
           </div>
 
-          <div className="space-y-4">
-            <h4 className="text-xs font-semibold uppercase tracking-wider" style={{ color: '#CFAF4A' }}>
+          {/* Contact */}
+          <div className="lg:col-span-3">
+            <h4 className="text-[11px] font-semibold uppercase tracking-[0.2em] mb-5" style={{ color: '#d4a843' }}>
               Contact
             </h4>
-            <div className="space-y-2">
+            <div className="space-y-3">
               <a
                 href="mailto:ikanovaofficial@gmail.com"
-                className="flex items-center gap-2 text-sm transition-colors duration-300"
-                style={{ color: '#666' }}
-                onMouseEnter={(e) => { e.currentTarget.style.color = '#CFAF4A'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.color = '#666'; }}
+                className="flex items-center gap-2.5 text-sm transition-colors duration-300"
+                style={{ color: '#52525b' }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = '#d4a843'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = '#52525b'; }}
               >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
                   <rect x="2" y="4" width="20" height="16" rx="2" />
                   <path d="M22 4L12 13 2 4" />
                 </svg>
@@ -163,18 +194,18 @@ export default function Footer() {
               </a>
               <a
                 href="tel:+923098660810"
-                className="flex items-center gap-2 text-sm transition-colors duration-300"
-                style={{ color: '#666' }}
-                onMouseEnter={(e) => { e.currentTarget.style.color = '#CFAF4A'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.color = '#666'; }}
+                className="flex items-center gap-2.5 text-sm transition-colors duration-300"
+                style={{ color: '#52525b' }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = '#d4a843'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = '#52525b'; }}
               >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
                   <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
                 </svg>
                 +92 309 866 0810
               </a>
-              <div className="flex items-start gap-2 text-sm" style={{ color: '#666' }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 mt-0.5">
+              <div className="flex items-start gap-2.5 text-sm" style={{ color: '#52525b' }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 mt-0.5">
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
                   <circle cx="12" cy="10" r="3" />
                 </svg>
@@ -185,21 +216,21 @@ export default function Footer() {
         </div>
       </div>
 
-      <div style={{ borderTop: '1px solid rgba(207,175,74,0.08)' }}>
-        <div className="max-w-6xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs" style={{ color: '#666' }}>
+      <div style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}>
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs" style={{ color: '#3f3f46' }}>
             &copy; {new Date().getFullYear()} IKANOVA. All rights reserved.
           </p>
-          <div className="flex gap-5">
-            <a href="#" className="text-xs transition-colors duration-300" style={{ color: '#666' }}
-              onMouseEnter={(e) => { e.currentTarget.style.color = '#CFAF4A'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.color = '#666'; }}
+          <div className="flex gap-6">
+            <a href="#" className="text-xs transition-colors duration-300" style={{ color: '#3f3f46' }}
+              onMouseEnter={(e) => { e.currentTarget.style.color = '#d4a843'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = '#3f3f46'; }}
             >
               Privacy
             </a>
-            <a href="#" className="text-xs transition-colors duration-300" style={{ color: '#666' }}
-              onMouseEnter={(e) => { e.currentTarget.style.color = '#CFAF4A'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.color = '#666'; }}
+            <a href="#" className="text-xs transition-colors duration-300" style={{ color: '#3f3f46' }}
+              onMouseEnter={(e) => { e.currentTarget.style.color = '#d4a843'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = '#3f3f46'; }}
             >
               Terms
             </a>

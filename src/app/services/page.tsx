@@ -5,6 +5,7 @@ import Footer from '@/components/Footer'
 import AnimatedSection from '@/components/AnimatedSection'
 import { motion, type Variants } from 'framer-motion'
 import Link from 'next/link'
+import MagneticButton from '@/components/MagneticButton'
 
 const services = [
   {
@@ -111,23 +112,25 @@ const containerVariants: Variants = {
 }
 
 const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 16 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } },
+  hidden: { opacity: 0, y: 20, filter: 'blur(4px)' },
+  visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
 }
 
 export default function ServicesPage() {
   return (
-    <main className="min-h-screen bg-background">
+    <main style={{ minHeight: '100vh', background: '#09090b' }}>
       <Navbar />
 
-      <section className="relative pt-32 pb-20 px-6 overflow-hidden">
-        <div className="max-w-6xl mx-auto relative">
+      <section className="relative pt-40 pb-24 px-6 lg:px-8 overflow-hidden">
+        <div className="absolute inset-0" style={{ background: 'radial-gradient(800px circle at 50% 30%, rgba(212,168,67,0.03), transparent 60%)' }} />
+        <div className="max-w-7xl mx-auto relative">
           <AnimatedSection>
             <div className="max-w-3xl">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
+              <p className="text-[11px] font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: '#d4a843' }}>What we offer</p>
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-[-0.03em] mb-6" style={{ color: '#fafafa' }}>
                 <span className="gradient-text">Services</span>
               </h1>
-              <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
+              <p className="text-lg sm:text-xl leading-[1.7]" style={{ color: '#71717a' }}>
                 Comprehensive software solutions engineered to transform your ideas into
                 scalable, high-performance digital products.
               </p>
@@ -136,8 +139,8 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="py-16 px-6">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-16 px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -149,30 +152,39 @@ export default function ServicesPage() {
               <motion.div
                 key={service.title}
                 variants={cardVariants}
-                className="group relative p-7 rounded-xl border border-border bg-card hover:border-foreground/10 transition-all duration-200"
+                className="group relative p-8 rounded-2xl transition-all duration-500 card-hover-glow"
+                style={{ border: '1px solid rgba(255,255,255,0.04)', background: 'rgba(255,255,255,0.015)' }}
+                onMouseMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  e.currentTarget.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+                  e.currentTarget.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = 'rgba(212,168,67,0.12)';
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.025)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.04)';
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.015)';
+                }}
               >
-                <div className="w-10 h-10 rounded-lg bg-surface flex items-center justify-center text-foreground mb-5">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 group-hover:scale-110"
+                  style={{ background: 'rgba(212,168,67,0.06)', color: '#d4a843', border: '1px solid rgba(212,168,67,0.08)' }}>
                   {service.icon}
                 </div>
 
-                <h3 className="text-base font-semibold mb-2">
+                <h3 className="text-lg font-semibold mb-2" style={{ color: '#fafafa' }}>
                   {service.title}
                 </h3>
 
-                <p className="text-sm text-muted-foreground leading-relaxed mb-5">
+                <p className="text-sm leading-[1.7] mb-5" style={{ color: '#71717a' }}>
                   {service.description}
                 </p>
 
-                <ul className="space-y-2 mb-6">
+                <ul className="space-y-2.5 mb-6">
                   {service.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-2.5 text-sm text-muted-foreground">
-                      <svg
-                        className="w-4 h-4 text-foreground shrink-0 mt-0.5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                      >
+                    <li key={feature} className="flex items-start gap-2.5 text-sm" style={{ color: '#a1a1aa' }}>
+                      <svg className="w-4 h-4 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="#d4a843" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                       </svg>
                       {feature}
@@ -180,53 +192,50 @@ export default function ServicesPage() {
                   ))}
                 </ul>
 
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 text-sm font-medium text-muted hover:text-foreground transition-colors group/link"
-                >
-                  Get Started
-                  <svg
-                    className="w-3.5 h-3.5 transition-transform duration-200 group-hover/link:translate-x-0.5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
+                <MagneticButton strength={0.15}>
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-2 text-xs font-semibold tracking-wider uppercase transition-colors duration-300 group/link"
+                    style={{ color: '#52525b' }}
+                    onMouseEnter={(e) => { e.currentTarget.style.color = '#d4a843'; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.color = '#52525b'; }}
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                  </svg>
-                </Link>
+                    Get Started
+                    <svg className="w-3 h-3 transition-transform duration-200 group-hover/link:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                  </Link>
+                </MagneticButton>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </section>
 
-      <section className="py-24 px-6">
+      <section className="py-32 px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <AnimatedSection>
-            <div className="relative p-12 sm:p-16 rounded-xl border border-border bg-surface/50 text-center overflow-hidden">
+            <div className="relative p-12 sm:p-16 rounded-3xl text-center overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.04)', background: 'rgba(255,255,255,0.015)' }}>
+              <div className="absolute inset-0" style={{ background: 'radial-gradient(600px circle at 50% 50%, rgba(212,168,67,0.03), transparent 60%)' }} />
               <div className="relative">
-                <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+                <h2 className="text-3xl sm:text-4xl font-bold mb-4 tracking-[-0.03em]" style={{ color: '#fafafa' }}>
                   Have a project in mind?
                 </h2>
-                <p className="text-muted-foreground text-lg mb-8 max-w-xl mx-auto">
+                <p className="text-lg mb-8 max-w-xl mx-auto" style={{ color: '#71717a' }}>
                   Let us discuss how IKANOVA can help bring your vision to life.
                 </p>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-foreground text-background font-medium text-sm hover:opacity-90 transition-opacity"
-                >
-                  Start a conversation
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
+                <MagneticButton strength={0.15}>
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full font-medium text-sm transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,168,67,0.25)]"
+                    style={{ background: 'linear-gradient(135deg, #d4a843, #e8c564)', color: '#09090b' }}
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                  </svg>
-                </Link>
+                    Start a conversation
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                  </Link>
+                </MagneticButton>
               </div>
             </div>
           </AnimatedSection>

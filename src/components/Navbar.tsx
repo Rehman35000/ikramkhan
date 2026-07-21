@@ -4,12 +4,13 @@ import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
+import MagneticButton from './MagneticButton';
 
 const navItems = [
   { label: 'Home', href: '/' },
   { label: 'Work', href: '/portfolio' },
   { label: 'Services', href: '/services' },
-  { label: 'Team', href: '/about' },
+  { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ];
 
@@ -19,7 +20,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 20);
+    const onScroll = () => setIsScrolled(window.scrollY > 30);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -41,126 +42,130 @@ export default function Navbar() {
 
   return (
     <>
-      <nav
-        className={`fixed top-3 left-1/2 -translate-x-1/2 w-[calc(100%-24px)] max-w-[720px] z-50 transition-all duration-500 ease-out ${
-          isScrolled
-            ? 'rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.4)]'
-            : 'rounded-full shadow-[0_4px_24px_rgba(0,0,0,0.3)]'
+      <motion.nav
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, delay: 1.2, ease: [0.76, 0, 0.24, 1] }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-out ${
+          isScrolled ? 'py-3' : 'py-4'
         }`}
         style={{
-          background: 'rgba(17, 17, 17, 0.72)',
-          backdropFilter: 'blur(24px) saturate(180%)',
-          WebkitBackdropFilter: 'blur(24px) saturate(180%)',
-          border: '1px solid rgba(207, 175, 74, 0.08)',
+          background: isScrolled ? 'rgba(9, 9, 11, 0.85)' : 'transparent',
+          backdropFilter: isScrolled ? 'blur(24px) saturate(180%)' : 'none',
+          WebkitBackdropFilter: isScrolled ? 'blur(24px) saturate(180%)' : 'none',
+          borderBottom: isScrolled ? '1px solid rgba(255, 255, 255, 0.04)' : '1px solid transparent',
         }}
       >
-        <div className="flex items-center justify-between h-14 px-4 sm:px-5">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group relative z-10">
-            <div
-              className="w-8 h-8 rounded-lg flex items-center justify-center logo-glow transition-all duration-300 group-hover:scale-105"
-              style={{
-                background: 'linear-gradient(135deg, #CFAF4A, #e0c56a)',
-                boxShadow: '0 0 20px rgba(207, 175, 74, 0.25), 0 0 40px rgba(207, 175, 74, 0.1)',
-              }}
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2" />
-                <line x1="12" y1="22" x2="12" y2="15.5" />
-                <polyline points="22 8.5 12 15.5 2 8.5" />
-              </svg>
-            </div>
-            <span className="text-sm font-bold tracking-wider" style={{ color: '#f5f5f5' }}>
-              IKANOVA
-            </span>
-          </Link>
-
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-0.5">
-            {navItems.map((item) => {
-              const isActive = pathname === item.href;
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`relative px-3 py-1.5 text-[11px] font-medium tracking-wide uppercase rounded-lg transition-all duration-300 ${
-                    isActive
-                      ? 'text-[#CFAF4A]'
-                      : 'text-[#999] hover:text-[#f5f5f5]'
-                  }`}
-                >
-                  {item.label}
-                  {isActive && (
-                    <motion.div
-                      layoutId="activeNav"
-                      className="absolute inset-0 rounded-lg"
-                      style={{ background: 'rgba(207, 175, 74, 0.08)' }}
-                      transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-                    />
-                  )}
-                </Link>
-              );
-            })}
-          </div>
-
-          {/* Desktop CTA + Hamburger */}
-          <div className="flex items-center gap-2">
-            {/* Gold CTA */}
-            <Link
-              href="/contact"
-              className="hidden md:inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-[11px] font-semibold tracking-wide uppercase transition-all duration-300 hover:scale-105"
-              style={{
-                background: 'linear-gradient(135deg, #CFAF4A, #e0c56a)',
-                color: '#111',
-                boxShadow: '0 0 20px rgba(207, 175, 74, 0.2)',
-              }}
-            >
-              Start
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="flex items-center justify-between">
+            <Link href="/" className="flex items-center gap-3 group relative z-10">
+              <div
+                className="w-9 h-9 rounded-xl flex items-center justify-center logo-glow transition-all duration-300 group-hover:scale-105"
+                style={{
+                  background: 'linear-gradient(135deg, #d4a843, #e8c564)',
+                  boxShadow: '0 0 20px rgba(212, 168, 67, 0.2)',
+                }}
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#09090b" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2" />
+                  <line x1="12" y1="22" x2="12" y2="15.5" />
+                  <polyline points="22 8.5 12 15.5 2 8.5" />
+                </svg>
+              </div>
+              <span className="text-sm font-bold tracking-[0.15em] uppercase" style={{ color: '#fafafa' }}>
+                IKANOVA
+              </span>
             </Link>
 
-            {/* Hamburger */}
-            <button
-              onClick={() => setIsDrawerOpen(!isDrawerOpen)}
-              className="relative w-9 h-9 flex flex-col items-center justify-center gap-[5px] rounded-full transition-all duration-300 md:hidden"
-              style={{
-                background: isDrawerOpen ? 'rgba(207, 175, 74, 0.1)' : 'rgba(255,255,255,0.04)',
-                border: '1px solid rgba(207, 175, 74, 0.1)',
-              }}
-              aria-label="Toggle menu"
-            >
-              <span
-                className={`block w-[14px] h-[1.5px] rounded-full transition-all duration-400 ease-[cubic-bezier(0.76,0,0.24,1)] ${
-                  isDrawerOpen ? 'rotate-45 translate-y-[3.25px]' : ''
-                }`}
-                style={{ background: isDrawerOpen ? '#CFAF4A' : '#f5f5f5' }}
-              />
-              <span
-                className={`block w-[14px] h-[1.5px] rounded-full transition-all duration-400 ease-[cubic-bezier(0.76,0,0.24,1)] ${
-                  isDrawerOpen ? '-rotate-45 -translate-y-[3.25px]' : ''
-                }`}
-                style={{ background: isDrawerOpen ? '#CFAF4A' : '#f5f5f5' }}
-              />
-            </button>
+            <div className="hidden md:flex items-center">
+              <div className="flex items-center gap-1 px-1 py-1 rounded-full" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.04)' }}>
+                {navItems.map((item) => {
+                  const isActive = pathname === item.href;
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={`relative px-4 py-2 text-[12px] font-medium tracking-wide uppercase rounded-full transition-all duration-300 ${
+                        isActive
+                          ? 'text-[#09090b]'
+                          : 'text-[#71717a] hover:text-[#fafafa]'
+                      }`}
+                    >
+                      {isActive && (
+                        <motion.div
+                          layoutId="activeNav"
+                          className="absolute inset-0 rounded-full"
+                          style={{
+                            background: 'linear-gradient(135deg, #d4a843, #e8c564)',
+                            boxShadow: '0 0 20px rgba(212, 168, 67, 0.3)',
+                          }}
+                          transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                        />
+                      )}
+                      <span className="relative z-10">{item.label}</span>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <MagneticButton strength={0.2}>
+                <Link
+                  href="/contact"
+                  className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[11px] font-semibold tracking-wider uppercase transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,168,67,0.25)]"
+                  style={{
+                    background: 'linear-gradient(135deg, #d4a843, #e8c564)',
+                    color: '#09090b',
+                  }}
+                >
+                  Start Project
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </Link>
+              </MagneticButton>
+
+              <button
+                onClick={() => setIsDrawerOpen(!isDrawerOpen)}
+                className="relative w-10 h-10 flex flex-col items-center justify-center gap-[5px] rounded-full transition-all duration-300 md:hidden"
+                style={{
+                  background: isDrawerOpen ? 'rgba(212, 168, 67, 0.1)' : 'rgba(255,255,255,0.04)',
+                  border: '1px solid rgba(255,255,255,0.06)',
+                }}
+                aria-label="Toggle menu"
+              >
+                <span
+                  className={`block w-[14px] h-[1.5px] rounded-full transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] ${
+                    isDrawerOpen ? 'rotate-45 translate-y-[3.25px]' : ''
+                  }`}
+                  style={{ background: isDrawerOpen ? '#d4a843' : '#fafafa' }}
+                />
+                <span
+                  className={`block w-[14px] h-[1.5px] rounded-full transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] ${
+                    isDrawerOpen ? '-rotate-45 -translate-y-[3.25px]' : ''
+                  }`}
+                  style={{ background: isDrawerOpen ? '#d4a843' : '#fafafa' }}
+                />
+              </button>
+            </div>
           </div>
         </div>
-      </nav>
+      </motion.nav>
 
-      {/* Mobile Slide Drawer */}
       <AnimatePresence>
         {isDrawerOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.4 }}
               className="fixed inset-0 z-[60]"
-              style={{ background: 'rgba(0, 0, 0, 0.6)', backdropFilter: 'blur(4px)' }}
+              style={{ background: 'rgba(0, 0, 0, 0.7)', backdropFilter: 'blur(8px)' }}
               onClick={closeDrawer}
             />
 
-            {/* Drawer */}
             <motion.div
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
@@ -170,46 +175,43 @@ export default function Navbar() {
               style={{
                 width: '85%',
                 maxWidth: '400px',
-                background: '#0d0d0d',
-                borderLeft: '1px solid rgba(207, 175, 74, 0.08)',
+                background: '#09090b',
+                borderLeft: '1px solid rgba(255,255,255,0.04)',
                 boxShadow: '-20px 0 60px rgba(0, 0, 0, 0.5)',
               }}
             >
-              {/* Drawer Header */}
               <div className="flex items-center justify-between px-6 h-16 shrink-0">
-                <Link href="/" className="flex items-center gap-2" onClick={closeDrawer}>
+                <Link href="/" className="flex items-center gap-2.5" onClick={closeDrawer}>
                   <div
-                    className="w-7 h-7 rounded-md flex items-center justify-center"
+                    className="w-8 h-8 rounded-lg flex items-center justify-center"
                     style={{
-                      background: 'linear-gradient(135deg, #CFAF4A, #e0c56a)',
-                      boxShadow: '0 0 16px rgba(207, 175, 74, 0.3)',
+                      background: 'linear-gradient(135deg, #d4a843, #e8c564)',
+                      boxShadow: '0 0 16px rgba(212, 168, 67, 0.3)',
                     }}
                   >
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#09090b" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2" />
                       <line x1="12" y1="22" x2="12" y2="15.5" />
                       <polyline points="22 8.5 12 15.5 2 8.5" />
                     </svg>
                   </div>
-                  <span className="text-xs font-bold tracking-wider" style={{ color: '#f5f5f5' }}>IKANOVA</span>
+                  <span className="text-xs font-bold tracking-[0.15em] uppercase" style={{ color: '#fafafa' }}>IKANOVA</span>
                 </Link>
                 <button
                   onClick={closeDrawer}
-                  className="w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-200"
+                  className="w-9 h-9 rounded-full flex items-center justify-center transition-colors duration-200"
                   style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }}
                   aria-label="Close menu"
                 >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#999" strokeWidth="2" strokeLinecap="round">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#71717a" strokeWidth="2" strokeLinecap="round">
                     <line x1="18" y1="6" x2="6" y2="18" />
                     <line x1="6" y1="6" x2="18" y2="18" />
                   </svg>
                 </button>
               </div>
 
-              {/* Gold Divider */}
-              <div className="mx-6 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(207, 175, 74, 0.2), transparent)' }} />
+              <div className="mx-6 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(212, 168, 67, 0.15), transparent)' }} />
 
-              {/* Navigation Links */}
               <div className="flex-1 flex flex-col justify-center px-8 py-8">
                 <nav className="space-y-1">
                   {navItems.map((item, i) => {
@@ -219,17 +221,16 @@ export default function Navbar() {
                         key={item.href}
                         initial={{ opacity: 0, x: 24 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.1 + i * 0.05, duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+                        transition={{ delay: 0.1 + i * 0.05, duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
                       >
                         <Link
                           href={item.href}
                           onClick={closeDrawer}
-                          className={`block py-3.5 text-lg font-medium tracking-[0.15em] uppercase transition-all duration-300 border-b ${
+                          className={`block py-4 text-lg font-medium tracking-[0.12em] uppercase transition-all duration-300 border-b ${
                             isActive
-                              ? 'text-[#CFAF4A] border-[rgba(207,175,74,0.12)]'
-                              : 'text-[#666] hover:text-[#f5f5f5] border-[rgba(255,255,255,0.03)]'
+                              ? 'text-[#d4a843] border-[rgba(212,168,67,0.1)]'
+                              : 'text-[#52525b] hover:text-[#fafafa] border-[rgba(255,255,255,0.03)]'
                           }`}
-                          style={{ letterSpacing: '0.15em' }}
                         >
                           {item.label}
                         </Link>
@@ -239,12 +240,9 @@ export default function Navbar() {
                 </nav>
               </div>
 
-              {/* Gold Divider */}
-              <div className="mx-6 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(207, 175, 74, 0.2), transparent)' }} />
+              <div className="mx-6 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(212, 168, 67, 0.15), transparent)' }} />
 
-              {/* Bottom Section */}
-              <div className="px-6 py-6 space-y-4 shrink-0">
-                {/* Full-width Gold CTA */}
+              <div className="px-6 py-6 shrink-0">
                 <motion.div
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -255,29 +253,13 @@ export default function Navbar() {
                     onClick={closeDrawer}
                     className="flex items-center justify-center w-full py-3.5 rounded-xl text-sm font-semibold tracking-wider uppercase transition-all duration-300 hover:scale-[1.02]"
                     style={{
-                      background: 'linear-gradient(135deg, #CFAF4A, #e0c56a)',
-                      color: '#111',
-                      boxShadow: '0 4px 24px rgba(207, 175, 74, 0.25)',
+                      background: 'linear-gradient(135deg, #d4a843, #e8c564)',
+                      color: '#09090b',
+                      boxShadow: '0 4px 24px rgba(212, 168, 67, 0.25)',
                     }}
                   >
                     Start a Project
                   </Link>
-                </motion.div>
-
-                {/* Login / Sign Up */}
-                <motion.div
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4, duration: 0.4 }}
-                  className="flex items-center justify-center gap-6 pt-1"
-                >
-                  <a href="#" className="text-[11px] font-medium tracking-wider uppercase text-[#666] hover:text-[#CFAF4A] transition-colors duration-300">
-                    Login
-                  </a>
-                  <span className="text-[#333]">/</span>
-                  <a href="#" className="text-[11px] font-medium tracking-wider uppercase text-[#666] hover:text-[#CFAF4A] transition-colors duration-300">
-                    Sign Up
-                  </a>
                 </motion.div>
               </div>
             </motion.div>

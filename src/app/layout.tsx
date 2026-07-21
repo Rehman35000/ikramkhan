@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Inter, Geist_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import ThemeProvider from "@/components/ThemeProvider";
+import LoadingScreen from "@/components/LoadingScreen";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -9,18 +10,19 @@ const inter = Inter({
   display: "swap",
 });
 
-const geistMono = Geist_Mono({
+const jetbrainsMono = JetBrains_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "IKANOVA | Software Development & AI Solutions",
+    default: "IKANOVA | Premium Software Development & AI Solutions",
     template: "%s | IKANOVA",
   },
   description:
-    "IKANOVA is a premium software development company specializing in web applications, mobile apps, AI solutions, and cloud infrastructure for businesses worldwide.",
+    "IKANOVA is a premium software development studio specializing in web applications, mobile apps, AI solutions, and cloud infrastructure for businesses worldwide.",
   keywords: [
     "software development",
     "web development",
@@ -30,20 +32,22 @@ export const metadata: Metadata = {
     "SaaS development",
     "UI/UX design",
     "technology company",
+    "digital agency",
+    "custom software",
   ],
   openGraph: {
-    title: "IKANOVA | Software Development & AI Solutions",
+    title: "IKANOVA | Premium Software Development & AI Solutions",
     description:
-      "Premium software development company specializing in web applications, mobile apps, AI solutions, and cloud infrastructure.",
+      "Premium software development studio specializing in web applications, mobile apps, AI solutions, and cloud infrastructure.",
     type: "website",
     siteName: "IKANOVA",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "IKANOVA | Software Development & AI Solutions",
+    title: "IKANOVA | Premium Software Development & AI Solutions",
     description:
-      "Premium software development company specializing in web applications, mobile apps, AI solutions, and cloud infrastructure.",
+      "Premium software development studio specializing in web applications, mobile apps, AI solutions, and cloud infrastructure.",
   },
   robots: {
     index: true,
@@ -59,10 +63,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${geistMono.variable} scroll-smooth dark`}
+      className={`${inter.variable} ${jetbrainsMono.variable} scroll-smooth dark`}
       suppressHydrationWarning
     >
       <body className="bg-background text-foreground font-sans antialiased">
+        <LoadingScreen />
+        <div className="noise-overlay" aria-hidden="true" />
         <ThemeProvider>
           {children}
         </ThemeProvider>

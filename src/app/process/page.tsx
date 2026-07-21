@@ -5,6 +5,7 @@ import Footer from '@/components/Footer'
 import AnimatedSection from '@/components/AnimatedSection'
 import { motion, type Variants } from 'framer-motion'
 import Link from 'next/link'
+import MagneticButton from '@/components/MagneticButton'
 
 const steps = [
   {
@@ -81,32 +82,34 @@ const steps = [
 
 const containerVariants: Variants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
+  visible: { transition: { staggerChildren: 0.08 } },
 }
 
 const stepVariants: Variants = {
-  hidden: { opacity: 0, x: -20 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
+  hidden: { opacity: 0, x: -20, filter: 'blur(4px)' },
+  visible: { opacity: 1, x: 0, filter: 'blur(0px)', transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
 }
 
 const stepVariantsRight: Variants = {
-  hidden: { opacity: 0, x: 20 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
+  hidden: { opacity: 0, x: 20, filter: 'blur(4px)' },
+  visible: { opacity: 1, x: 0, filter: 'blur(0px)', transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
 }
 
 export default function ProcessPage() {
   return (
-    <main className="min-h-screen bg-background">
+    <main style={{ minHeight: '100vh', background: '#09090b' }}>
       <Navbar />
 
-      <section className="relative pt-32 pb-20 px-6 overflow-hidden">
-        <div className="max-w-6xl mx-auto relative">
+      <section className="relative pt-40 pb-24 px-6 lg:px-8 overflow-hidden">
+        <div className="absolute inset-0" style={{ background: 'radial-gradient(800px circle at 50% 30%, rgba(212,168,67,0.03), transparent 60%)' }} />
+        <div className="max-w-7xl mx-auto relative">
           <AnimatedSection>
             <div className="max-w-3xl">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
+              <p className="text-[11px] font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: '#d4a843' }}>How we work</p>
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-[-0.03em] mb-6" style={{ color: '#fafafa' }}>
                 <span className="gradient-text">Process</span>
               </h1>
-              <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
+              <p className="text-lg sm:text-xl leading-[1.7]" style={{ color: '#71717a' }}>
                 A proven methodology that transforms ideas into exceptional software.
               </p>
             </div>
@@ -114,7 +117,7 @@ export default function ProcessPage() {
         </div>
       </section>
 
-      <section className="py-16 px-6">
+      <section className="py-16 px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
           <motion.div
             variants={containerVariants}
@@ -123,7 +126,7 @@ export default function ProcessPage() {
             viewport={{ once: true, margin: '-50px' }}
             className="relative"
           >
-            <div className="absolute left-5 sm:left-1/2 sm:-translate-x-px top-0 bottom-0 w-px bg-border" />
+            <div className="absolute left-5 sm:left-1/2 sm:-translate-x-px top-0 bottom-0 w-px" style={{ background: 'rgba(212,168,67,0.1)' }} />
 
             {steps.map((step, index) => {
               const isLeft = index % 2 === 0
@@ -136,40 +139,44 @@ export default function ProcessPage() {
                   } flex-row`}
                 >
                   <div className={`hidden sm:block sm:w-1/2 ${isLeft ? 'sm:pr-10' : 'sm:pl-10'}`}>
-                    <div className="p-6 rounded-xl border border-border bg-card hover:border-foreground/10 transition-all duration-200">
+                    <div className="p-6 rounded-2xl transition-all duration-300" style={{ border: '1px solid rgba(255,255,255,0.04)', background: 'rgba(255,255,255,0.015)' }}>
                       <div className="flex items-center gap-3 mb-3">
-                        <div className="w-9 h-9 rounded-lg bg-foreground flex items-center justify-center text-background text-xs font-bold shrink-0">
+                        <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xs font-bold shrink-0"
+                          style={{ background: 'linear-gradient(135deg, #d4a843, #e8c564)', color: '#09090b' }}>
                           {step.number}
                         </div>
-                        <div className="w-9 h-9 rounded-lg bg-surface flex items-center justify-center text-foreground">
+                        <div className="w-10 h-10 rounded-xl flex items-center justify-center"
+                          style={{ background: 'rgba(212,168,67,0.06)', color: '#d4a843', border: '1px solid rgba(212,168,67,0.08)' }}>
                           {step.icon}
                         </div>
                       </div>
-                      <h3 className="text-base font-semibold mb-2">
+                      <h3 className="text-base font-semibold mb-2" style={{ color: '#fafafa' }}>
                         {step.title}
                       </h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
+                      <p className="text-sm leading-[1.7]" style={{ color: '#71717a' }}>
                         {step.description}
                       </p>
                     </div>
                   </div>
 
-                  <div className="absolute left-5 sm:left-1/2 sm:-translate-x-1/2 w-2.5 h-2.5 rounded-full bg-foreground border-2 border-background z-10 mt-8" />
+                  <div className="absolute left-5 sm:left-1/2 sm:-translate-x-1/2 w-2.5 h-2.5 rounded-full z-10 mt-8" style={{ background: '#d4a843', border: '2px solid #09090b', boxShadow: '0 0 12px rgba(212,168,67,0.4)' }} />
 
-                  <div className={`sm:hidden pl-10 w-full`}>
-                    <div className="p-5 rounded-xl border border-border bg-card">
+                  <div className="sm:hidden pl-10 w-full">
+                    <div className="p-5 rounded-2xl" style={{ border: '1px solid rgba(255,255,255,0.04)', background: 'rgba(255,255,255,0.015)' }}>
                       <div className="flex items-center gap-3 mb-3">
-                        <div className="w-9 h-9 rounded-lg bg-foreground flex items-center justify-center text-background text-xs font-bold shrink-0">
+                        <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xs font-bold shrink-0"
+                          style={{ background: 'linear-gradient(135deg, #d4a843, #e8c564)', color: '#09090b' }}>
                           {step.number}
                         </div>
-                        <div className="w-9 h-9 rounded-lg bg-surface flex items-center justify-center text-foreground">
+                        <div className="w-10 h-10 rounded-xl flex items-center justify-center"
+                          style={{ background: 'rgba(212,168,67,0.06)', color: '#d4a843', border: '1px solid rgba(212,168,67,0.08)' }}>
                           {step.icon}
                         </div>
                       </div>
-                      <h3 className="text-base font-semibold mb-2">
+                      <h3 className="text-base font-semibold mb-2" style={{ color: '#fafafa' }}>
                         {step.title}
                       </h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
+                      <p className="text-sm leading-[1.7]" style={{ color: '#71717a' }}>
                         {step.description}
                       </p>
                     </div>
@@ -183,32 +190,30 @@ export default function ProcessPage() {
         </div>
       </section>
 
-      <section className="py-24 px-6">
+      <section className="py-32 px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <AnimatedSection>
-            <div className="relative p-12 sm:p-16 rounded-xl border border-border bg-surface/50 text-center overflow-hidden">
+            <div className="relative p-12 sm:p-16 rounded-3xl text-center overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.04)', background: 'rgba(255,255,255,0.015)' }}>
+              <div className="absolute inset-0" style={{ background: 'radial-gradient(600px circle at 50% 50%, rgba(212,168,67,0.03), transparent 60%)' }} />
               <div className="relative">
-                <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+                <h2 className="text-3xl sm:text-4xl font-bold mb-4 tracking-[-0.03em]" style={{ color: '#fafafa' }}>
                   Ready to start?
                 </h2>
-                <p className="text-muted-foreground text-lg mb-8 max-w-xl mx-auto">
+                <p className="text-lg mb-8 max-w-xl mx-auto" style={{ color: '#71717a' }}>
                   Let us bring your vision to life with our proven process.
                 </p>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-foreground text-background font-medium text-sm hover:opacity-90 transition-opacity"
-                >
-                  Get in touch
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
+                <MagneticButton strength={0.15}>
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full font-medium text-sm transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,168,67,0.25)]"
+                    style={{ background: 'linear-gradient(135deg, #d4a843, #e8c564)', color: '#09090b' }}
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                  </svg>
-                </Link>
+                    Get in touch
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                  </Link>
+                </MagneticButton>
               </div>
             </div>
           </AnimatedSection>

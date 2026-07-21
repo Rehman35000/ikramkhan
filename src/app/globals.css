@@ -137,6 +137,12 @@ body {
   100% { transform: translate(var(--mx, 0), var(--my, 0)); }
 }
 
+@keyframes scroll-indicator {
+  0% { transform: translateY(-100%); }
+  50% { transform: translateY(300%); }
+  100% { transform: translateY(-100%); }
+}
+
 .glass-panel {
   background: var(--glass);
   backdrop-filter: blur(24px) saturate(180%);

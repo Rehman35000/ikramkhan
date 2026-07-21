@@ -1,4 +1,5 @@
 import ServicePageLayout from '@/components/ServicePageLayout';
+import ServicePageWrapper from '@/components/ServicePageWrapper';
 
 const benefits = [
   {
@@ -78,7 +79,8 @@ const faqs = [
 
 export default function MobileAppDevelopmentPage() {
   return (
-    <ServicePageLayout
+    <ServicePageWrapper>
+      <ServicePageLayout
       badge="Mobile App Development"
       title="Mobile apps"
       highlight="users love."
@@ -144,6 +146,7 @@ export default function MobileAppDevelopmentPage() {
       faqs={faqs}
       ctaTitle="Ready to launch your app?"
       ctaDescription="From concept to App Store, we handle every step of the mobile app development journey."
-    />
+      />
+    </ServicePageWrapper>
   );
 }

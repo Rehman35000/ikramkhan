@@ -1,4 +1,5 @@
 import ServicePageLayout from '@/components/ServicePageLayout';
+import ServicePageWrapper from '@/components/ServicePageWrapper';
 
 const benefits = [
   {
@@ -78,7 +79,8 @@ const faqs = [
 
 export default function AIDevelopmentPage() {
   return (
-    <ServicePageLayout
+    <ServicePageWrapper>
+      <ServicePageLayout
       badge="AI & Machine Learning"
       title="Intelligent solutions"
       highlight="powered by AI."
@@ -134,6 +136,7 @@ export default function AIDevelopmentPage() {
       faqs={faqs}
       ctaTitle="Let's build your AI solution."
       ctaDescription="From concept to production, we help you harness the power of artificial intelligence to solve your most complex challenges."
-    />
+      />
+    </ServicePageWrapper>
   );
 }

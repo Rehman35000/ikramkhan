@@ -1,4 +1,5 @@
 import ServicePageLayout from '@/components/ServicePageLayout';
+import ServicePageWrapper from '@/components/ServicePageWrapper';
 
 const benefits = [
   {
@@ -78,7 +79,8 @@ const faqs = [
 
 export default function CustomSoftwareDevelopmentPage() {
   return (
-    <ServicePageLayout
+    <ServicePageWrapper>
+      <ServicePageLayout
       badge="Custom Software Development"
       title="Software built"
       highlight="around you."
@@ -144,6 +146,7 @@ export default function CustomSoftwareDevelopmentPage() {
       faqs={faqs}
       ctaTitle="Let's build your custom solution."
       ctaDescription="Tell us about your challenge. We will design a solution that fits your business perfectly."
-    />
+      />
+    </ServicePageWrapper>
   );
 }

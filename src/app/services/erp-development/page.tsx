@@ -1,4 +1,5 @@
 import ServicePageLayout from '@/components/ServicePageLayout';
+import ServicePageWrapper from '@/components/ServicePageWrapper';
 
 const benefits = [
   {
@@ -78,7 +79,8 @@ const faqs = [
 
 export default function ERPDevelopmentPage() {
   return (
-    <ServicePageLayout
+    <ServicePageWrapper>
+      <ServicePageLayout
       badge="ERP Development"
       title="Enterprise systems"
       highlight="built for you."
@@ -145,6 +147,7 @@ export default function ERPDevelopmentPage() {
       faqs={faqs}
       ctaTitle="Transform your operations."
       ctaDescription="Let's build an ERP that your team will actually love to use."
-    />
+      />
+    </ServicePageWrapper>
   );
 }

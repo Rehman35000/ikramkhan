@@ -1,4 +1,5 @@
 import ServicePageLayout from '@/components/ServicePageLayout';
+import ServicePageWrapper from '@/components/ServicePageWrapper';
 
 const benefits = [
   {
@@ -78,7 +79,8 @@ const faqs = [
 
 export default function WebDevelopmentPage() {
   return (
-    <ServicePageLayout
+    <ServicePageWrapper>
+      <ServicePageLayout
       badge="Web Development"
       title="Web experiences"
       highlight="that convert."
@@ -148,6 +150,7 @@ export default function WebDevelopmentPage() {
       faqs={faqs}
       ctaTitle="Let's build something remarkable."
       ctaDescription="Whether you need a brand new website or a complete overhaul, we have the expertise to deliver results."
-    />
+      />
+    </ServicePageWrapper>
   );
 }

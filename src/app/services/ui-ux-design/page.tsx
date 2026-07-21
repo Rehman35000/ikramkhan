@@ -1,4 +1,5 @@
 import ServicePageLayout from '@/components/ServicePageLayout';
+import ServicePageWrapper from '@/components/ServicePageWrapper';
 
 const benefits = [
   {
@@ -78,7 +79,8 @@ const faqs = [
 
 export default function UIUXDesignPage() {
   return (
-    <ServicePageLayout
+    <ServicePageWrapper>
+      <ServicePageLayout
       badge="UI/UX Design"
       title="Designs that"
       highlight="drive results."
@@ -161,6 +163,7 @@ export default function UIUXDesignPage() {
       faqs={faqs}
       ctaTitle="Elevate your user experience."
       ctaDescription="Let's create a design that not only looks exceptional but drives measurable business outcomes."
-    />
+      />
+    </ServicePageWrapper>
   );
 }

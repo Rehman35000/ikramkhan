@@ -32,9 +32,19 @@ export default function ContactPage() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-    setIsSubmitting(false)
-    setIsSubmitted(true)
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+      if (!res.ok) throw new Error('Failed')
+      setIsSubmitted(true)
+    } catch {
+      alert('Something went wrong. Please try again or email us directly at ikanovaofficial@gmail.com')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const contactLinks = [

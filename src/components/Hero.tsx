@@ -22,15 +22,14 @@ export default function Hero() {
   const typedWord = useTypewriter(typewriterWords, 80, 50, 1500);
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-background">
+    <section className="relative min-h-screen flex items-center overflow-hidden">
       <div className="absolute inset-0 z-0" style={{
-        backgroundImage: 'radial-gradient(circle at 1px 1px, var(--border) 1px, transparent 0)',
+        backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(207,175,74,0.06) 1px, transparent 0)',
         backgroundSize: '32px 32px',
-        opacity: 0.5,
       }} />
 
-      <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] rounded-full opacity-[0.03] blur-[120px]" style={{ background: 'var(--accent)' }} />
-      <div className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] rounded-full opacity-[0.03] blur-[120px]" style={{ background: 'var(--accent)' }} />
+      <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] rounded-full opacity-[0.04] blur-[120px]" style={{ background: '#CFAF4A' }} />
+      <div className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] rounded-full opacity-[0.04] blur-[120px]" style={{ background: '#CFAF4A' }} />
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-32 lg:py-40">
         <div className="max-w-3xl">
@@ -39,9 +38,9 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full border text-xs font-medium mb-8"
-            style={{ borderColor: 'var(--border)', color: 'var(--muted-foreground)', background: 'var(--surface)' }}
+            style={{ borderColor: 'rgba(207,175,74,0.12)', color: '#CFAF4A', background: 'rgba(207,175,74,0.06)' }}
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+            <span className="w-1.5 h-1.5 rounded-full" style={{ background: '#CFAF4A', boxShadow: '0 0 8px rgba(207,175,74,0.5)' }} />
             Available for new projects
           </motion.div>
 
@@ -50,11 +49,12 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.05] tracking-tight mb-6"
+            style={{ color: '#f5f5f5' }}
           >
-            <span className="text-foreground">We build</span>
+            <span>We build</span>
             <br />
-            <span className="text-foreground">{typedWord}</span>
-            <span className="animate-pulse text-foreground">|</span>
+            <span>{typedWord}</span>
+            <span className="animate-pulse" style={{ color: '#CFAF4A' }}>|</span>
           </motion.h1>
 
           <motion.p
@@ -62,7 +62,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.35 }}
             className="text-lg sm:text-xl max-w-xl mb-10 leading-relaxed"
-            style={{ color: 'var(--muted)' }}
+            style={{ color: '#999' }}
           >
             IKANOVA is a software development company that builds scalable products
             from concept to deployment. We help startups and enterprises ship faster.
@@ -76,7 +76,12 @@ export default function Hero() {
           >
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-medium transition-all duration-200 bg-foreground text-background hover:opacity-90"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold tracking-wide transition-all duration-300 hover:scale-[1.02]"
+              style={{
+                background: 'linear-gradient(135deg, #CFAF4A, #e0c56a)',
+                color: '#111',
+                boxShadow: '0 4px 24px rgba(207,175,74,0.25)',
+              }}
             >
               Start a project
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -85,8 +90,8 @@ export default function Hero() {
             </Link>
             <Link
               href="/portfolio"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-medium transition-all duration-200 border hover:bg-surface"
-              style={{ borderColor: 'var(--border)', color: 'var(--foreground)' }}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-[rgba(207,175,74,0.06)]"
+              style={{ border: '1px solid rgba(207,175,74,0.12)', color: '#f5f5f5' }}
             >
               View work
             </Link>
@@ -101,10 +106,10 @@ export default function Hero() {
         >
           {stats.map((stat) => (
             <div key={stat.label}>
-              <p className="text-2xl sm:text-3xl font-bold tracking-tight" style={{ color: 'var(--foreground)' }}>
+              <p className="text-2xl sm:text-3xl font-bold tracking-tight" style={{ color: '#CFAF4A' }}>
                 {stat.value}
               </p>
-              <p className="text-xs sm:text-sm mt-1" style={{ color: 'var(--muted)' }}>
+              <p className="text-xs sm:text-sm mt-1" style={{ color: '#666' }}>
                 {stat.label}
               </p>
             </div>

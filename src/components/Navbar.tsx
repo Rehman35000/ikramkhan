@@ -1,24 +1,22 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useTheme } from './ThemeProvider';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const navItems = [
   { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
+  { label: 'Work', href: '/portfolio' },
   { label: 'Services', href: '/services' },
-  { label: 'Portfolio', href: '/portfolio' },
-  { label: 'Process', href: '/process' },
+  { label: 'Team', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ];
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const pathname = usePathname();
-  const { theme, toggle } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 20);
@@ -27,156 +25,265 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    setIsMobileOpen(false);
+    setIsDrawerOpen(false);
   }, [pathname]);
 
+  useEffect(() => {
+    if (isDrawerOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [isDrawerOpen]);
+
+  const closeDrawer = useCallback(() => setIsDrawerOpen(false), []);
+
   return (
-    <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-background/80 backdrop-blur-xl border-b border-border'
-          : 'bg-transparent'
-      }`}
-    >
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="flex items-center justify-between h-16">
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-7 h-7 rounded-md bg-foreground flex items-center justify-center">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--background)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <>
+      <nav
+        className={`fixed top-3 left-1/2 -translate-x-1/2 w-[calc(100%-24px)] max-w-[720px] z-50 transition-all duration-500 ease-out ${
+          isScrolled
+            ? 'rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.4)]'
+            : 'rounded-full shadow-[0_4px_24px_rgba(0,0,0,0.3)]'
+        }`}
+        style={{
+          background: 'rgba(17, 17, 17, 0.72)',
+          backdropFilter: 'blur(24px) saturate(180%)',
+          WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+          border: '1px solid rgba(207, 175, 74, 0.08)',
+        }}
+      >
+        <div className="flex items-center justify-between h-14 px-4 sm:px-5">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2.5 group relative z-10">
+            <div
+              className="w-8 h-8 rounded-lg flex items-center justify-center logo-glow transition-all duration-300 group-hover:scale-105"
+              style={{
+                background: 'linear-gradient(135deg, #CFAF4A, #e0c56a)',
+                boxShadow: '0 0 20px rgba(207, 175, 74, 0.25), 0 0 40px rgba(207, 175, 74, 0.1)',
+              }}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2" />
                 <line x1="12" y1="22" x2="12" y2="15.5" />
                 <polyline points="22 8.5 12 15.5 2 8.5" />
               </svg>
             </div>
-            <span className="text-sm font-bold tracking-tight">IKANOVA</span>
+            <span className="text-sm font-bold tracking-wider" style={{ color: '#f5f5f5' }}>
+              IKANOVA
+            </span>
           </Link>
 
-          <div className="hidden md:flex items-center gap-1">
+          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center gap-0.5">
             {navItems.map((item) => {
               const isActive = pathname === item.href;
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`px-3 py-1.5 text-[13px] font-medium rounded-md transition-colors duration-150 ${
+                  className={`relative px-3 py-1.5 text-[11px] font-medium tracking-wide uppercase rounded-lg transition-all duration-300 ${
                     isActive
-                      ? 'text-foreground bg-surface'
-                      : 'text-muted hover:text-foreground hover:bg-surface/50'
+                      ? 'text-[#CFAF4A]'
+                      : 'text-[#999] hover:text-[#f5f5f5]'
                   }`}
                 >
                   {item.label}
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeNav"
+                      className="absolute inset-0 rounded-lg"
+                      style={{ background: 'rgba(207, 175, 74, 0.08)' }}
+                      transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                    />
+                  )}
                 </Link>
               );
             })}
           </div>
 
-          <div className="hidden md:flex items-center gap-2">
-            <button
-              onClick={toggle}
-              className="p-2 rounded-md text-muted hover:text-foreground hover:bg-surface transition-colors duration-150"
-              aria-label="Toggle theme"
-            >
-              <div className="w-[16px] h-[16px]">
-                {theme === 'dark' ? (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="5" />
-                    <line x1="12" y1="1" x2="12" y2="3" />
-                    <line x1="12" y1="21" x2="12" y2="23" />
-                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                    <line x1="1" y1="12" x2="3" y2="12" />
-                    <line x1="21" y1="12" x2="23" y2="12" />
-                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-                  </svg>
-                ) : (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-                  </svg>
-                )}
-              </div>
-            </button>
+          {/* Desktop CTA + Hamburger */}
+          <div className="flex items-center gap-2">
+            {/* Gold CTA */}
             <Link
               href="/contact"
-              className="px-4 py-2 rounded-lg text-[13px] font-medium text-background bg-foreground hover:bg-foreground/90 transition-colors duration-150"
+              className="hidden md:inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-[11px] font-semibold tracking-wide uppercase transition-all duration-300 hover:scale-105"
+              style={{
+                background: 'linear-gradient(135deg, #CFAF4A, #e0c56a)',
+                color: '#111',
+                boxShadow: '0 0 20px rgba(207, 175, 74, 0.2)',
+              }}
             >
-              Get Started
+              Start
             </Link>
-          </div>
 
-          <div className="flex items-center gap-1 md:hidden">
+            {/* Hamburger */}
             <button
-              onClick={toggle}
-              className="p-2 rounded-md text-muted hover:text-foreground"
-              aria-label="Toggle theme"
-            >
-              <div className="w-[16px] h-[16px]">
-                {theme === 'dark' ? (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="5" />
-                    <line x1="12" y1="1" x2="12" y2="3" />
-                    <line x1="12" y1="21" x2="12" y2="23" />
-                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                    <line x1="1" y1="12" x2="3" y2="12" />
-                    <line x1="21" y1="12" x2="23" y2="12" />
-                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-                  </svg>
-                ) : (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-                  </svg>
-                )}
-              </div>
-            </button>
-            <button
-              onClick={() => setIsMobileOpen(!isMobileOpen)}
-              className="p-2 rounded-md text-foreground"
+              onClick={() => setIsDrawerOpen(!isDrawerOpen)}
+              className="relative w-9 h-9 flex flex-col items-center justify-center gap-[5px] rounded-full transition-all duration-300 md:hidden"
+              style={{
+                background: isDrawerOpen ? 'rgba(207, 175, 74, 0.1)' : 'rgba(255,255,255,0.04)',
+                border: '1px solid rgba(207, 175, 74, 0.1)',
+              }}
               aria-label="Toggle menu"
             >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                <line x1="4" y1="7" x2="20" y2="7" className={`transition-all duration-200 ${isMobileOpen ? 'rotate-45 translate-y-[4px]' : ''}`} />
-                <line x1="4" y1="12" x2="20" y2="12" className={`transition-all duration-200 ${isMobileOpen ? 'opacity-0' : ''}`} />
-                <line x1="4" y1="17" x2="20" y2="17" className={`transition-all duration-200 ${isMobileOpen ? '-rotate-45 -translate-y-[4px]' : ''}`} />
-              </svg>
+              <span
+                className={`block w-[14px] h-[1.5px] rounded-full transition-all duration-400 ease-[cubic-bezier(0.76,0,0.24,1)] ${
+                  isDrawerOpen ? 'rotate-45 translate-y-[3.25px]' : ''
+                }`}
+                style={{ background: isDrawerOpen ? '#CFAF4A' : '#f5f5f5' }}
+              />
+              <span
+                className={`block w-[14px] h-[1.5px] rounded-full transition-all duration-400 ease-[cubic-bezier(0.76,0,0.24,1)] ${
+                  isDrawerOpen ? '-rotate-45 -translate-y-[3.25px]' : ''
+                }`}
+                style={{ background: isDrawerOpen ? '#CFAF4A' : '#f5f5f5' }}
+              />
             </button>
           </div>
         </div>
-      </div>
+      </nav>
 
-      <div
-        className={`md:hidden transition-all duration-300 overflow-hidden ${
-          isMobileOpen ? 'max-h-[80vh] opacity-100' : 'max-h-0 opacity-0'
-        }`}
-      >
-        <div className="bg-background/95 backdrop-blur-xl border-b border-border px-6 py-4 space-y-1">
-          {navItems.map((item) => {
-            const isActive = pathname === item.href;
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`block px-3 py-2.5 rounded-md text-sm font-medium transition-colors duration-150 ${
-                  isActive
-                    ? 'text-foreground bg-surface'
-                    : 'text-muted hover:text-foreground hover:bg-surface/50'
-                }`}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
-          <div className="pt-2">
-            <Link
-              href="/contact"
-              className="block text-center px-4 py-2.5 rounded-lg text-sm font-medium text-background bg-foreground"
+      {/* Mobile Slide Drawer */}
+      <AnimatePresence>
+        {isDrawerOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 z-[60]"
+              style={{ background: 'rgba(0, 0, 0, 0.6)', backdropFilter: 'blur(4px)' }}
+              onClick={closeDrawer}
+            />
+
+            {/* Drawer */}
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', stiffness: 300, damping: 35 }}
+              className="fixed top-0 right-0 h-full z-[70] flex flex-col"
+              style={{
+                width: '85%',
+                maxWidth: '400px',
+                background: '#0d0d0d',
+                borderLeft: '1px solid rgba(207, 175, 74, 0.08)',
+                boxShadow: '-20px 0 60px rgba(0, 0, 0, 0.5)',
+              }}
             >
-              Get Started
-            </Link>
-          </div>
-        </div>
-      </div>
-    </nav>
+              {/* Drawer Header */}
+              <div className="flex items-center justify-between px-6 h-16 shrink-0">
+                <Link href="/" className="flex items-center gap-2" onClick={closeDrawer}>
+                  <div
+                    className="w-7 h-7 rounded-md flex items-center justify-center"
+                    style={{
+                      background: 'linear-gradient(135deg, #CFAF4A, #e0c56a)',
+                      boxShadow: '0 0 16px rgba(207, 175, 74, 0.3)',
+                    }}
+                  >
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2" />
+                      <line x1="12" y1="22" x2="12" y2="15.5" />
+                      <polyline points="22 8.5 12 15.5 2 8.5" />
+                    </svg>
+                  </div>
+                  <span className="text-xs font-bold tracking-wider" style={{ color: '#f5f5f5' }}>IKANOVA</span>
+                </Link>
+                <button
+                  onClick={closeDrawer}
+                  className="w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-200"
+                  style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }}
+                  aria-label="Close menu"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#999" strokeWidth="2" strokeLinecap="round">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Gold Divider */}
+              <div className="mx-6 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(207, 175, 74, 0.2), transparent)' }} />
+
+              {/* Navigation Links */}
+              <div className="flex-1 flex flex-col justify-center px-8 py-8">
+                <nav className="space-y-1">
+                  {navItems.map((item, i) => {
+                    const isActive = pathname === item.href;
+                    return (
+                      <motion.div
+                        key={item.href}
+                        initial={{ opacity: 0, x: 24 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.1 + i * 0.05, duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+                      >
+                        <Link
+                          href={item.href}
+                          onClick={closeDrawer}
+                          className={`block py-3.5 text-lg font-medium tracking-[0.15em] uppercase transition-all duration-300 border-b ${
+                            isActive
+                              ? 'text-[#CFAF4A] border-[rgba(207,175,74,0.12)]'
+                              : 'text-[#666] hover:text-[#f5f5f5] border-[rgba(255,255,255,0.03)]'
+                          }`}
+                          style={{ letterSpacing: '0.15em' }}
+                        >
+                          {item.label}
+                        </Link>
+                      </motion.div>
+                    );
+                  })}
+                </nav>
+              </div>
+
+              {/* Gold Divider */}
+              <div className="mx-6 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(207, 175, 74, 0.2), transparent)' }} />
+
+              {/* Bottom Section */}
+              <div className="px-6 py-6 space-y-4 shrink-0">
+                {/* Full-width Gold CTA */}
+                <motion.div
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.35, duration: 0.4 }}
+                >
+                  <Link
+                    href="/contact"
+                    onClick={closeDrawer}
+                    className="flex items-center justify-center w-full py-3.5 rounded-xl text-sm font-semibold tracking-wider uppercase transition-all duration-300 hover:scale-[1.02]"
+                    style={{
+                      background: 'linear-gradient(135deg, #CFAF4A, #e0c56a)',
+                      color: '#111',
+                      boxShadow: '0 4px 24px rgba(207, 175, 74, 0.25)',
+                    }}
+                  >
+                    Start a Project
+                  </Link>
+                </motion.div>
+
+                {/* Login / Sign Up */}
+                <motion.div
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4, duration: 0.4 }}
+                  className="flex items-center justify-center gap-6 pt-1"
+                >
+                  <a href="#" className="text-[11px] font-medium tracking-wider uppercase text-[#666] hover:text-[#CFAF4A] transition-colors duration-300">
+                    Login
+                  </a>
+                  <span className="text-[#333]">/</span>
+                  <a href="#" className="text-[11px] font-medium tracking-wider uppercase text-[#666] hover:text-[#CFAF4A] transition-colors duration-300">
+                    Sign Up
+                  </a>
+                </motion.div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

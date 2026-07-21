@@ -64,21 +64,24 @@ export default function Footer() {
   const pathname = usePathname();
 
   return (
-    <footer className="border-t border-border bg-background">
+    <footer style={{ borderTop: '1px solid rgba(207,175,74,0.08)', background: '#111' }}>
       <div className="max-w-6xl mx-auto px-6 py-16">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2">
-              <div className="w-7 h-7 rounded-md bg-foreground flex items-center justify-center">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--background)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <div
+                className="w-7 h-7 rounded-md flex items-center justify-center"
+                style={{ background: 'linear-gradient(135deg, #CFAF4A, #e0c56a)', boxShadow: '0 0 12px rgba(207,175,74,0.2)' }}
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2" />
                   <line x1="12" y1="22" x2="12" y2="15.5" />
                   <polyline points="22 8.5 12 15.5 2 8.5" />
                 </svg>
               </div>
-              <span className="text-sm font-bold">IKANOVA</span>
+              <span className="text-sm font-bold" style={{ color: '#f5f5f5' }}>IKANOVA</span>
             </Link>
-            <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
+            <p className="text-sm leading-relaxed max-w-xs" style={{ color: '#666' }}>
               Software development company building web apps, mobile apps, and AI-powered solutions.
             </p>
             <div className="flex gap-2">
@@ -88,8 +91,11 @@ export default function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-8 h-8 rounded-md bg-surface flex items-center justify-center text-muted hover:text-foreground hover:bg-surface-hover transition-colors duration-150"
+                  className="w-8 h-8 rounded-md flex items-center justify-center transition-all duration-300 hover:scale-110"
+                  style={{ background: 'rgba(207,175,74,0.06)', color: '#666', border: '1px solid rgba(207,175,74,0.08)' }}
                   aria-label={social.label}
+                  onMouseEnter={(e) => { e.currentTarget.style.color = '#CFAF4A'; e.currentTarget.style.borderColor = 'rgba(207,175,74,0.2)'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.color = '#666'; e.currentTarget.style.borderColor = 'rgba(207,175,74,0.08)'; }}
                 >
                   {social.icon}
                 </a>
@@ -98,7 +104,7 @@ export default function Footer() {
           </div>
 
           <div className="space-y-4">
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-muted">
+            <h4 className="text-xs font-semibold uppercase tracking-wider" style={{ color: '#CFAF4A' }}>
               Navigation
             </h4>
             <nav className="flex flex-col gap-2">
@@ -106,11 +112,10 @@ export default function Footer() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-sm transition-colors duration-150 ${
-                    pathname === link.href
-                      ? 'text-foreground font-medium'
-                      : 'text-muted hover:text-foreground'
-                  }`}
+                  className="text-sm transition-colors duration-300"
+                  style={{ color: pathname === link.href ? '#f5f5f5' : '#666' }}
+                  onMouseEnter={(e) => { if (pathname !== link.href) e.currentTarget.style.color = '#CFAF4A'; }}
+                  onMouseLeave={(e) => { if (pathname !== link.href) e.currentTarget.style.color = '#666'; }}
                 >
                   {link.label}
                 </Link>
@@ -119,7 +124,7 @@ export default function Footer() {
           </div>
 
           <div className="space-y-4">
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-muted">
+            <h4 className="text-xs font-semibold uppercase tracking-wider" style={{ color: '#CFAF4A' }}>
               Services
             </h4>
             <nav className="flex flex-col gap-2">
@@ -127,7 +132,10 @@ export default function Footer() {
                 <Link
                   key={service}
                   href="/services"
-                  className="text-sm text-muted hover:text-foreground transition-colors duration-150"
+                  className="text-sm transition-colors duration-300"
+                  style={{ color: '#666' }}
+                  onMouseEnter={(e) => { e.currentTarget.style.color = '#CFAF4A'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.color = '#666'; }}
                 >
                   {service}
                 </Link>
@@ -136,13 +144,16 @@ export default function Footer() {
           </div>
 
           <div className="space-y-4">
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-muted">
+            <h4 className="text-xs font-semibold uppercase tracking-wider" style={{ color: '#CFAF4A' }}>
               Contact
             </h4>
             <div className="space-y-2">
               <a
                 href="mailto:ikanovaofficial@gmail.com"
-                className="flex items-center gap-2 text-sm text-muted hover:text-foreground transition-colors duration-150"
+                className="flex items-center gap-2 text-sm transition-colors duration-300"
+                style={{ color: '#666' }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = '#CFAF4A'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = '#666'; }}
               >
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
                   <rect x="2" y="4" width="20" height="16" rx="2" />
@@ -152,14 +163,17 @@ export default function Footer() {
               </a>
               <a
                 href="tel:+923098660810"
-                className="flex items-center gap-2 text-sm text-muted hover:text-foreground transition-colors duration-150"
+                className="flex items-center gap-2 text-sm transition-colors duration-300"
+                style={{ color: '#666' }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = '#CFAF4A'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = '#666'; }}
               >
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
                   <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
                 </svg>
                 +92 309 866 0810
               </a>
-              <div className="flex items-start gap-2 text-sm text-muted">
+              <div className="flex items-start gap-2 text-sm" style={{ color: '#666' }}>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 mt-0.5">
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
                   <circle cx="12" cy="10" r="3" />
@@ -171,16 +185,22 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-border">
+      <div style={{ borderTop: '1px solid rgba(207,175,74,0.08)' }}>
         <div className="max-w-6xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-muted">
+          <p className="text-xs" style={{ color: '#666' }}>
             &copy; {new Date().getFullYear()} IKANOVA. All rights reserved.
           </p>
           <div className="flex gap-5">
-            <a href="#" className="text-xs text-muted hover:text-foreground transition-colors">
+            <a href="#" className="text-xs transition-colors duration-300" style={{ color: '#666' }}
+              onMouseEnter={(e) => { e.currentTarget.style.color = '#CFAF4A'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = '#666'; }}
+            >
               Privacy
             </a>
-            <a href="#" className="text-xs text-muted hover:text-foreground transition-colors">
+            <a href="#" className="text-xs transition-colors duration-300" style={{ color: '#666' }}
+              onMouseEnter={(e) => { e.currentTarget.style.color = '#CFAF4A'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = '#666'; }}
+            >
               Terms
             </a>
           </div>

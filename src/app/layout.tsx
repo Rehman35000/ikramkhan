@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ThemeProvider from "@/components/ThemeProvider";
-import Welcome from "@/components/Welcome";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -65,7 +64,6 @@ export default function RootLayout({
     >
       <body className="bg-background text-foreground font-sans antialiased">
         <ThemeProvider>
-          <Welcome />
           {children}
         </ThemeProvider>
       </body>

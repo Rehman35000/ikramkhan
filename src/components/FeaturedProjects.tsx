@@ -20,7 +20,6 @@ const projects = [
     tech: 'Next.js / Stripe',
     image: '/projects/fashion-hubb-hero.jpg',
     link: 'https://fashion-hubb-silk.vercel.app/',
-    color: 'bg-rose-400',
   },
   {
     title: 'St. Elizabeth Hospital',
@@ -29,18 +28,17 @@ const projects = [
     image: '/projects/st-elizabeth-hero.jpg',
     logo: '/projects/st-elizabeth-logo.png',
     link: 'https://st-elizabethhyderabad.com/',
-    color: 'bg-red-600',
   },
 ];
 
 const containerVariants: Variants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.08 } },
+  visible: { transition: { staggerChildren: 0.06 } },
 };
 
 const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+  hidden: { opacity: 0, y: 12 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.35 } },
 };
 
 export default function FeaturedProjects() {
@@ -48,36 +46,33 @@ export default function FeaturedProjects() {
   const others = projects.slice(1);
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-background">
+    <section className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-14"
+          className="mb-14"
         >
-          <span className="inline-block px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-bold tracking-widest uppercase mb-4 border border-accent/20">
-            Portfolio
-          </span>
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
-            Our <span className="gradient-text">Work</span>
+          <p className="text-xs font-semibold tracking-widest uppercase text-muted mb-3">Portfolio</p>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-3">
+            Selected <span className="gradient-text">work</span>
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
-            Products and platforms we&apos;re proud of.
+          <p className="text-muted-foreground max-w-lg">
+            Products and platforms we are proud of.
           </p>
         </motion.div>
 
-        {/* Featured */}
         <motion.a
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           href={featured.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="group block rounded-2xl border border-border bg-card overflow-hidden hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300 mb-6"
+          className="group block rounded-xl border border-border bg-card overflow-hidden hover:border-foreground/10 transition-all duration-200 mb-4"
         >
-          <div className="grid md:grid-cols-[1fr_1.1fr] min-h-[280px]">
+          <div className="grid md:grid-cols-[1fr_1.1fr] min-h-[260px]">
             <div className="relative overflow-hidden">
               <Image
                 src={featured.image!}
@@ -86,16 +81,18 @@ export default function FeaturedProjects() {
                 className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent md:bg-gradient-to-r md:from-transparent md:to-card/20" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent md:bg-gradient-to-r md:from-transparent md:to-card/20" />
             </div>
             <div className="p-7 md:p-9 flex flex-col justify-center relative">
-              <div className="absolute top-5 right-5 w-10 h-10 rounded-lg bg-surface border border-border flex items-center justify-center overflow-hidden">
-                <Image src={featured.logo!} alt="Logo" width={30} height={30} className="object-contain" />
-              </div>
-              <span className="inline-block w-fit px-2.5 py-0.5 rounded-full bg-accent/10 text-accent text-[11px] font-bold mb-3 border border-accent/20">
+              {featured.logo && (
+                <div className="absolute top-5 right-5 w-9 h-9 rounded-md bg-surface border border-border flex items-center justify-center overflow-hidden">
+                  <Image src={featured.logo} alt="Logo" width={28} height={28} className="object-contain" />
+                </div>
+              )}
+              <span className="inline-block w-fit px-2 py-0.5 rounded bg-surface text-[10px] font-medium text-muted mb-3 border border-border">
                 Featured
               </span>
-              <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2 group-hover:text-accent transition-colors">
+              <h3 className="text-xl md:text-2xl font-bold mb-2 group-hover:text-foreground transition-colors">
                 {featured.title}
               </h3>
               <p className="text-muted-foreground text-sm leading-relaxed mb-4 max-w-md">
@@ -103,14 +100,14 @@ export default function FeaturedProjects() {
               </p>
               <div className="flex flex-wrap gap-1.5 mb-5">
                 {['Next.js', 'TypeScript', 'Node.js', 'PostgreSQL'].map((t) => (
-                  <span key={t} className="px-2.5 py-0.5 rounded-full bg-accent/8 text-accent/70 text-[11px] font-medium border border-accent/10">
+                  <span key={t} className="px-2 py-0.5 rounded bg-surface text-[10px] font-medium text-muted border border-border">
                     {t}
                   </span>
                 ))}
               </div>
-              <span className="inline-flex items-center gap-1.5 text-accent font-semibold text-sm group-hover:gap-2.5 transition-all w-fit">
+              <span className="inline-flex items-center gap-1.5 text-sm font-medium group-hover:gap-2.5 transition-all w-fit">
                 Visit Site
-                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
                 </svg>
               </span>
@@ -118,7 +115,6 @@ export default function FeaturedProjects() {
           </div>
         </motion.a>
 
-        {/* Small Cards */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -135,12 +131,12 @@ export default function FeaturedProjects() {
               <Wrapper
                 key={project.title}
                 variants={cardVariants}
-                whileHover={{ y: -3 }}
-                className="group rounded-xl border border-border bg-card overflow-hidden hover:border-accent/30 hover:shadow-md hover:shadow-accent/5 transition-all duration-300 cursor-default"
+                whileHover={{ y: -2 }}
+                className="group rounded-xl border border-border bg-card overflow-hidden hover:border-foreground/10 transition-all duration-200 cursor-default"
                 {...wrapperProps}
               >
                 {project.image && (
-                  <div className="relative h-32 overflow-hidden">
+                  <div className="relative h-28 overflow-hidden">
                     <Image
                       src={project.image}
                       alt={project.title}
@@ -148,22 +144,17 @@ export default function FeaturedProjects() {
                       className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                       sizes="(max-width: 640px) 100vw, 33vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                   </div>
                 )}
-                <div className="p-5">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className={`w-9 h-9 rounded-lg ${project.color} flex items-center justify-center`}>
-                      <span className="text-white font-bold text-sm">{project.title[0]}</span>
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-bold text-foreground group-hover:text-accent transition-colors">
-                        {project.title}
-                      </h4>
-                      <p className="text-[11px] text-muted-foreground">{project.category}</p>
-                    </div>
+                <div className="p-4">
+                  <h4 className="text-sm font-semibold mb-0.5 group-hover:text-foreground transition-colors">
+                    {project.title}
+                  </h4>
+                  <div className="flex items-center justify-between">
+                    <p className="text-[11px] text-muted">{project.category}</p>
+                    <span className="text-[10px] text-muted font-medium">{project.tech}</span>
                   </div>
-                  <span className="text-[11px] text-muted-foreground/80 font-medium">{project.tech}</span>
                 </div>
               </Wrapper>
             );
@@ -174,14 +165,14 @@ export default function FeaturedProjects() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-center mt-12"
+          className="mt-10"
         >
           <Link
             href="/portfolio"
-            className="inline-flex items-center gap-2 px-7 py-3 rounded-lg bg-accent text-white text-sm font-semibold shadow-md shadow-accent/20 hover:shadow-lg hover:shadow-accent/30 hover:-translate-y-0.5 transition-all duration-300"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-foreground text-background text-sm font-medium hover:opacity-90 transition-opacity"
           >
-            View All
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+            View all projects
+            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
             </svg>
           </Link>

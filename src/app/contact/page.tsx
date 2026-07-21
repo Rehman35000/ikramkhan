@@ -50,7 +50,7 @@ export default function ContactPage() {
   const contactLinks = [
     {
       icon: (
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
         </svg>
       ),
@@ -60,7 +60,7 @@ export default function ContactPage() {
     },
     {
       icon: (
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
         </svg>
       ),
@@ -70,18 +70,18 @@ export default function ContactPage() {
     },
     {
       icon: (
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
           <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
         </svg>
       ),
       label: 'Office',
-      value: '123 Innovation Drive, Karachi, Pakistan',
+      value: 'Blue Area, F-7, Islamabad',
       href: 'https://maps.google.com',
     },
     {
       icon: (
-        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
         </svg>
       ),
@@ -96,7 +96,7 @@ export default function ContactPage() {
       label: 'GitHub',
       href: 'https://github.com/ikanova',
       icon: (
-        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
           <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
         </svg>
       ),
@@ -105,7 +105,7 @@ export default function ContactPage() {
       label: 'WhatsApp',
       href: 'https://wa.me/923098660810',
       icon: (
-        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
         </svg>
       ),
@@ -114,7 +114,7 @@ export default function ContactPage() {
       label: 'LinkedIn',
       href: 'https://linkedin.com/company/ikanova',
       icon: (
-        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
           <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
         </svg>
       ),
@@ -123,7 +123,7 @@ export default function ContactPage() {
       label: 'Twitter',
       href: 'https://twitter.com/ikanova',
       icon: (
-        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
           <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
         </svg>
       ),
@@ -147,53 +147,51 @@ export default function ContactPage() {
     <main className="min-h-screen bg-background text-foreground">
       <Navbar />
 
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+      <section className="pt-32 pb-20 px-6">
+        <div className="max-w-6xl mx-auto">
           <AnimatedSection>
-            <div className="text-center mb-20">
+            <div className="mb-16">
               <motion.h1
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6"
+                transition={{ duration: 0.5 }}
+                className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-4"
               >
                 Get in{' '}
-                <span className="bg-gradient-to-r from-accent to-accent/60 bg-clip-text text-transparent">
-                  Touch
-                </span>
+                <span className="gradient-text">touch</span>
               </motion.h1>
               <motion.p
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-lg text-foreground/60 max-w-2xl mx-auto"
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="text-lg text-muted max-w-xl"
               >
-                Let&apos;s discuss how we can help transform your business with technology.
+                Let us discuss how we can help transform your business with technology.
               </motion.p>
             </div>
           </AnimatedSection>
 
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
             <AnimatedSection>
-              <div className="space-y-8">
-                <div className="space-y-6">
+              <div className="space-y-6">
+                <div className="space-y-3">
                   {contactLinks.map((link, index) => (
                     <motion.a
                       key={link.label}
                       href={link.href}
                       target={link.label === 'Office' ? '_blank' : undefined}
                       rel={link.label === 'Office' ? 'noopener noreferrer' : undefined}
-                      initial={{ opacity: 0, x: -20 }}
+                      initial={{ opacity: 0, x: -12 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      className="flex items-start gap-4 p-4 rounded-xl bg-surface/50 border border-border hover:border-accent/30 transition-all duration-300 group cursor-pointer"
+                      transition={{ duration: 0.4, delay: index * 0.05 }}
+                      className="flex items-center gap-3 p-3 rounded-lg bg-surface/50 border border-border hover:border-foreground/10 transition-all duration-200 group cursor-pointer"
                     >
-                      <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-accent/10 text-accent flex items-center justify-center group-hover:bg-accent/20 transition-colors">
+                      <div className="flex-shrink-0 w-8 h-8 rounded-md bg-background border border-border flex items-center justify-center text-muted group-hover:text-foreground transition-colors">
                         {link.icon}
                       </div>
                       <div>
-                        <p className="text-sm text-foreground/50 mb-1">{link.label}</p>
-                        <p className="text-foreground/80 group-hover:text-accent transition-colors">
+                        <p className="text-[11px] text-muted mb-0.5">{link.label}</p>
+                        <p className="text-sm group-hover:text-foreground transition-colors">
                           {link.value}
                         </p>
                       </div>
@@ -201,17 +199,17 @@ export default function ContactPage() {
                   ))}
                 </div>
 
-                <div className="flex gap-4">
+                <div className="flex gap-2">
                   {socialLinks.map((social, index) => (
                     <motion.a
                       key={social.label}
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      initial={{ opacity: 0, y: 10 }}
+                      initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
-                      className="w-11 h-11 rounded-xl bg-surface/50 border border-border flex items-center justify-center text-foreground/50 hover:text-accent hover:border-accent/30 transition-all duration-300"
+                      transition={{ duration: 0.3, delay: 0.3 + index * 0.05 }}
+                      className="w-9 h-9 rounded-md bg-surface/50 border border-border flex items-center justify-center text-muted hover:text-foreground hover:border-foreground/10 transition-all duration-200"
                       aria-label={social.label}
                     >
                       {social.icon}
@@ -220,42 +218,42 @@ export default function ContactPage() {
                 </div>
 
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.6 }}
-                  className="h-64 rounded-2xl overflow-hidden border border-border"
+                  transition={{ duration: 0.5, delay: 0.5 }}
+                  className="h-56 rounded-xl overflow-hidden border border-border"
                 >
-                  <div className="w-full h-full bg-gradient-to-br from-accent/20 via-surface to-accent/10 flex items-center justify-center">
+                  <div className="w-full h-full bg-gradient-to-br from-surface via-background to-surface flex items-center justify-center">
                     <div className="text-center">
-                      <svg className="w-12 h-12 text-accent/40 mx-auto mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <svg className="w-10 h-10 text-muted/30 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 6.75V15m6-6v8.25m.503 2.499l1.527-1.527a2.25 2.25 0 013.182 0l1.527 1.527m-2.25-3.75L12 15l-2.25-2.25" />
                       </svg>
-                      <p className="text-foreground/30 text-sm">Map View</p>
+                      <p className="text-muted/30 text-xs">Map View</p>
                     </div>
                   </div>
                 </motion.div>
               </div>
             </AnimatedSection>
 
-            <AnimatedSection delay={0.2}>
+            <AnimatedSection delay={0.1}>
               {isSubmitted ? (
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
+                  initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5 }}
-                  className="flex flex-col items-center justify-center h-full text-center p-12 rounded-2xl bg-surface/50 border border-border"
+                  transition={{ duration: 0.4 }}
+                  className="flex flex-col items-center justify-center h-full text-center p-12 rounded-xl bg-surface/50 border border-border"
                 >
                   <motion.div
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
-                    transition={{ type: 'spring', stiffness: 200, damping: 15, delay: 0.2 }}
-                    className="w-20 h-20 rounded-full bg-accent/10 flex items-center justify-center mb-6"
+                    transition={{ type: 'spring', stiffness: 200, damping: 15, delay: 0.1 }}
+                    className="w-16 h-16 rounded-full bg-surface flex items-center justify-center mb-5"
                   >
                     <motion.svg
                       initial={{ pathLength: 0 }}
                       animate={{ pathLength: 1 }}
-                      transition={{ duration: 0.5, delay: 0.4 }}
-                      className="w-10 h-10 text-accent"
+                      transition={{ duration: 0.4, delay: 0.3 }}
+                      className="w-8 h-8 text-foreground"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -267,20 +265,20 @@ export default function ContactPage() {
                         d="M4.5 12.75l6 6 9-13.5"
                         initial={{ pathLength: 0 }}
                         animate={{ pathLength: 1 }}
-                        transition={{ duration: 0.5, delay: 0.4 }}
+                        transition={{ duration: 0.4, delay: 0.3 }}
                       />
                     </motion.svg>
                   </motion.div>
-                  <h3 className="text-2xl font-bold mb-3">Message Sent!</h3>
-                  <p className="text-foreground/60 max-w-sm">
-                    Thank you for reaching out. We&apos;ll get back to you within 24 hours.
+                  <h3 className="text-xl font-bold mb-2">Message Sent!</h3>
+                  <p className="text-muted max-w-sm text-sm">
+                    Thank you for reaching out. We will get back to you within 24 hours.
                   </p>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6 p-8 rounded-2xl bg-surface/50 border border-border">
-                  <div className="grid sm:grid-cols-2 gap-6">
+                <form onSubmit={handleSubmit} className="space-y-5 p-7 rounded-xl bg-surface/50 border border-border">
+                  <div className="grid sm:grid-cols-2 gap-5">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-foreground/70 mb-2">
+                      <label htmlFor="name" className="block text-xs font-medium text-muted mb-1.5">
                         Name *
                       </label>
                       <input
@@ -290,12 +288,12 @@ export default function ContactPage() {
                         required
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl bg-background border border-border text-foreground placeholder-foreground/30 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent/50 transition-all duration-300"
+                        className="w-full px-3 py-2.5 rounded-lg bg-background border border-border text-foreground text-sm placeholder-muted focus:outline-none focus:ring-1 focus:ring-foreground/20 focus:border-foreground/20 transition-all"
                         placeholder="John Doe"
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-foreground/70 mb-2">
+                      <label htmlFor="email" className="block text-xs font-medium text-muted mb-1.5">
                         Email *
                       </label>
                       <input
@@ -305,14 +303,14 @@ export default function ContactPage() {
                         required
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl bg-background border border-border text-foreground placeholder-foreground/30 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent/50 transition-all duration-300"
+                        className="w-full px-3 py-2.5 rounded-lg bg-background border border-border text-foreground text-sm placeholder-muted focus:outline-none focus:ring-1 focus:ring-foreground/20 focus:border-foreground/20 transition-all"
                         placeholder="john@company.com"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-foreground/70 mb-2">
+                    <label htmlFor="company" className="block text-xs font-medium text-muted mb-1.5">
                       Company
                     </label>
                     <input
@@ -321,13 +319,13 @@ export default function ContactPage() {
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl bg-background border border-border text-foreground placeholder-foreground/30 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent/50 transition-all duration-300"
+                      className="w-full px-3 py-2.5 rounded-lg bg-background border border-border text-foreground text-sm placeholder-muted focus:outline-none focus:ring-1 focus:ring-foreground/20 focus:border-foreground/20 transition-all"
                       placeholder="Your company (optional)"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="subject" className="block text-sm font-medium text-foreground/70 mb-2">
+                    <label htmlFor="subject" className="block text-xs font-medium text-muted mb-1.5">
                       Subject *
                     </label>
                     <select
@@ -336,7 +334,7 @@ export default function ContactPage() {
                       required
                       value={formData.subject}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl bg-background border border-border text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent/50 transition-all duration-300 appearance-none"
+                      className="w-full px-3 py-2.5 rounded-lg bg-background border border-border text-foreground text-sm focus:outline-none focus:ring-1 focus:ring-foreground/20 focus:border-foreground/20 transition-all appearance-none"
                     >
                       <option value="" disabled>
                         Select a subject
@@ -349,17 +347,17 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-foreground/70 mb-2">
+                    <label htmlFor="message" className="block text-xs font-medium text-muted mb-1.5">
                       Message *
                     </label>
                     <textarea
                       id="message"
                       name="message"
                       required
-                      rows={6}
+                      rows={5}
                       value={formData.message}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl bg-background border border-border text-foreground placeholder-foreground/30 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent/50 transition-all duration-300 resize-none"
+                      className="w-full px-3 py-2.5 rounded-lg bg-background border border-border text-foreground text-sm placeholder-muted focus:outline-none focus:ring-1 focus:ring-foreground/20 focus:border-foreground/20 transition-all resize-none"
                       placeholder="Tell us about your project or inquiry..."
                     />
                   </div>
@@ -367,13 +365,13 @@ export default function ContactPage() {
                   <motion.button
                     type="submit"
                     disabled={isSubmitting}
-                    whileHover={{ scale: 1.02 }}
+                    whileHover={{ scale: 1.01 }}
                     whileTap={{ scale: 0.98 }}
-                    className="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-accent to-accent/80 text-white font-semibold text-base hover:from-accent/90 hover:to-accent/70 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    className="w-full py-3 px-5 rounded-lg bg-foreground text-background font-medium text-sm hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
                     {isSubmitting ? (
                       <>
-                        <svg className="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                         </svg>
@@ -390,32 +388,30 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="py-20 px-4 sm:px-6 lg:px-8 border-t border-border">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-20 px-6 border-t border-border">
+        <div className="max-w-6xl mx-auto">
           <AnimatedSection>
-            <h2 className="text-2xl sm:text-3xl font-bold text-center mb-4">
+            <h2 className="text-2xl sm:text-3xl font-bold text-center mb-3">
               Our{' '}
-              <span className="bg-gradient-to-r from-accent to-accent/60 bg-clip-text text-transparent">
-                Offices
-              </span>
+              <span className="gradient-text">offices</span>
             </h2>
-            <p className="text-foreground/50 text-center mb-12">
+            <p className="text-muted text-center mb-10 text-sm">
               Find us around the world
             </p>
           </AnimatedSection>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
             {officeLocations.map((office, index) => (
               <AnimatedSection key={office.city} delay={index * 0.1}>
                 <motion.div
-                  whileHover={{ y: -4 }}
-                  transition={{ duration: 0.3 }}
-                  className="p-6 rounded-2xl bg-surface/50 border border-border hover:border-accent/30 transition-all duration-300 text-center"
+                  whileHover={{ y: -2 }}
+                  transition={{ duration: 0.2 }}
+                  className="p-6 rounded-xl bg-surface/50 border border-border hover:border-foreground/10 transition-all duration-200 text-center"
                 >
-                  <div className="w-2 h-2 rounded-full bg-accent mx-auto mb-4" />
-                  <h3 className="text-lg font-semibold mb-1">{office.city}</h3>
-                  <p className="text-accent/70 text-sm mb-3">{office.subtitle}</p>
-                  <p className="text-foreground/50 text-sm">{office.address}</p>
+                  <div className="w-1.5 h-1.5 rounded-full bg-foreground mx-auto mb-3" />
+                  <h3 className="text-sm font-semibold mb-0.5">{office.city}</h3>
+                  <p className="text-muted text-xs mb-2">{office.subtitle}</p>
+                  <p className="text-muted-foreground text-xs">{office.address}</p>
                 </motion.div>
               </AnimatedSection>
             ))}

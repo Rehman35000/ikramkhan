@@ -112,9 +112,9 @@ export default function MobileAppDevelopmentPage() {
       }
       whatIsSection={
         <>
-          <p className="text-[11px] font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: '#d4a843' }}>What is mobile app development?</p>
+          <p className="text-[11px] font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: '#ef4444' }}>What is mobile app development?</p>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-[-0.03em] mb-6" style={{ color: '#fafafa' }}>
-            Mobile app development is building experiences that live in your users' pockets.
+            Mobile app development is building experiences that live in your users&apos; pockets.
           </h2>
           <div className="space-y-4">
             <p className="text-sm leading-[1.8]" style={{ color: '#a1a1aa' }}>

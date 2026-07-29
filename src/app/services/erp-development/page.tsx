@@ -93,9 +93,9 @@ export default function ERPDevelopmentPage() {
               {['Finance', 'Inventory', 'HR', 'CRM', 'Procurement', 'Analytics'].map((module, i) => (
                 <div key={module} className="p-4 rounded-xl text-center" style={{ background: i === 0 ? 'rgba(212,168,67,0.08)' : 'rgba(255,255,255,0.02)', border: `1px solid ${i === 0 ? 'rgba(212,168,67,0.15)' : 'rgba(255,255,255,0.04)'}` }}>
                   <div className="w-8 h-8 rounded-lg mx-auto mb-2 flex items-center justify-center" style={{ background: i === 0 ? 'rgba(212,168,67,0.15)' : 'rgba(255,255,255,0.05)' }}>
-                    <div className="w-2 h-2 rounded-full" style={{ background: i === 0 ? '#d4a843' : 'rgba(255,255,255,0.15)' }} />
+                    <div className="w-2 h-2 rounded-full" style={{ background: i === 0 ? '#ef4444' : 'rgba(255,255,255,0.15)' }} />
                   </div>
-                  <div className="text-[10px] font-medium" style={{ color: i === 0 ? '#d4a843' : '#52525b' }}>{module}</div>
+                  <div className="text-[10px] font-medium" style={{ color: i === 0 ? '#ef4444' : '#52525b' }}>{module}</div>
                 </div>
               ))}
             </div>
@@ -113,7 +113,7 @@ export default function ERPDevelopmentPage() {
       }
       whatIsSection={
         <>
-          <p className="text-[11px] font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: '#d4a843' }}>What is ERP development?</p>
+          <p className="text-[11px] font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: '#ef4444' }}>What is ERP development?</p>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-[-0.03em] mb-6" style={{ color: '#fafafa' }}>
             ERP development is building the central nervous system of your business.
           </h2>

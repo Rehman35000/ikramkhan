@@ -4,34 +4,8 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import AnimatedSection from '@/components/AnimatedSection';
 import { motion } from 'framer-motion';
-import MagneticButton from '@/components/MagneticButton';
-
-const team = [
-  {
-    name: 'Alex Morgan',
-    role: 'CEO & Founder',
-    initials: 'AM',
-    bio: 'Visionary leader with 15+ years of experience in software engineering and business strategy.',
-  },
-  {
-    name: 'Jordan Lee',
-    role: 'CTO',
-    initials: 'JL',
-    bio: 'Full-stack architect passionate about building scalable systems and mentoring engineering teams.',
-  },
-  {
-    name: 'Sam Rivera',
-    role: 'Head of Design',
-    initials: 'SR',
-    bio: 'Award-winning designer crafting intuitive interfaces that delight users and drive engagement.',
-  },
-  {
-    name: 'Casey Kim',
-    role: 'Lead Engineer',
-    initials: 'CK',
-    bio: 'Problem solver who thrives on turning complex requirements into elegant, maintainable solutions.',
-  },
-];
+import { useTheme } from '@/components/ThemeProvider';
+import { useThemeColors } from '@/hooks/useThemeColors';
 
 const values = [
   {
@@ -90,19 +64,23 @@ const stats = [
 ];
 
 export default function AboutPage() {
+  const c = useThemeColors();
+  const { theme } = useTheme();
+  const border = theme === 'light' ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.06)';
+
   return (
-    <main style={{ background: '#09090b', minHeight: '100vh' }}>
+    <main style={{ background: c.bg, minHeight: '100vh' }}>
       <Navbar />
 
       <section className="relative pt-40 pb-24 overflow-hidden px-6 lg:px-8">
-        <div className="absolute inset-0" style={{ background: 'radial-gradient(800px circle at 50% 30%, rgba(212,168,67,0.03), transparent 60%)' }} />
+        <div className="absolute inset-0" style={{ background: `radial-gradient(800px circle at 50% 30%, ${c.accent}08, transparent 60%)` }} />
         <div className="max-w-7xl mx-auto text-center relative">
           <AnimatedSection>
-            <p className="text-[11px] font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: '#d4a843' }}>About us</p>
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-[-0.03em] mb-6" style={{ color: '#fafafa' }}>
+            <p className="text-[11px] font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: c.accent }}>About us</p>
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-[-0.03em] mb-6" style={{ color: c.fg }}>
               About <span className="gradient-text">IKANOVA</span>
             </h1>
-            <p className="max-w-2xl mx-auto text-lg leading-[1.7]" style={{ color: '#71717a' }}>
+            <p className="max-w-2xl mx-auto text-lg leading-[1.7]" style={{ color: c.fgSecondary }}>
               We are a team of engineers, designers, and strategists building software that moves businesses forward.
             </p>
           </AnimatedSection>
@@ -113,37 +91,31 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <AnimatedSection>
-              <p className="leading-[1.8] mb-6" style={{ color: '#a1a1aa' }}>
+              <p className="leading-[1.8] mb-6" style={{ color: c.fgSecondary }}>
                 Founded in 2018, IKANOVA was born from a simple belief: every business deserves access to world-class software solutions. We started as a small team of passionate engineers and designers who wanted to bridge the gap between innovative technology and real-world business needs.
               </p>
-              <p className="leading-[1.8] mb-6" style={{ color: '#a1a1aa' }}>
+              <p className="leading-[1.8] mb-6" style={{ color: c.fgSecondary }}>
                 Over the years, we have grown into a full-service technology partner, helping startups, SMEs, and enterprises transform their digital landscape. Our approach combines deep technical expertise with a genuine understanding of our clients goals.
               </p>
-              <p className="leading-[1.8]" style={{ color: '#a1a1aa' }}>
+              <p className="leading-[1.8]" style={{ color: c.fgSecondary }}>
                 Today, we continue to push boundaries, adopting emerging technologies and refining our processes to deliver software that is not just functional but exceptional.
               </p>
             </AnimatedSection>
 
             <AnimatedSection>
-              <div className="rounded-2xl p-8 sm:p-10" style={{ border: '1px solid rgba(255,255,255,0.04)', background: 'rgba(255,255,255,0.015)' }}>
+              <div className="p-8 sm:p-10" style={{ border: `1px solid ${border}`, background: c.cardBg, borderRadius: '18px', boxShadow: theme === 'light' ? '0 1px 3px rgba(0,0,0,0.04), 0 12px 24px rgba(0,0,0,0.06)' : '0 1px 3px rgba(0,0,0,0.3), 0 12px 24px rgba(0,0,0,0.4)' }}>
                 <div className="grid grid-cols-3 gap-6">
                   {stats.map((stat) => (
-                    <motion.div
-                      key={stat.label}
-                      whileHover={{ scale: 1.05 }}
-                      className="text-center"
-                    >
-                      <div className="text-3xl sm:text-4xl font-bold gradient-text mb-1">
-                        {stat.value}
-                      </div>
-                      <div className="text-sm" style={{ color: '#71717a' }}>{stat.label}</div>
+                    <motion.div key={stat.label} whileHover={{ scale: 1.05 }} className="text-center">
+                      <div className="text-3xl sm:text-4xl font-bold gradient-text mb-1">{stat.value}</div>
+                      <div className="text-sm" style={{ color: c.fgSecondary }}>{stat.label}</div>
                     </motion.div>
                   ))}
                 </div>
-                <div className="mt-8 pt-8" style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}>
+                <div className="mt-8 pt-8" style={{ borderTop: `1px solid ${border}` }}>
                   <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-full" style={{ background: '#d4a843', boxShadow: '0 0 8px rgba(212,168,67,0.5)' }} />
-                    <span className="text-sm" style={{ color: '#a1a1aa' }}>
+                    <div className="w-2 h-2 rounded-full" style={{ background: c.accent, boxShadow: `0 0 8px ${c.glow}` }} />
+                    <span className="text-sm" style={{ color: c.fgSecondary }}>
                       Trusted by clients across 20+ countries
                     </span>
                   </div>
@@ -154,25 +126,23 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-24 px-6 lg:px-8" style={{ background: 'rgba(212,168,67,0.008)' }}>
+      <section className="py-24 px-6 lg:px-8" style={{ background: `rgba(${c.accent.replace('#', '').match(/../g)!.join(', ')}, 0.008)` }}>
         <div className="max-w-7xl mx-auto">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.03em] mb-4" style={{ color: '#fafafa' }}>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.03em] mb-4" style={{ color: c.fg }}>
               Mission & Vision
             </h2>
-            <p className="max-w-xl mx-auto" style={{ color: '#71717a' }}>
+            <p className="max-w-xl mx-auto" style={{ color: c.fgSecondary }}>
               The principles that guide everything we do.
             </p>
           </AnimatedSection>
 
           <div className="grid md:grid-cols-2 gap-4">
             <AnimatedSection>
-              <motion.div
-                whileHover={{ y: -4, borderColor: 'rgba(212,168,67,0.15)' }}
-                className="h-full rounded-2xl p-8 transition-all duration-300" style={{ border: '1px solid rgba(255,255,255,0.04)', background: 'rgba(255,255,255,0.015)' }}
-              >
+              <motion.div whileHover={{ y: -4 }} className="h-full p-8 transition-all duration-300"
+                style={{ border: `1px solid ${border}`, background: c.cardBg, borderRadius: '18px', boxShadow: theme === 'light' ? '0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04)' : '0 1px 3px rgba(0,0,0,0.3), 0 4px 12px rgba(0,0,0,0.3)' }}>
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
-                  style={{ background: 'rgba(212,168,67,0.06)', color: '#d4a843', border: '1px solid rgba(212,168,67,0.08)' }}>
+                  style={{ background: `${c.accent}0f`, color: c.accent, border: `1px solid ${border}` }}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                     <circle cx="12" cy="12" r="10" />
                     <line x1="14.31" y1="8" x2="20.05" y2="17.94" />
@@ -183,20 +153,18 @@ export default function AboutPage() {
                     <line x1="16.62" y1="12" x2="10.88" y2="21.94" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-semibold mb-3" style={{ color: '#fafafa' }}>Our Mission</h3>
-                <p className="leading-[1.7] text-sm" style={{ color: '#71717a' }}>
+                <h3 className="text-lg font-semibold mb-3" style={{ color: c.fg }}>Our Mission</h3>
+                <p className="leading-[1.7] text-sm" style={{ color: c.fgSecondary }}>
                   To empower businesses with innovative software solutions that drive growth, efficiency, and digital transformation.
                 </p>
               </motion.div>
             </AnimatedSection>
 
             <AnimatedSection>
-              <motion.div
-                whileHover={{ y: -4, borderColor: 'rgba(212,168,67,0.15)' }}
-                className="h-full rounded-2xl p-8 transition-all duration-300" style={{ border: '1px solid rgba(255,255,255,0.04)', background: 'rgba(255,255,255,0.015)' }}
-              >
+              <motion.div whileHover={{ y: -4 }} className="h-full p-8 transition-all duration-300"
+                style={{ border: `1px solid ${border}`, background: c.cardBg, borderRadius: '18px', boxShadow: theme === 'light' ? '0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04)' : '0 1px 3px rgba(0,0,0,0.3), 0 4px 12px rgba(0,0,0,0.3)' }}>
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
-                  style={{ background: 'rgba(212,168,67,0.06)', color: '#d4a843', border: '1px solid rgba(212,168,67,0.08)' }}>
+                  style={{ background: `${c.accent}0f`, color: c.accent, border: `1px solid ${border}` }}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                     <circle cx="12" cy="12" r="2" />
                     <path d="M12 2v4" />
@@ -209,8 +177,8 @@ export default function AboutPage() {
                     <path d="M16.24 7.76l2.83-2.83" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-semibold mb-3" style={{ color: '#fafafa' }}>Our Vision</h3>
-                <p className="leading-[1.7] text-sm" style={{ color: '#71717a' }}>
+                <h3 className="text-lg font-semibold mb-3" style={{ color: c.fg }}>Our Vision</h3>
+                <p className="leading-[1.7] text-sm" style={{ color: c.fgSecondary }}>
                   To be the global leader in technology consulting and software development, known for engineering excellence and client success.
                 </p>
               </motion.div>
@@ -222,10 +190,10 @@ export default function AboutPage() {
       <section className="py-24 px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.03em] mb-4" style={{ color: '#fafafa' }}>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.03em] mb-4" style={{ color: c.fg }}>
               Core Values
             </h2>
-            <p className="max-w-xl mx-auto" style={{ color: '#71717a' }}>
+            <p className="max-w-xl mx-auto" style={{ color: c.fgSecondary }}>
               The foundation of every project we undertake.
             </p>
           </AnimatedSection>
@@ -233,51 +201,14 @@ export default function AboutPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {values.map((value) => (
               <AnimatedSection key={value.title}>
-                <motion.div
-                  whileHover={{ y: -4, borderColor: 'rgba(212,168,67,0.15)' }}
-                  className="h-full rounded-2xl p-6 transition-all duration-300" style={{ border: '1px solid rgba(255,255,255,0.04)', background: 'rgba(255,255,255,0.015)' }}
-                >
+                <motion.div whileHover={{ y: -4 }} className="h-full p-6 transition-all duration-300"
+                  style={{ border: `1px solid ${border}`, background: c.cardBg, borderRadius: '18px', boxShadow: theme === 'light' ? '0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04)' : '0 1px 3px rgba(0,0,0,0.3), 0 4px 12px rgba(0,0,0,0.3)' }}>
                   <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-4"
-                    style={{ background: 'rgba(212,168,67,0.06)', color: '#d4a843', border: '1px solid rgba(212,168,67,0.08)' }}>
+                    style={{ background: `${c.accent}0f`, color: c.accent, border: `1px solid ${border}` }}>
                     {value.icon}
                   </div>
-                  <h3 className="text-sm font-semibold mb-1.5" style={{ color: '#fafafa' }}>
-                    {value.title}
-                  </h3>
-                  <p className="text-sm leading-[1.7]" style={{ color: '#71717a' }}>
-                    {value.description}
-                  </p>
-                </motion.div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-24 px-6 lg:px-8" style={{ background: 'rgba(212,168,67,0.008)' }}>
-        <div className="max-w-7xl mx-auto">
-          <AnimatedSection className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.03em] mb-4" style={{ color: '#fafafa' }}>
-              Meet the Team
-            </h2>
-            <p className="max-w-xl mx-auto" style={{ color: '#71717a' }}>
-              The people behind the code.
-            </p>
-          </AnimatedSection>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {team.map((member) => (
-              <AnimatedSection key={member.name}>
-                <motion.div
-                  whileHover={{ y: -4, borderColor: 'rgba(212,168,67,0.15)' }}
-                  className="h-full rounded-2xl p-6 text-center transition-all duration-300" style={{ border: '1px solid rgba(255,255,255,0.04)', background: 'rgba(255,255,255,0.015)' }}
-                >
-                  <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: 'linear-gradient(135deg, rgba(212,168,67,0.15), rgba(212,168,67,0.05))', border: '1px solid rgba(212,168,67,0.1)' }}>
-                    <span className="text-lg font-bold" style={{ color: '#d4a843' }}>{member.initials}</span>
-                  </div>
-                  <h3 className="text-sm font-semibold mb-0.5" style={{ color: '#fafafa' }}>{member.name}</h3>
-                  <p className="text-xs font-semibold mb-3" style={{ color: '#d4a843' }}>{member.role}</p>
-                  <p className="text-xs leading-[1.7]" style={{ color: '#71717a' }}>{member.bio}</p>
+                  <h3 className="text-sm font-semibold mb-1.5" style={{ color: c.fg }}>{value.title}</h3>
+                  <p className="text-sm leading-[1.7]" style={{ color: c.fgSecondary }}>{value.description}</p>
                 </motion.div>
               </AnimatedSection>
             ))}

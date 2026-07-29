@@ -6,6 +6,8 @@ import AnimatedSection from '@/components/AnimatedSection'
 import { motion } from 'framer-motion'
 import { useState, FormEvent } from 'react'
 import MagneticButton from '@/components/MagneticButton'
+import { useTheme } from '@/components/ThemeProvider'
+import { useThemeColors } from '@/hooks/useThemeColors'
 
 interface FormData {
   name: string
@@ -16,6 +18,10 @@ interface FormData {
 }
 
 export default function ContactPage() {
+  const c = useThemeColors()
+  const { theme } = useTheme()
+  const border = theme === 'light' ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.06)'
+
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -132,20 +138,12 @@ export default function ContactPage() {
   ]
 
   const officeLocations = [
-    {
-      city: 'Islamabad',
-      subtitle: 'Head Office',
-      address: 'Blue Area, F-7, Islamabad',
-    },
-    {
-      city: 'Karachi',
-      subtitle: 'Regional Office',
-      address: 'Clifton, Phase 5, Karachi',
-    },
+    { city: 'Islamabad', subtitle: 'Head Office', address: 'Blue Area, F-7, Islamabad' },
+    { city: 'Karachi', subtitle: 'Regional Office', address: 'Clifton, Phase 5, Karachi' },
   ]
 
   return (
-    <main style={{ minHeight: '100vh', background: '#09090b', color: '#fafafa' }}>
+    <main style={{ minHeight: '100vh', background: c.bg, color: c.fg }}>
       <Navbar />
 
       <section className="pt-40 pb-20 px-6 lg:px-8">
@@ -166,7 +164,7 @@ export default function ContactPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="text-lg max-w-xl"
-                style={{ color: '#71717a' }}
+                style={{ color: c.fgSecondary }}
               >
                 Let us discuss how we can help transform your business with technology.
               </motion.p>
@@ -187,19 +185,15 @@ export default function ContactPage() {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.4, delay: index * 0.05 }}
                       className="flex items-center gap-3.5 p-4 rounded-xl transition-all duration-300 group cursor-pointer"
-                      style={{ border: '1px solid rgba(255,255,255,0.04)', background: 'rgba(255,255,255,0.015)' }}
-                      onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(212,168,67,0.12)'; }}
-                      onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.04)'; }}
+                      style={{ border: `1px solid ${border}`, background: c.cardBg, borderRadius: '14px', boxShadow: theme === 'light' ? '0 1px 3px rgba(0,0,0,0.04)' : '0 1px 3px rgba(0,0,0,0.3)' }}
                     >
-                      <div className="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center transition-colors"
-                        style={{ background: 'rgba(212,168,67,0.06)', color: '#d4a843', border: '1px solid rgba(212,168,67,0.08)' }}>
+                      <div className="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center"
+                        style={{ background: `${c.accent}0f`, color: c.accent, border: `1px solid ${border}` }}>
                         {link.icon}
                       </div>
                       <div>
-                        <p className="text-[10px] mb-0.5 tracking-wider uppercase" style={{ color: '#52525b' }}>{link.label}</p>
-                        <p className="text-sm transition-colors" style={{ color: '#fafafa' }}>
-                          {link.value}
-                        </p>
+                        <p className="text-[10px] mb-0.5 tracking-wider uppercase" style={{ color: c.fgSecondary }}>{link.label}</p>
+                        <p className="text-sm" style={{ color: c.fg }}>{link.value}</p>
                       </div>
                     </motion.a>
                   ))}
@@ -215,10 +209,8 @@ export default function ContactPage() {
                         initial={{ opacity: 0, y: 8 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3, delay: 0.3 + index * 0.05 }}
-                        className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300"
-                        style={{ background: 'rgba(255,255,255,0.03)', color: '#52525b', border: '1px solid rgba(255,255,255,0.04)' }}
-                        onMouseEnter={(e) => { e.currentTarget.style.color = '#d4a843'; e.currentTarget.style.borderColor = 'rgba(212,168,67,0.15)'; }}
-                        onMouseLeave={(e) => { e.currentTarget.style.color = '#52525b'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.04)'; }}
+                        className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110"
+                        style={{ background: theme === 'light' ? 'rgba(0,0,0,0.02)' : 'rgba(255,255,255,0.02)', color: c.fgSecondary, border: `1px solid ${border}` }}
                         aria-label={social.label}
                       >
                         {social.icon}
@@ -231,15 +223,15 @@ export default function ContactPage() {
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.5 }}
-                  className="h-56 rounded-2xl overflow-hidden"
-                  style={{ border: '1px solid rgba(255,255,255,0.04)' }}
+                  className="h-56 overflow-hidden"
+                  style={{ border: `1px solid ${border}`, borderRadius: '18px' }}
                 >
-                  <div className="w-full h-full flex items-center justify-center" style={{ background: 'linear-gradient(135deg, rgba(212,168,67,0.02), #09090b, rgba(212,168,67,0.02))' }}>
+                  <div className="w-full h-full flex items-center justify-center" style={{ background: `linear-gradient(135deg, ${c.accent}05, ${c.bg}, ${c.accent}05)` }}>
                     <div className="text-center">
-                      <svg className="w-10 h-10 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="rgba(212,168,67,0.12)" strokeWidth={1.5}>
+                      <svg className="w-10 h-10 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke={border} strokeWidth={1.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 6.75V15m6-6v8.25m.503 2.499l1.527-1.527a2.25 2.25 0 013.182 0l1.527 1.527m-2.25-3.75L12 15l-2.25-2.25" />
                       </svg>
-                      <p className="text-xs" style={{ color: 'rgba(212,168,67,0.12)' }}>Map View</p>
+                      <p className="text-xs" style={{ color: c.fgSecondary }}>Map View</p>
                     </div>
                   </div>
                 </motion.div>
@@ -252,22 +244,22 @@ export default function ContactPage() {
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.4 }}
-                  className="flex flex-col items-center justify-center h-full text-center p-12 rounded-2xl"
-                  style={{ background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.04)' }}
+                  className="flex flex-col items-center justify-center h-full text-center p-12"
+                  style={{ background: c.cardBg, border: `1px solid ${border}`, borderRadius: '18px', boxShadow: theme === 'light' ? '0 1px 3px rgba(0,0,0,0.04), 0 12px 24px rgba(0,0,0,0.06)' : '0 1px 3px rgba(0,0,0,0.3), 0 12px 24px rgba(0,0,0,0.4)' }}
                 >
                   <motion.div
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ type: 'spring', stiffness: 200, damping: 15, delay: 0.1 }}
                     className="w-16 h-16 rounded-full flex items-center justify-center mb-5"
-                    style={{ background: 'rgba(212,168,67,0.08)' }}
+                    style={{ background: `${c.accent}0f` }}
                   >
                     <motion.svg
                       initial={{ pathLength: 0 }}
                       animate={{ pathLength: 1 }}
                       transition={{ duration: 0.4, delay: 0.3 }}
                       className="w-8 h-8"
-                      fill="none" viewBox="0 0 24 24" stroke="#d4a843" strokeWidth={2}
+                      fill="none" viewBox="0 0 24 24" stroke={c.accent} strokeWidth={2}
                     >
                       <motion.path
                         strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"
@@ -277,63 +269,42 @@ export default function ContactPage() {
                       />
                     </motion.svg>
                   </motion.div>
-                  <h3 className="text-xl font-bold mb-2" style={{ color: '#fafafa' }}>Message Sent!</h3>
-                  <p style={{ color: '#71717a' }} className="max-w-sm text-sm">
+                  <h3 className="text-xl font-bold mb-2" style={{ color: c.fg }}>Message Sent!</h3>
+                  <p style={{ color: c.fgSecondary }} className="max-w-sm text-sm">
                     Thank you for reaching out. We will get back to you within 24 hours.
                   </p>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-5 p-8 rounded-2xl" style={{ background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.04)' }}>
+                <form onSubmit={handleSubmit} className="space-y-5 p-8"
+                  style={{ background: c.cardBg, border: `1px solid ${border}`, borderRadius: '18px', boxShadow: theme === 'light' ? '0 1px 3px rgba(0,0,0,0.04), 0 12px 24px rgba(0,0,0,0.06)' : '0 1px 3px rgba(0,0,0,0.3), 0 12px 24px rgba(0,0,0,0.4)' }}>
                   <div className="grid sm:grid-cols-2 gap-5">
                     <div>
-                      <label htmlFor="name" className="block text-xs font-semibold tracking-wider uppercase mb-2" style={{ color: '#a1a1aa' }}>
-                        Name *
-                      </label>
-                      <input
-                        type="text" id="name" name="name" required
-                        value={formData.name} onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl text-sm placeholder-[#3f3f46] focus:outline-none transition-all"
-                        style={{ background: '#09090b', border: '1px solid rgba(255,255,255,0.06)', color: '#fafafa' }}
-                        placeholder="John Doe"
-                      />
+                      <label htmlFor="name" className="block text-xs font-semibold tracking-wider uppercase mb-2" style={{ color: c.fgSecondary }}>Name *</label>
+                      <input type="text" id="name" name="name" required value={formData.name} onChange={handleChange}
+                        className="w-full px-4 py-3 rounded-xl text-sm focus:outline-none transition-all"
+                        style={{ background: c.bg, border: `1px solid ${border}`, color: c.fg, borderRadius: '14px' }}
+                        placeholder="John Doe" />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-xs font-semibold tracking-wider uppercase mb-2" style={{ color: '#a1a1aa' }}>
-                        Email *
-                      </label>
-                      <input
-                        type="email" id="email" name="email" required
-                        value={formData.email} onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl text-sm placeholder-[#3f3f46] focus:outline-none transition-all"
-                        style={{ background: '#09090b', border: '1px solid rgba(255,255,255,0.06)', color: '#fafafa' }}
-                        placeholder="john@company.com"
-                      />
+                      <label htmlFor="email" className="block text-xs font-semibold tracking-wider uppercase mb-2" style={{ color: c.fgSecondary }}>Email *</label>
+                      <input type="email" id="email" name="email" required value={formData.email} onChange={handleChange}
+                        className="w-full px-4 py-3 rounded-xl text-sm focus:outline-none transition-all"
+                        style={{ background: c.bg, border: `1px solid ${border}`, color: c.fg, borderRadius: '14px' }}
+                        placeholder="john@company.com" />
                     </div>
                   </div>
-
                   <div>
-                    <label htmlFor="company" className="block text-xs font-semibold tracking-wider uppercase mb-2" style={{ color: '#a1a1aa' }}>
-                      Company
-                    </label>
-                    <input
-                      type="text" id="company" name="company"
-                      value={formData.company} onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl text-sm placeholder-[#3f3f46] focus:outline-none transition-all"
-                      style={{ background: '#09090b', border: '1px solid rgba(255,255,255,0.06)', color: '#fafafa' }}
-                      placeholder="Your company (optional)"
-                    />
+                    <label htmlFor="company" className="block text-xs font-semibold tracking-wider uppercase mb-2" style={{ color: c.fgSecondary }}>Company</label>
+                    <input type="text" id="company" name="company" value={formData.company} onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-xl text-sm focus:outline-none transition-all"
+                      style={{ background: c.bg, border: `1px solid ${border}`, color: c.fg, borderRadius: '14px' }}
+                      placeholder="Your company (optional)" />
                   </div>
-
                   <div>
-                    <label htmlFor="subject" className="block text-xs font-semibold tracking-wider uppercase mb-2" style={{ color: '#a1a1aa' }}>
-                      Subject *
-                    </label>
-                    <select
-                      id="subject" name="subject" required
-                      value={formData.subject} onChange={handleChange}
+                    <label htmlFor="subject" className="block text-xs font-semibold tracking-wider uppercase mb-2" style={{ color: c.fgSecondary }}>Subject *</label>
+                    <select id="subject" name="subject" required value={formData.subject} onChange={handleChange}
                       className="w-full px-4 py-3 rounded-xl text-sm focus:outline-none transition-all appearance-none"
-                      style={{ background: '#09090b', border: '1px solid rgba(255,255,255,0.06)', color: '#fafafa' }}
-                    >
+                      style={{ background: c.bg, border: `1px solid ${border}`, color: c.fg, borderRadius: '14px' }}>
                       <option value="" disabled>Select a subject</option>
                       <option value="general">General Inquiry</option>
                       <option value="project">Project Discussion</option>
@@ -341,39 +312,20 @@ export default function ContactPage() {
                       <option value="support">Support</option>
                     </select>
                   </div>
-
                   <div>
-                    <label htmlFor="message" className="block text-xs font-semibold tracking-wider uppercase mb-2" style={{ color: '#a1a1aa' }}>
-                      Message *
-                    </label>
-                    <textarea
-                      id="message" name="message" required rows={5}
-                      value={formData.message} onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl text-sm placeholder-[#3f3f46] focus:outline-none transition-all resize-none"
-                      style={{ background: '#09090b', border: '1px solid rgba(255,255,255,0.06)', color: '#fafafa' }}
-                      placeholder="Tell us about your project or inquiry..."
-                    />
+                    <label htmlFor="message" className="block text-xs font-semibold tracking-wider uppercase mb-2" style={{ color: c.fgSecondary }}>Message *</label>
+                    <textarea id="message" name="message" required rows={5} value={formData.message} onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-xl text-sm focus:outline-none transition-all resize-none"
+                      style={{ background: c.bg, border: `1px solid ${border}`, color: c.fg, borderRadius: '14px' }}
+                      placeholder="Tell us about your project or inquiry..." />
                   </div>
-
-                  <motion.button
-                    type="submit"
-                    disabled={isSubmitting}
-                    whileHover={{ scale: 1.01 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="w-full py-3.5 px-5 rounded-xl font-semibold text-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-                    style={{ background: 'linear-gradient(135deg, #d4a843, #e8c564)', color: '#09090b', boxShadow: '0 4px 24px rgba(212,168,67,0.2)' }}
-                  >
+                  <motion.button type="submit" disabled={isSubmitting}
+                    whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.98 }}
+                    className="w-full py-3.5 px-5 rounded-full font-semibold text-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    style={{ background: c.gradient, color: theme === 'light' ? '#FFFFFF' : '#111111', boxShadow: `0 4px 24px ${c.glow}` }}>
                     {isSubmitting ? (
-                      <>
-                        <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                        </svg>
-                        Sending...
-                      </>
-                    ) : (
-                      'Send Message'
-                    )}
+                      <><svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" /></svg> Sending...</>
+                    ) : 'Send Message'}
                   </motion.button>
                 </form>
               )}
@@ -382,31 +334,24 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="py-24 px-6 lg:px-8" style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}>
+      <section className="py-24 px-6 lg:px-8" style={{ borderTop: `1px solid ${border}` }}>
         <div className="max-w-7xl mx-auto">
           <AnimatedSection>
             <h2 className="text-2xl sm:text-3xl font-bold text-center mb-3 tracking-[-0.02em]">
-              Our{' '}
-              <span className="gradient-text">offices</span>
+              Our <span className="gradient-text">offices</span>
             </h2>
-            <p className="text-center mb-10 text-sm" style={{ color: '#52525b' }}>
-              Find us around the world
-            </p>
+            <p className="text-center mb-10 text-sm" style={{ color: c.fgSecondary }}>Find us around the world</p>
           </AnimatedSection>
 
           <div className="grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
             {officeLocations.map((office, index) => (
               <AnimatedSection key={office.city} delay={index * 0.1}>
-                <motion.div
-                  whileHover={{ y: -4, borderColor: 'rgba(212,168,67,0.15)' }}
-                  transition={{ duration: 0.2 }}
-                  className="p-6 rounded-2xl text-center transition-all duration-300"
-                  style={{ background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.04)' }}
-                >
-                  <div className="w-1.5 h-1.5 rounded-full mx-auto mb-3" style={{ background: '#d4a843', boxShadow: '0 0 8px rgba(212,168,67,0.5)' }} />
-                  <h3 className="text-sm font-semibold mb-0.5" style={{ color: '#fafafa' }}>{office.city}</h3>
-                  <p className="text-xs font-semibold mb-2" style={{ color: '#d4a843' }}>{office.subtitle}</p>
-                  <p className="text-xs" style={{ color: '#71717a' }}>{office.address}</p>
+                <motion.div whileHover={{ y: -4 }} transition={{ duration: 0.2 }} className="p-6 text-center transition-all duration-300"
+                  style={{ background: c.cardBg, border: `1px solid ${border}`, borderRadius: '18px', boxShadow: theme === 'light' ? '0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04)' : '0 1px 3px rgba(0,0,0,0.3), 0 4px 12px rgba(0,0,0,0.3)' }}>
+                  <div className="w-1.5 h-1.5 rounded-full mx-auto mb-3" style={{ background: c.accent, boxShadow: `0 0 8px ${c.glow}` }} />
+                  <h3 className="text-sm font-semibold mb-0.5" style={{ color: c.fg }}>{office.city}</h3>
+                  <p className="text-xs font-semibold mb-2" style={{ color: c.accent }}>{office.subtitle}</p>
+                  <p className="text-xs" style={{ color: c.fgSecondary }}>{office.address}</p>
                 </motion.div>
               </AnimatedSection>
             ))}

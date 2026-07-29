@@ -90,7 +90,7 @@ export default function UIUXDesignPage() {
           <div className="absolute inset-0" style={{ background: 'radial-gradient(600px circle at 60% 40%, rgba(212,168,67,0.04), transparent 60%)' }} />
           <div className="w-full max-w-xl relative">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-3 h-3 rounded-full" style={{ background: '#d4a843' }} />
+              <div className="w-3 h-3 rounded-full" style={{ background: '#ef4444' }} />
               <div className="h-1.5 rounded-full flex-1" style={{ background: 'rgba(212,168,67,0.12)' }} />
               <div className="h-1.5 rounded-full w-16" style={{ background: 'rgba(255,255,255,0.06)' }} />
             </div>
@@ -129,7 +129,7 @@ export default function UIUXDesignPage() {
       }
       whatIsSection={
         <>
-          <p className="text-[11px] font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: '#d4a843' }}>What is UI/UX design?</p>
+          <p className="text-[11px] font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: '#ef4444' }}>What is UI/UX design?</p>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-[-0.03em] mb-6" style={{ color: '#fafafa' }}>
             Great design is invisible. It just works.
           </h2>

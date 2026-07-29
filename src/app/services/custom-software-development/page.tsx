@@ -97,14 +97,14 @@ export default function CustomSoftwareDevelopmentPage() {
                 <span className="ml-2" style={{ color: '#52525b' }}>terminal</span>
               </div>
               <div className="p-4 space-y-1.5" style={{ color: '#a1a1aa' }}>
-                <div><span style={{ color: '#d4a843' }}>$</span> <span style={{ color: '#fafafa' }}>npx create-ikanova-app</span> my-platform</div>
+                <div><span style={{ color: '#ef4444' }}>$</span> <span style={{ color: '#fafafa' }}>npx create-ikanova-app</span> my-platform</div>
                 <div style={{ color: '#52525b' }}>Creating project with custom architecture...</div>
                 <div style={{ color: '#52525b' }}>Installing dependencies...</div>
                 <div style={{ color: '#52525b' }}>Configuring database schema...</div>
                 <div style={{ color: '#52525b' }}>Setting up authentication...</div>
                 <div style={{ color: '#52525b' }}>Generating API routes...</div>
-                <div><span style={{ color: '#34d399' }}>✓</span> <span style={{ color: '#fafafa' }}>Project ready</span> <span style={{ color: '#52525b' }}>— built around your business</span></div>
-                <div><span style={{ color: '#d4a843' }}>$</span> <span className="animate-pulse" style={{ color: '#fafafa' }}>█</span></div>
+                <div><span style={{ color: '#dc2626' }}>✓</span> <span style={{ color: '#fafafa' }}>Project ready</span> <span style={{ color: '#52525b' }}>— built around your business</span></div>
+                <div><span style={{ color: '#ef4444' }}>$</span> <span className="animate-pulse" style={{ color: '#fafafa' }}>█</span></div>
               </div>
             </div>
           </div>
@@ -112,7 +112,7 @@ export default function CustomSoftwareDevelopmentPage() {
       }
       whatIsSection={
         <>
-          <p className="text-[11px] font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: '#d4a843' }}>What is custom software development?</p>
+          <p className="text-[11px] font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: '#ef4444' }}>What is custom software development?</p>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-[-0.03em] mb-6" style={{ color: '#fafafa' }}>
             Custom software is technology that fits your business, not the other way around.
           </h2>

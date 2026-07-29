@@ -3,6 +3,8 @@
 import { motion, type Variants } from 'framer-motion';
 import Link from 'next/link';
 import MagneticButton from './MagneticButton';
+import { useTheme } from './ThemeProvider';
+import { useThemeColors } from '@/hooks/useThemeColors';
 
 const services = [
   {
@@ -78,6 +80,9 @@ const cardVariants: Variants = {
 };
 
 export default function HomeServices() {
+  const c = useThemeColors();
+  const { theme } = useTheme();
+
   return (
     <section className="relative py-32 px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -88,11 +93,11 @@ export default function HomeServices() {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <p className="text-[11px] font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: '#d4a843' }}>Services</p>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-[-0.03em] mb-4" style={{ color: '#fafafa' }}>
+          <p className="text-[11px] font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: c.accent }}>Services</p>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-[-0.03em] mb-4" style={{ color: c.fg }}>
             What we <span className="gradient-text">build</span>
           </h2>
-          <p className="max-w-xl text-lg" style={{ color: '#71717a' }}>
+          <p className="max-w-xl text-lg" style={{ color: c.fgSecondary }}>
             End-to-end technology solutions that drive measurable growth.
           </p>
         </motion.div>
@@ -108,38 +113,36 @@ export default function HomeServices() {
             <motion.div
               key={service.title}
               variants={cardVariants}
-              className={`group relative p-7 rounded-2xl transition-all duration-500 card-hover-glow ${service.size === 'large' ? 'sm:col-span-2 lg:col-span-1' : ''}`}
+              className={`group relative p-7 transition-all duration-500 card-hover-glow ${
+                service.size === 'large' ? 'sm:col-span-2 lg:col-span-1' : ''
+              }`}
               style={{
-                background: 'rgba(255,255,255,0.015)',
-                border: '1px solid rgba(255,255,255,0.04)',
-              }}
-              onMouseMove={(e) => {
-                const rect = e.currentTarget.getBoundingClientRect();
-                e.currentTarget.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
-                e.currentTarget.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(212,168,67,0.12)';
-                e.currentTarget.style.background = 'rgba(255,255,255,0.025)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.04)';
-                e.currentTarget.style.background = 'rgba(255,255,255,0.015)';
+                border: `1px solid ${theme === 'light' ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.06)'}`,
+                background: c.cardBg,
+                borderRadius: '18px',
+                boxShadow: theme === 'light'
+                  ? '0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04)'
+                  : '0 1px 3px rgba(0,0,0,0.3), 0 4px 12px rgba(0,0,0,0.3)',
               }}
             >
-              <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 group-hover:scale-110"
-                style={{ background: 'rgba(212,168,67,0.06)', color: '#d4a843', border: '1px solid rgba(212,168,67,0.08)' }}>
+              <div
+                className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 group-hover:scale-110"
+                style={{
+                  background: `${c.accent}0f`,
+                  color: c.accent,
+                  border: `1px solid ${theme === 'light' ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.06)'}`,
+                  borderRadius: '14px',
+                }}
+              >
                 {service.icon}
               </div>
-              <h3 className="text-base font-semibold mb-2" style={{ color: '#fafafa' }}>{service.title}</h3>
-              <p className="text-sm leading-[1.7] mb-5" style={{ color: '#71717a' }}>{service.description}</p>
+              <h3 className="text-base font-semibold mb-2" style={{ color: c.fg }}>{service.title}</h3>
+              <p className="text-sm leading-[1.7] mb-5" style={{ color: c.fgSecondary }}>{service.description}</p>
               <MagneticButton strength={0.15}>
                 <Link
                   href="/services"
                   className="inline-flex items-center gap-1.5 text-xs font-semibold tracking-wider uppercase transition-colors duration-300 group/link"
-                  style={{ color: '#52525b' }}
-                  onMouseEnter={(e) => { e.currentTarget.style.color = '#d4a843'; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.color = '#52525b'; }}
+                  style={{ color: c.accent }}
                 >
                   Learn more
                   <svg className="w-3 h-3 transition-transform duration-300 group-hover/link:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>

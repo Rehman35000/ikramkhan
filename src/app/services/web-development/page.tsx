@@ -106,7 +106,7 @@ export default function WebDevelopmentPage() {
                 <div className="h-2 rounded-full w-5/6" style={{ background: 'rgba(255,255,255,0.04)' }} />
                 <div className="h-2 rounded-full w-2/3" style={{ background: 'rgba(255,255,255,0.04)' }} />
                 <div className="pt-4 flex gap-2">
-                  <div className="h-7 w-20 rounded-lg" style={{ background: 'linear-gradient(135deg, #d4a843, #e8c564)' }} />
+                  <div className="h-7 w-20 rounded-lg" style={{ background: 'linear-gradient(135deg, #ef4444, #f87171)' }} />
                   <div className="h-7 w-20 rounded-lg" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }} />
                 </div>
               </div>
@@ -116,7 +116,7 @@ export default function WebDevelopmentPage() {
       }
       whatIsSection={
         <>
-          <p className="text-[11px] font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: '#d4a843' }}>What is web development?</p>
+          <p className="text-[11px] font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: '#ef4444' }}>What is web development?</p>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-[-0.03em] mb-6" style={{ color: '#fafafa' }}>
             Modern web development is about creating experiences, not just pages.
           </h2>

@@ -6,6 +6,8 @@ import AnimatedSection from '@/components/AnimatedSection'
 import { motion, type Variants } from 'framer-motion'
 import Link from 'next/link'
 import MagneticButton from '@/components/MagneticButton'
+import { useThemeColors } from '@/hooks/useThemeColors'
+import { useTheme } from '@/components/ThemeProvider'
 
 const steps = [
   {
@@ -96,20 +98,23 @@ const stepVariantsRight: Variants = {
 }
 
 export default function ProcessPage() {
+  const c = useThemeColors()
+  const { theme } = useTheme()
+
   return (
-    <main style={{ minHeight: '100vh', background: '#09090b' }}>
+    <main style={{ minHeight: '100vh', background: c.bg }}>
       <Navbar />
 
       <section className="relative pt-40 pb-24 px-6 lg:px-8 overflow-hidden">
-        <div className="absolute inset-0" style={{ background: 'radial-gradient(800px circle at 50% 30%, rgba(212,168,67,0.03), transparent 60%)' }} />
+        <div className="absolute inset-0" style={{ background: `radial-gradient(800px circle at 50% 30%, ${c.accent}08, transparent 60%)` }} />
         <div className="max-w-7xl mx-auto relative">
           <AnimatedSection>
             <div className="max-w-3xl">
-              <p className="text-[11px] font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: '#d4a843' }}>How we work</p>
-              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-[-0.03em] mb-6" style={{ color: '#fafafa' }}>
+              <p className="text-[11px] font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: c.accent }}>How we work</p>
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-[-0.03em] mb-6" style={{ color: c.fg }}>
                 <span className="gradient-text">Process</span>
               </h1>
-              <p className="text-lg sm:text-xl leading-[1.7]" style={{ color: '#71717a' }}>
+              <p className="text-lg sm:text-xl leading-[1.7]" style={{ color: c.fgSecondary }}>
                 A proven methodology that transforms ideas into exceptional software.
               </p>
             </div>
@@ -119,66 +124,47 @@ export default function ProcessPage() {
 
       <section className="py-16 px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-50px' }}
-            className="relative"
-          >
-            <div className="absolute left-5 sm:left-1/2 sm:-translate-x-px top-0 bottom-0 w-px" style={{ background: 'rgba(212,168,67,0.1)' }} />
+          <motion.div variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }} className="relative">
+            <div className="absolute left-5 sm:left-1/2 sm:-translate-x-px top-0 bottom-0 w-px" style={{ background: `${c.accent}18` }} />
 
             {steps.map((step, index) => {
               const isLeft = index % 2 === 0
               return (
-                <motion.div
-                  key={step.number}
-                  variants={isLeft ? stepVariants : stepVariantsRight}
-                  className={`relative flex items-start mb-12 last:mb-0 ${
-                    isLeft ? 'sm:flex-row' : 'sm:flex-row-reverse'
-                  } flex-row`}
-                >
+                <motion.div key={step.number} variants={isLeft ? stepVariants : stepVariantsRight}
+                  className={`relative flex items-start mb-12 last:mb-0 ${isLeft ? 'sm:flex-row' : 'sm:flex-row-reverse'} flex-row`}>
                   <div className={`hidden sm:block sm:w-1/2 ${isLeft ? 'sm:pr-10' : 'sm:pl-10'}`}>
-                    <div className="p-6 rounded-2xl transition-all duration-300" style={{ border: '1px solid rgba(255,255,255,0.04)', background: 'rgba(255,255,255,0.015)' }}>
+                    <div className="p-6 rounded-2xl transition-all duration-300 card-hover-glow" style={{ border: `1px solid ${c.border}`, background: c.cardBg }}>
                       <div className="flex items-center gap-3 mb-3">
                         <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xs font-bold shrink-0"
-                          style={{ background: 'linear-gradient(135deg, #d4a843, #e8c564)', color: '#09090b' }}>
+                          style={{ background: c.gradient, color: theme === 'light' ? '#FFFFFF' : '#111111' }}>
                           {step.number}
                         </div>
                         <div className="w-10 h-10 rounded-xl flex items-center justify-center"
-                          style={{ background: 'rgba(212,168,67,0.06)', color: '#d4a843', border: '1px solid rgba(212,168,67,0.08)' }}>
+                          style={{ background: `${c.accent}0f`, color: c.accent, border: `1px solid ${c.border}` }}>
                           {step.icon}
                         </div>
                       </div>
-                      <h3 className="text-base font-semibold mb-2" style={{ color: '#fafafa' }}>
-                        {step.title}
-                      </h3>
-                      <p className="text-sm leading-[1.7]" style={{ color: '#71717a' }}>
-                        {step.description}
-                      </p>
+                      <h3 className="text-base font-semibold mb-2" style={{ color: c.fg }}>{step.title}</h3>
+                      <p className="text-sm leading-[1.7]" style={{ color: c.fgSecondary }}>{step.description}</p>
                     </div>
                   </div>
 
-                  <div className="absolute left-5 sm:left-1/2 sm:-translate-x-1/2 w-2.5 h-2.5 rounded-full z-10 mt-8" style={{ background: '#d4a843', border: '2px solid #09090b', boxShadow: '0 0 12px rgba(212,168,67,0.4)' }} />
+                  <div className="absolute left-5 sm:left-1/2 sm:-translate-x-1/2 w-2.5 h-2.5 rounded-full z-10 mt-8" style={{ background: c.accent, border: `2px solid ${c.bg}`, boxShadow: `0 0 12px ${c.glow}` }} />
 
                   <div className="sm:hidden pl-10 w-full">
-                    <div className="p-5 rounded-2xl" style={{ border: '1px solid rgba(255,255,255,0.04)', background: 'rgba(255,255,255,0.015)' }}>
+                    <div className="p-5 rounded-2xl card-hover-glow" style={{ border: `1px solid ${c.border}`, background: c.cardBg }}>
                       <div className="flex items-center gap-3 mb-3">
                         <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xs font-bold shrink-0"
-                          style={{ background: 'linear-gradient(135deg, #d4a843, #e8c564)', color: '#09090b' }}>
+                          style={{ background: c.gradient, color: theme === 'light' ? '#FFFFFF' : '#111111' }}>
                           {step.number}
                         </div>
                         <div className="w-10 h-10 rounded-xl flex items-center justify-center"
-                          style={{ background: 'rgba(212,168,67,0.06)', color: '#d4a843', border: '1px solid rgba(212,168,67,0.08)' }}>
+                          style={{ background: `${c.accent}0f`, color: c.accent, border: `1px solid ${c.border}` }}>
                           {step.icon}
                         </div>
                       </div>
-                      <h3 className="text-base font-semibold mb-2" style={{ color: '#fafafa' }}>
-                        {step.title}
-                      </h3>
-                      <p className="text-sm leading-[1.7]" style={{ color: '#71717a' }}>
-                        {step.description}
-                      </p>
+                      <h3 className="text-base font-semibold mb-2" style={{ color: c.fg }}>{step.title}</h3>
+                      <p className="text-sm leading-[1.7]" style={{ color: c.fgSecondary }}>{step.description}</p>
                     </div>
                   </div>
 
@@ -193,21 +179,19 @@ export default function ProcessPage() {
       <section className="py-32 px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <AnimatedSection>
-            <div className="relative p-12 sm:p-16 rounded-3xl text-center overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.04)', background: 'rgba(255,255,255,0.015)' }}>
-              <div className="absolute inset-0" style={{ background: 'radial-gradient(600px circle at 50% 50%, rgba(212,168,67,0.03), transparent 60%)' }} />
+            <div className="relative p-12 sm:p-16 rounded-3xl text-center overflow-hidden" style={{ border: `1px solid ${c.border}`, background: c.cardBg }}>
+              <div className="absolute inset-0" style={{ background: `radial-gradient(600px circle at 50% 50%, ${c.accent}08, transparent 60%)` }} />
               <div className="relative">
-                <h2 className="text-3xl sm:text-4xl font-bold mb-4 tracking-[-0.03em]" style={{ color: '#fafafa' }}>
+                <h2 className="text-3xl sm:text-4xl font-bold mb-4 tracking-[-0.03em]" style={{ color: c.fg }}>
                   Ready to start?
                 </h2>
-                <p className="text-lg mb-8 max-w-xl mx-auto" style={{ color: '#71717a' }}>
+                <p className="text-lg mb-8 max-w-xl mx-auto" style={{ color: c.fgSecondary }}>
                   Let us bring your vision to life with our proven process.
                 </p>
                 <MagneticButton strength={0.15}>
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full font-medium text-sm transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,168,67,0.25)]"
-                    style={{ background: 'linear-gradient(135deg, #d4a843, #e8c564)', color: '#09090b' }}
-                  >
+                  <Link href="/contact"
+                    className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full font-medium text-sm transition-all duration-300"
+                    style={{ background: c.gradient, color: theme === 'light' ? '#FFFFFF' : '#111111', boxShadow: `0 4px 24px ${c.glow}` }}>
                     Get in touch
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />

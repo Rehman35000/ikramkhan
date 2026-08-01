@@ -1,7 +1,6 @@
 'use client';
 
 import { motion, type Variants } from 'framer-motion';
-import { useState } from 'react';
 import { useTheme } from './ThemeProvider';
 import { useThemeColors } from '@/hooks/useThemeColors';
 
@@ -45,7 +44,6 @@ const cardVariants: Variants = {
 export default function Testimonials() {
   const c = useThemeColors();
   const { theme } = useTheme();
-  const [activeIndex] = useState(0);
 
   return (
     <section className="relative py-32 px-6 lg:px-8">
@@ -74,14 +72,14 @@ export default function Testimonials() {
           viewport={{ once: true, margin: '-80px' }}
           className="grid grid-cols-1 md:grid-cols-3 gap-4"
         >
-          {testimonials.map((testimonial, i) => (
+          {testimonials.map((testimonial) => (
             <motion.div
               key={testimonial.name}
               variants={cardVariants}
               className="group relative p-7 transition-all duration-500 card-hover-glow flex flex-col"
               style={{
                 background: c.cardBg,
-                border: `1px solid ${activeIndex === i ? c.accent : (theme === 'light' ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.06)')}`,
+                border: `1px solid ${theme === 'light' ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.06)'}`,
                 borderRadius: '18px',
                 boxShadow: theme === 'light'
                   ? '0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04)'

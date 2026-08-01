@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { prisma } from '@/lib/prisma';
+import { getCurrentUser } from '@/lib/session';
 
 const transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -9,6 +11,17 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+export async function GET() {
+  const user = await getCurrentUser();
+  if (!user) return NextResponse.json({ error: 'Not authenticated' }, { status: 401 });
+  if (user.role !== 'ADMIN') return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+
+  const bookings = await prisma.meetingBooking.findMany({
+    orderBy: { createdAt: 'desc' },
+  });
+  return NextResponse.json({ bookings });
+}
+
 export async function POST(req: NextRequest) {
   try {
     const { name, email, date, time, notes } = await req.json();
@@ -16,6 +29,10 @@ export async function POST(req: NextRequest) {
     if (!name || !email || !date || !time) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
+
+    await prisma.meetingBooking.create({
+      data: { name, email, date, time, notes: notes || null },
+    });
 
     const [year, month, day] = date.split('-');
 

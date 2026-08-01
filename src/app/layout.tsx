@@ -74,6 +74,11 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `html{background-color:#0F1115}html.light{background-color:#FFFFFF}`,
+          }}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -91,8 +96,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="bg-background text-foreground font-sans antialiased">
-        <div className="noise-overlay" aria-hidden="true" />
+      <body className="bg-bg text-fg font-sans antialiased">
         <ThemeProvider>
           {children}
         </ThemeProvider>

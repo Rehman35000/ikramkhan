@@ -23,12 +23,14 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState('')
+  const [success, setSuccess] = useState('')
 
   const border = theme === 'light' ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.06)'
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     setError('')
+    setSuccess('')
 
     if (mode === 'signup' && password !== confirmPassword) {
       setError('Passwords do not match')
@@ -42,15 +44,34 @@ export default function LoginPage() {
 
     setIsSubmitting(true)
 
-    await new Promise((r) => setTimeout(r, 1200))
+    try {
+      const res = await fetch(mode === 'login' ? '/api/auth/login' : '/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(mode === 'login' ? { email, password } : { name, email, password }),
+      })
 
-    setIsSubmitting(false)
-    setError('This is a demo. Authentication backend coming soon.')
+      const data = await res.json()
+
+      if (!res.ok) {
+        throw new Error(data.error || 'Something went wrong')
+      }
+
+      setSuccess(mode === 'login' ? 'Welcome back! You have signed in successfully.' : 'Account created successfully!')
+      setTimeout(() => {
+        window.location.href = '/'
+      }, 1500)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Something went wrong')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const switchMode = (newMode: AuthMode) => {
     setMode(newMode)
     setError('')
+    setSuccess('')
   }
 
   const socialButtons = [
@@ -129,6 +150,17 @@ export default function LoginPage() {
             >
               <form onSubmit={handleSubmit} className="p-8 space-y-5"
                 style={{ background: c.cardBg, border: `1px solid ${border}`, borderRadius: '18px', boxShadow: theme === 'light' ? '0 1px 3px rgba(0,0,0,0.04), 0 12px 24px rgba(0,0,0,0.06)' : '0 1px 3px rgba(0,0,0,0.3), 0 12px 24px rgba(0,0,0,0.4)' }}>
+
+                {success && (
+                  <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }}
+                    className="p-3 rounded-xl text-xs font-medium flex items-start gap-2.5"
+                    style={{ background: 'rgba(16,185,129,0.12)', border: '1px solid rgba(16,185,129,0.35)', color: '#10b981' }}>
+                    <svg className="w-4 h-4 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    {success}
+                  </motion.div>
+                )}
 
                 {error && (
                   <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }}

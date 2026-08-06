@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import ThemeProvider from "@/components/ThemeProvider";
@@ -97,6 +98,19 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-bg text-fg font-sans antialiased">
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-F11VGH0K0Y"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-F11VGH0K0Y');
+          `}
+        </Script>
         <ThemeProvider>
           {children}
         </ThemeProvider>

@@ -8,7 +8,6 @@ import MagneticButton from './MagneticButton';
 import BookMeeting from './BookMeeting';
 import { useTheme } from './ThemeProvider';
 import { useThemeColors } from '@/hooks/useThemeColors';
-import { useAuth } from '@/hooks/useAuth';
 
 const navItems = [
   { label: 'Home', href: '/' },
@@ -22,18 +21,9 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
-  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const pathname = usePathname();
   const { theme, toggle } = useTheme();
   const c = useThemeColors();
-  const { user, logout } = useAuth();
-
-  const userInitials = (user?.name || '')
-    .split(' ')
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((part) => part[0]?.toUpperCase())
-    .join('');
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 30);
@@ -42,7 +32,7 @@ export default function Navbar() {
   }, []);
 
   // eslint-disable-next-line react-hooks/set-state-in-effect
-  useEffect(() => { setIsDrawerOpen(false); setIsUserMenuOpen(false); }, [pathname]);
+  useEffect(() => { setIsDrawerOpen(false); }, [pathname]);
 
   useEffect(() => {
     if (isDrawerOpen) {
@@ -132,91 +122,6 @@ export default function Navbar() {
             </div>
 
             <div className="flex items-center gap-2">
-              {user ? (
-                <div className="relative">
-                  <button
-                    onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-                    className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-105 cursor-pointer"
-                    style={{
-                      background: c.gradient,
-                      boxShadow: `0 0 20px ${c.glow}`,
-                      border: `1px solid ${theme === 'light' ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.06)'}`,
-                    }}
-                    aria-label="Account menu"
-                  >
-                    <span className="text-[11px] font-bold tracking-wide" style={{ color: theme === 'light' ? '#FFFFFF' : '#111111' }}>
-                      {userInitials || '•'}
-                    </span>
-                  </button>
-
-                  <AnimatePresence>
-                    {isUserMenuOpen && (
-                      <>
-                        <div className="fixed inset-0 z-[55]" onClick={() => setIsUserMenuOpen(false)} />
-                        <motion.div
-                          initial={{ opacity: 0, y: 8, scale: 0.96 }}
-                          animate={{ opacity: 1, y: 0, scale: 1 }}
-                          exit={{ opacity: 0, y: 8, scale: 0.96 }}
-                          transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
-                          className="absolute right-0 top-full mt-2 w-60 z-[56] overflow-hidden"
-                          style={{
-                            background: c.cardBg,
-                            border: `1px solid ${theme === 'light' ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.06)'}`,
-                            borderRadius: '16px',
-                            boxShadow: theme === 'light' ? '0 4px 20px rgba(0,0,0,0.08)' : '0 4px 20px rgba(0,0,0,0.5)',
-                          }}
-                        >
-                          <div className="px-4 py-3.5" style={{ background: theme === 'light' ? 'rgba(0,0,0,0.02)' : 'rgba(255,255,255,0.02)' }}>
-                            <p className="text-sm font-semibold truncate" style={{ color: c.fg }}>{user.name}</p>
-                            <p className="text-[11px] truncate mt-0.5" style={{ color: c.fgSecondary }}>{user.email}</p>
-                          </div>
-                          <div className="h-px" style={{ background: theme === 'light' ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.06)' }} />
-                          <Link
-                            href="/profile"
-                            onClick={() => setIsUserMenuOpen(false)}
-                            className="flex items-center gap-2.5 px-4 py-3 text-sm transition-colors duration-200 hover:opacity-70"
-                            style={{ color: c.fg }}
-                          >
-                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                              <path d="M19 21v-2a4 4 0 00-4-4H9a4 4 0 00-4 4v2" />
-                              <circle cx="12" cy="7" r="4" />
-                            </svg>
-                            Profile
-                          </Link>
-                          <button
-                            onClick={() => { setIsUserMenuOpen(false); logout(); }}
-                            className="flex items-center gap-2.5 w-full px-4 py-3 text-sm transition-colors duration-200 hover:opacity-70 cursor-pointer"
-                            style={{ color: c.accent }}
-                          >
-                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                              <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" />
-                              <polyline points="16 17 21 12 16 7" />
-                              <line x1="21" y1="12" x2="9" y2="12" />
-                            </svg>
-                            Log out
-                          </button>
-                        </motion.div>
-                      </>
-                    )}
-                  </AnimatePresence>
-                </div>
-              ) : (
-                <Link
-                  href="/login"
-                  className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-105"
-                  style={{
-                    background: theme === 'light' ? 'rgba(0,0,0,0.04)' : 'rgba(255,255,255,0.04)',
-                    border: `1px solid ${theme === 'light' ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.06)'}`,
-                  }}
-                  aria-label="Login"
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={c.fgSecondary} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4" />
-                    <polyline points="10 17 15 12 10 7" />
-                    <line x1="15" y1="12" x2="3" y2="12" />
-                  </svg>
-                </Link>
-              )}
               <button
                 onClick={toggle}
                 className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-105"

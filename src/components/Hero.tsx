@@ -38,8 +38,8 @@ export default function Hero() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] opacity-[0.06] blur-[200px] pointer-events-none" style={{ background: `radial-gradient(circle, ${c.accent}, transparent 70%)` }} />
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 py-32 lg:py-40">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-14 items-center">
-        <div className="max-w-4xl">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-14 items-center">
+        <div className="max-w-4xl lg:col-span-6">
           <div
             className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border mb-10"
             style={{ borderColor: theme === 'light' ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.06)', color: c.accent, background: `${c.accent}0a` }}
@@ -124,7 +124,7 @@ export default function Hero() {
         </div>
         </div>
 
-        <div className="relative">
+        <div className="relative lg:col-span-6">
           <div
             className="absolute -inset-8 rounded-[36px] opacity-[0.14] blur-[60px] pointer-events-none"
             style={{ background: `radial-gradient(circle, ${c.accent}, transparent 70%)` }}

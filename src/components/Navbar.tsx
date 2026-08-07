@@ -295,32 +295,6 @@ export default function Navbar() {
               <div className="mx-6 h-px" style={{ background: `linear-gradient(90deg, transparent, ${theme === 'light' ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.06)'}, transparent)` }} />
 
               <div className="px-6 py-6 shrink-0 space-y-3">
-                <button
-                  onClick={toggle}
-                  className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-medium transition-all duration-300"
-                  style={{
-                    background: theme === 'light' ? 'rgba(0,0,0,0.04)' : 'rgba(255,255,255,0.04)',
-                    border: `1px solid ${theme === 'light' ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.06)'}`,
-                    color: c.fg,
-                    borderRadius: '14px',
-                  }}
-                >
-                  {theme === 'dark' ? (
-                    <>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                        <circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
-                      </svg>
-                      Light Mode
-                    </>
-                  ) : (
-                    <>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-                      </svg>
-                      Dark Mode
-                    </>
-                  )}
-                </button>
                 <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.4 }}>
                   <button onClick={() => { closeDrawer(); setIsBookingOpen(true); }}
                     className="flex items-center justify-center w-full py-3.5 rounded-full text-sm font-semibold tracking-wider uppercase transition-all duration-300 hover:scale-[1.02] cursor-pointer"

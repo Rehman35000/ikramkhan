@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import BookMeeting from './BookMeeting';
 import { useTheme } from './ThemeProvider';
 import { useThemeColors } from '@/hooks/useThemeColors';
@@ -37,6 +38,7 @@ export default function Hero() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] opacity-[0.06] blur-[200px] pointer-events-none" style={{ background: `radial-gradient(circle, ${c.accent}, transparent 70%)` }} />
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 py-32 lg:py-40">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-14 items-center">
         <div className="max-w-4xl">
           <div
             className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border mb-10"
@@ -110,7 +112,6 @@ export default function Hero() {
               </svg>
             </Link>
           </div>
-        </div>
 
         <div className="mt-24 grid grid-cols-3 gap-8 max-w-lg">
           {stats.map((stat, i) => (
@@ -119,6 +120,31 @@ export default function Hero() {
               <p className="text-xs sm:text-sm mt-1.5 tracking-wide" style={{ color: c.fgSecondary }}>{stat.label}</p>
             </div>
           ))}
+        </div>
+        </div>
+        </div>
+
+        <div className="relative">
+          <div
+            className="absolute -inset-8 rounded-[36px] opacity-[0.14] blur-[60px] pointer-events-none"
+            style={{ background: `radial-gradient(circle, ${c.accent}, transparent 70%)` }}
+          />
+          <div
+            className="relative overflow-hidden rounded-[28px]"
+            style={{
+              border: `1px solid ${theme === 'light' ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.08)'}`,
+              boxShadow: theme === 'light' ? '0 24px 80px rgba(0,0,0,0.12)' : '0 24px 80px rgba(0,0,0,0.5)',
+            }}
+          >
+            <Image
+              src="/image1.png"
+              alt="IKANOVA digital products"
+              width={3000}
+              height={2000}
+              priority
+              className="w-full h-auto object-cover block"
+            />
+          </div>
         </div>
       </div>
 

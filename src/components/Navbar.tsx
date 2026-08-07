@@ -22,7 +22,7 @@ export default function Navbar() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const pathname = usePathname();
-  const { theme, toggle } = useTheme();
+  const { theme } = useTheme();
   const c = useThemeColors();
 
   useEffect(() => {
@@ -122,26 +122,6 @@ export default function Navbar() {
             </div>
 
             <div className="flex items-center gap-2">
-              <button
-                onClick={toggle}
-                className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-105"
-                style={{
-                  background: theme === 'light' ? 'rgba(0,0,0,0.04)' : 'rgba(255,255,255,0.04)',
-                  border: `1px solid ${theme === 'light' ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.06)'}`,
-                }}
-                aria-label="Toggle theme"
-              >
-                {theme === 'dark' ? (
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={c.fg} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="4" />
-                    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
-                  </svg>
-                ) : (
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={c.fg} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-                  </svg>
-                )}
-              </button>
 
               <MagneticButton strength={0.2}>
                 <button onClick={() => setIsBookingOpen(true)}

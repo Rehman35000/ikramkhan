@@ -86,21 +86,21 @@ export default function MobileAppDevelopmentPage() {
       highlight="users love."
       description="We design and develop high-performance mobile applications for iOS and Android that users love to use. From consumer-facing apps to enterprise solutions."
       heroContent={
-        <div className="relative rounded-3xl overflow-hidden p-8 sm:p-12 lg:p-16 min-h-[320px] flex items-center" style={{ border: '1px solid rgba(212,168,67,0.08)', background: 'rgba(255,255,255,0.015)' }}>
-          <div className="absolute inset-0" style={{ background: 'radial-gradient(600px circle at 50% 50%, rgba(212,168,67,0.04), transparent 60%)' }} />
+        <div className="relative rounded-3xl overflow-hidden p-8 sm:p-12 lg:p-16 min-h-[320px] flex items-center" style={{ border: '1px solid rgba(192,44,39,0.08)', background: 'rgba(255,255,255,0.015)' }}>
+          <div className="absolute inset-0" style={{ background: 'radial-gradient(600px circle at 50% 50%, rgba(192,44,39,0.04), transparent 60%)' }} />
           <div className="flex items-center gap-6 sm:gap-8 w-full max-w-lg mx-auto relative">
             <div className="w-[140px] sm:w-[170px] h-[280px] sm:h-[340px] rounded-[2rem] flex flex-col items-center pt-8 relative" style={{ border: '2px solid rgba(255,255,255,0.08)', background: 'rgba(255,255,255,0.02)' }}>
               <div className="w-12 h-1 rounded-full mb-4" style={{ background: 'rgba(255,255,255,0.08)' }} />
-              <div className="w-3/4 h-3 rounded mb-3" style={{ background: 'rgba(212,168,67,0.12)' }} />
+              <div className="w-3/4 h-3 rounded mb-3" style={{ background: 'rgba(192,44,39,0.12)' }} />
               <div className="w-3/4 h-2 rounded mb-2" style={{ background: 'rgba(255,255,255,0.04)' }} />
               <div className="w-3/4 h-2 rounded mb-2" style={{ background: 'rgba(255,255,255,0.04)' }} />
               <div className="w-1/2 h-2 rounded mb-6" style={{ background: 'rgba(255,255,255,0.04)' }} />
-              <div className="w-5/6 h-16 rounded-xl mb-2" style={{ background: 'rgba(212,168,67,0.06)', border: '1px solid rgba(212,168,67,0.08)' }} />
+              <div className="w-5/6 h-16 rounded-xl mb-2" style={{ background: 'rgba(192,44,39,0.06)', border: '1px solid rgba(192,44,39,0.08)' }} />
               <div className="w-5/6 h-16 rounded-xl" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.04)' }} />
               <div className="absolute bottom-3 w-10 h-1 rounded-full" style={{ background: 'rgba(255,255,255,0.06)' }} />
             </div>
             <div className="w-[140px] sm:w-[170px] h-[260px] sm:h-[310px] rounded-[1.5rem] flex flex-col items-center pt-6 relative" style={{ border: '2px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.015)' }}>
-              <div className="w-10 h-10 rounded-xl mb-3" style={{ background: 'rgba(212,168,67,0.08)', border: '1px solid rgba(212,168,67,0.1)' }} />
+              <div className="w-10 h-10 rounded-xl mb-3" style={{ background: 'rgba(192,44,39,0.08)', border: '1px solid rgba(192,44,39,0.1)' }} />
               <div className="w-3/4 h-2.5 rounded mb-2" style={{ background: 'rgba(255,255,255,0.05)' }} />
               <div className="w-3/4 h-2 rounded mb-4" style={{ background: 'rgba(255,255,255,0.03)' }} />
               <div className="w-5/6 h-12 rounded-lg mb-2" style={{ background: 'rgba(255,255,255,0.025)', border: '1px solid rgba(255,255,255,0.04)' }} />
@@ -112,7 +112,7 @@ export default function MobileAppDevelopmentPage() {
       }
       whatIsSection={
         <>
-          <p className="text-[11px] font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: '#ef4444' }}>What is mobile app development?</p>
+          <p className="text-[11px] font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: '#C02C27' }}>What is mobile app development?</p>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-[-0.03em] mb-6" style={{ color: '#fafafa' }}>
             Mobile app development is building experiences that live in your users&apos; pockets.
           </h2>

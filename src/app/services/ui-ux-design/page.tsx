@@ -86,30 +86,30 @@ export default function UIUXDesignPage() {
       highlight="drive results."
       description="We create intuitive, beautiful, and conversion-focused designs that users love. From research to pixel-perfect prototypes, every decision is backed by data and craft."
       heroContent={
-        <div className="relative rounded-3xl overflow-hidden p-8 sm:p-12 lg:p-16 min-h-[320px] flex items-center" style={{ border: '1px solid rgba(212,168,67,0.08)', background: 'rgba(255,255,255,0.015)' }}>
-          <div className="absolute inset-0" style={{ background: 'radial-gradient(600px circle at 60% 40%, rgba(212,168,67,0.04), transparent 60%)' }} />
+        <div className="relative rounded-3xl overflow-hidden p-8 sm:p-12 lg:p-16 min-h-[320px] flex items-center" style={{ border: '1px solid rgba(192,44,39,0.08)', background: 'rgba(255,255,255,0.015)' }}>
+          <div className="absolute inset-0" style={{ background: 'radial-gradient(600px circle at 60% 40%, rgba(192,44,39,0.04), transparent 60%)' }} />
           <div className="w-full max-w-xl relative">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-3 h-3 rounded-full" style={{ background: '#ef4444' }} />
-              <div className="h-1.5 rounded-full flex-1" style={{ background: 'rgba(212,168,67,0.12)' }} />
+              <div className="w-3 h-3 rounded-full" style={{ background: '#C02C27' }} />
+              <div className="h-1.5 rounded-full flex-1" style={{ background: 'rgba(192,44,39,0.12)' }} />
               <div className="h-1.5 rounded-full w-16" style={{ background: 'rgba(255,255,255,0.06)' }} />
             </div>
             <div className="grid grid-cols-3 gap-3 mb-3">
-              <div className="h-20 rounded-xl flex items-end p-2" style={{ background: 'rgba(212,168,67,0.08)', border: '1px solid rgba(212,168,67,0.1)' }}>
-                <div className="w-full h-6 rounded" style={{ background: 'rgba(212,168,67,0.15)' }} />
+              <div className="h-20 rounded-xl flex items-end p-2" style={{ background: 'rgba(192,44,39,0.08)', border: '1px solid rgba(192,44,39,0.1)' }}>
+                <div className="w-full h-6 rounded" style={{ background: 'rgba(192,44,39,0.15)' }} />
               </div>
               <div className="h-20 rounded-xl p-2 space-y-1" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.04)' }}>
                 <div className="w-1/2 h-1.5 rounded" style={{ background: 'rgba(255,255,255,0.06)' }} />
                 <div className="w-3/4 h-1 rounded" style={{ background: 'rgba(255,255,255,0.04)' }} />
                 <div className="w-2/3 h-1 rounded" style={{ background: 'rgba(255,255,255,0.04)' }} />
               </div>
-              <div className="h-20 rounded-xl p-2 flex items-center justify-center" style={{ background: 'rgba(139,92,246,0.04)', border: '1px solid rgba(139,92,246,0.08)' }}>
-                <svg className="w-6 h-6" style={{ color: 'rgba(139,92,246,0.3)' }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5a1.5 1.5 0 001.5-1.5V5.25a1.5 1.5 0 00-1.5-1.5H3.75a1.5 1.5 0 00-1.5 1.5v14.25a1.5 1.5 0 001.5 1.5z" /></svg>
+              <div className="h-20 rounded-xl p-2 flex items-center justify-center" style={{ background: 'rgba(192,44,39,0.04)', border: '1px solid rgba(192,44,39,0.08)' }}>
+                <svg className="w-6 h-6" style={{ color: 'rgba(192,44,39,0.3)' }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5a1.5 1.5 0 001.5-1.5V5.25a1.5 1.5 0 00-1.5-1.5H3.75a1.5 1.5 0 00-1.5 1.5v14.25a1.5 1.5 0 001.5 1.5z" /></svg>
               </div>
             </div>
             <div className="flex gap-2">
               <div className="h-24 flex-1 rounded-xl p-3 space-y-2" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.04)' }}>
-                <div className="w-8 h-8 rounded-lg" style={{ background: 'rgba(212,168,67,0.08)' }} />
+                <div className="w-8 h-8 rounded-lg" style={{ background: 'rgba(192,44,39,0.08)' }} />
                 <div className="w-3/4 h-1.5 rounded" style={{ background: 'rgba(255,255,255,0.05)' }} />
                 <div className="w-1/2 h-1 rounded" style={{ background: 'rgba(255,255,255,0.03)' }} />
               </div>
@@ -129,7 +129,7 @@ export default function UIUXDesignPage() {
       }
       whatIsSection={
         <>
-          <p className="text-[11px] font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: '#ef4444' }}>What is UI/UX design?</p>
+          <p className="text-[11px] font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: '#C02C27' }}>What is UI/UX design?</p>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-[-0.03em] mb-6" style={{ color: '#fafafa' }}>
             Great design is invisible. It just works.
           </h2>

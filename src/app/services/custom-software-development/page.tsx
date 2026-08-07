@@ -86,25 +86,25 @@ export default function CustomSoftwareDevelopmentPage() {
       highlight="around you."
       description="We design and build bespoke software solutions that fit your business like a glove. From internal tools to customer-facing platforms, every line of code serves your goals."
       heroContent={
-        <div className="relative rounded-3xl overflow-hidden p-8 sm:p-12 lg:p-16 min-h-[320px] flex items-center" style={{ border: '1px solid rgba(212,168,67,0.08)', background: 'rgba(255,255,255,0.015)' }}>
-          <div className="absolute inset-0" style={{ background: 'radial-gradient(600px circle at 40% 50%, rgba(212,168,67,0.04), transparent 60%)' }} />
+        <div className="relative rounded-3xl overflow-hidden p-8 sm:p-12 lg:p-16 min-h-[320px] flex items-center" style={{ border: '1px solid rgba(192,44,39,0.08)', background: 'rgba(255,255,255,0.015)' }}>
+          <div className="absolute inset-0" style={{ background: 'radial-gradient(600px circle at 40% 50%, rgba(192,44,39,0.04), transparent 60%)' }} />
           <div className="w-full max-w-xl relative">
             <div className="rounded-xl overflow-hidden font-mono text-xs" style={{ border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(0,0,0,0.3)' }}>
               <div className="flex items-center gap-2 px-4 py-2.5" style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
-                <div className="w-2.5 h-2.5 rounded-full" style={{ background: '#ff5f57' }} />
-                <div className="w-2.5 h-2.5 rounded-full" style={{ background: '#febc2e' }} />
-                <div className="w-2.5 h-2.5 rounded-full" style={{ background: '#28c840' }} />
+                  <div className="w-2.5 h-2.5 rounded-full" style={{ background: '#C02C27' }} />
+                  <div className="w-2.5 h-2.5 rounded-full" style={{ background: 'rgba(192,44,39,0.55)' }} />
+                  <div className="w-2.5 h-2.5 rounded-full" style={{ background: 'rgba(192,44,39,0.3)' }} />
                 <span className="ml-2" style={{ color: '#52525b' }}>terminal</span>
               </div>
               <div className="p-4 space-y-1.5" style={{ color: '#a1a1aa' }}>
-                <div><span style={{ color: '#ef4444' }}>$</span> <span style={{ color: '#fafafa' }}>npx create-ikanova-app</span> my-platform</div>
+                <div><span style={{ color: '#C02C27' }}>$</span> <span style={{ color: '#fafafa' }}>npx create-ikanova-app</span> my-platform</div>
                 <div style={{ color: '#52525b' }}>Creating project with custom architecture...</div>
                 <div style={{ color: '#52525b' }}>Installing dependencies...</div>
                 <div style={{ color: '#52525b' }}>Configuring database schema...</div>
                 <div style={{ color: '#52525b' }}>Setting up authentication...</div>
                 <div style={{ color: '#52525b' }}>Generating API routes...</div>
-                <div><span style={{ color: '#dc2626' }}>✓</span> <span style={{ color: '#fafafa' }}>Project ready</span> <span style={{ color: '#52525b' }}>— built around your business</span></div>
-                <div><span style={{ color: '#ef4444' }}>$</span> <span className="animate-pulse" style={{ color: '#fafafa' }}>█</span></div>
+                <div><span style={{ color: '#C02C27' }}>✓</span> <span style={{ color: '#fafafa' }}>Project ready</span> <span style={{ color: '#52525b' }}>— built around your business</span></div>
+                <div><span style={{ color: '#C02C27' }}>$</span> <span className="animate-pulse" style={{ color: '#fafafa' }}>█</span></div>
               </div>
             </div>
           </div>
@@ -112,7 +112,7 @@ export default function CustomSoftwareDevelopmentPage() {
       }
       whatIsSection={
         <>
-          <p className="text-[11px] font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: '#ef4444' }}>What is custom software development?</p>
+          <p className="text-[11px] font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: '#C02C27' }}>What is custom software development?</p>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-[-0.03em] mb-6" style={{ color: '#fafafa' }}>
             Custom software is technology that fits your business, not the other way around.
           </h2>

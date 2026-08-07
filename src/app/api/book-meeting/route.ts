@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
 
     const adminHtml = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <div style="background: #D4AF37; padding: 20px; text-align: center;">
+        <div style="background: #C02C27; padding: 20px; text-align: center;">
           <h1 style="color: #111; margin: 0; font-size: 22px;">New Meeting Booking</h1>
         </div>
         <div style="padding: 24px; background: #f9fafb; border: 1px solid #e5e7eb;">
@@ -56,7 +56,7 @@ export async function POST(req: NextRequest) {
 
     const userHtml = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <div style="background: #D4AF37; padding: 20px; text-align: center;">
+        <div style="background: #C02C27; padding: 20px; text-align: center;">
           <h1 style="color: #111; margin: 0; font-size: 22px;">Meeting Confirmed, ${name}!</h1>
         </div>
         <div style="padding: 24px; background: #f9fafb; border: 1px solid #e5e7eb;">
@@ -66,7 +66,7 @@ export async function POST(req: NextRequest) {
             <p style="margin: 0 0 4px; color: #6b7280; font-size: 14px;"><strong>Time:</strong> ${time} (30 minutes)</p>
             <p style="margin: 0; color: #6b7280; font-size: 14px;"><strong>Duration:</strong> 30 minutes</p>
           </div>
-          <p style="color: #374151; font-size: 16px; line-height: 1.6;">We will send you a calendar invitation shortly. If you need to reschedule, reply to this email or contact us at <a href="mailto:ikanovaofficial@gmail.com" style="color: #D4AF37;">ikanovaofficial@gmail.com</a>.</p>
+          <p style="color: #374151; font-size: 16px; line-height: 1.6;">We will send you a calendar invitation shortly. If you need to reschedule, reply to this email or contact us at <a href="mailto:ikanovaofficial@gmail.com" style="color: #C02C27;">ikanovaofficial@gmail.com</a>.</p>
           <p style="color: #374151; font-size: 16px; line-height: 1.6; margin-top: 24px;">Best regards,<br/><strong>IKANOVA Team</strong></p>
         </div>
         <div style="padding: 16px; text-align: center; color: #9ca3af; font-size: 12px;">IKANOVA | Software Development & AI Solutions</div>

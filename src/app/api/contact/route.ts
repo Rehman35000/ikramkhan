@@ -43,7 +43,7 @@ export async function POST(req: NextRequest) {
 
     const adminHtml = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <div style="background: #dc2626; padding: 20px; text-align: center;">
+        <div style="background: #C02C27; padding: 20px; text-align: center;">
           <h1 style="color: white; margin: 0; font-size: 22px;">New Contact Form Submission</h1>
         </div>
         <div style="padding: 24px; background: #f9fafb; border: 1px solid #e5e7eb;">
@@ -78,7 +78,7 @@ export async function POST(req: NextRequest) {
 
     const userHtml = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <div style="background: #dc2626; padding: 20px; text-align: center;">
+        <div style="background: #C02C27; padding: 20px; text-align: center;">
           <h1 style="color: white; margin: 0; font-size: 22px;">Thank You, ${name}!</h1>
         </div>
         <div style="padding: 24px; background: #f9fafb; border: 1px solid #e5e7eb;">
@@ -90,8 +90,8 @@ export async function POST(req: NextRequest) {
           </p>
           <p style="color: #374151; font-size: 16px; line-height: 1.6;">
             We typically respond within 24 hours. If your matter is urgent, feel free to reach us at
-            <a href="mailto:ikanovaofficial@gmail.com" style="color: #dc2626;">ikanovaofficial@gmail.com</a>
-            or call us at <a href="tel:+923098660810" style="color: #dc2626;">+92 309 866 0810</a>.
+            <a href="mailto:ikanovaofficial@gmail.com" style="color: #C02C27;">ikanovaofficial@gmail.com</a>
+            or call us at <a href="tel:+923098660810" style="color: #C02C27;">+92 309 866 0810</a>.
           </p>
           <p style="color: #374151; font-size: 16px; line-height: 1.6; margin-top: 24px;">
             Best regards,<br/>

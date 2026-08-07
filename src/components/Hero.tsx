@@ -66,7 +66,7 @@ export default function Hero() {
           <div className="flex flex-wrap gap-4">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full text-sm font-semibold tracking-wide transition-all duration-300 hover:shadow-[0_0_40px_rgba(212,175,55,0.25)] hover:scale-105 group"
+              className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full text-sm font-semibold tracking-wide transition-all duration-300 hover:shadow-[0_0_40px_rgba(192,44,39,0.25)] hover:scale-105 group"
               style={{
                 background: c.gradient,
                 color: theme === 'light' ? '#FFFFFF' : '#111111',

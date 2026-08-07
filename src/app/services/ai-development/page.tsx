@@ -86,13 +86,13 @@ export default function AIDevelopmentPage() {
       highlight="powered by AI."
       description="From predictive analytics to generative AI, we build custom machine learning models that transform how your business operates, makes decisions, and serves customers."
       heroContent={
-        <div className="relative rounded-3xl overflow-hidden p-8 sm:p-12 lg:p-16 min-h-[320px] flex items-center" style={{ border: '1px solid rgba(212,168,67,0.08)', background: 'rgba(255,255,255,0.015)' }}>
-          <div className="absolute inset-0" style={{ background: 'radial-gradient(600px circle at 70% 40%, rgba(212,168,67,0.04), transparent 60%)' }} />
-          <div className="absolute inset-0" style={{ background: 'radial-gradient(400px circle at 30% 60%, rgba(139,92,246,0.03), transparent 60%)' }} />
+        <div className="relative rounded-3xl overflow-hidden p-8 sm:p-12 lg:p-16 min-h-[320px] flex items-center" style={{ border: '1px solid rgba(192,44,39,0.08)', background: 'rgba(255,255,255,0.015)' }}>
+          <div className="absolute inset-0" style={{ background: 'radial-gradient(600px circle at 70% 40%, rgba(192,44,39,0.04), transparent 60%)' }} />
+          <div className="absolute inset-0" style={{ background: 'radial-gradient(400px circle at 30% 60%, rgba(192,44,39,0.03), transparent 60%)' }} />
           <div className="grid grid-cols-3 gap-3 sm:gap-4 w-full max-w-2xl relative">
             {[0,1,2,3,4,5].map((i) => (
               <div key={i} className="p-3 sm:p-5 rounded-xl" style={{ background: 'rgba(255,255,255,0.025)', border: '1px solid rgba(255,255,255,0.04)' }}>
-                <div className="w-2 h-2 rounded-full mb-2" style={{ background: i % 3 === 0 ? '#ef4444' : i % 3 === 1 ? '#8b5cf6' : '#dc2626' }} />
+                <div className="w-2 h-2 rounded-full mb-2" style={{ background: i % 3 === 0 ? '#C02C27' : i % 3 === 1 ? '#C02C27' : '#C02C27' }} />
                 <div className="h-1.5 rounded-full w-3/4 mb-2" style={{ background: 'rgba(255,255,255,0.06)' }} />
                 <div className="h-1.5 rounded-full w-1/2" style={{ background: 'rgba(255,255,255,0.04)' }} />
               </div>
@@ -102,7 +102,7 @@ export default function AIDevelopmentPage() {
       }
       whatIsSection={
         <>
-          <p className="text-[11px] font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: '#ef4444' }}>What is AI development?</p>
+          <p className="text-[11px] font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: '#C02C27' }}>What is AI development?</p>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-[-0.03em] mb-6" style={{ color: '#fafafa' }}>
             AI development is the creation of systems that learn, predict, and act autonomously.
           </h2>

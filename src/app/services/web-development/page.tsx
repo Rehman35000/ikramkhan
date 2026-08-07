@@ -86,27 +86,27 @@ export default function WebDevelopmentPage() {
       highlight="that convert."
       description="We build high-performance websites and web applications that look stunning, load instantly, and drive measurable business results. From marketing sites to complex SaaS platforms."
       heroContent={
-        <div className="relative rounded-3xl overflow-hidden p-8 sm:p-12 lg:p-16 min-h-[320px] flex items-center" style={{ border: '1px solid rgba(212,168,67,0.08)', background: 'rgba(255,255,255,0.015)' }}>
-          <div className="absolute inset-0" style={{ background: 'radial-gradient(600px circle at 30% 50%, rgba(212,168,67,0.04), transparent 60%)' }} />
+        <div className="relative rounded-3xl overflow-hidden p-8 sm:p-12 lg:p-16 min-h-[320px] flex items-center" style={{ border: '1px solid rgba(192,44,39,0.08)', background: 'rgba(255,255,255,0.015)' }}>
+          <div className="absolute inset-0" style={{ background: 'radial-gradient(600px circle at 30% 50%, rgba(192,44,39,0.04), transparent 60%)' }} />
           <div className="w-full max-w-xl relative">
             <div className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.02)' }}>
               <div className="flex items-center gap-2 px-4 py-2.5" style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
                 <div className="flex gap-1.5">
-                  <div className="w-2.5 h-2.5 rounded-full" style={{ background: '#ff5f57' }} />
-                  <div className="w-2.5 h-2.5 rounded-full" style={{ background: '#febc2e' }} />
-                  <div className="w-2.5 h-2.5 rounded-full" style={{ background: '#28c840' }} />
+                  <div className="w-2.5 h-2.5 rounded-full" style={{ background: '#C02C27' }} />
+                  <div className="w-2.5 h-2.5 rounded-full" style={{ background: 'rgba(192,44,39,0.55)' }} />
+                  <div className="w-2.5 h-2.5 rounded-full" style={{ background: 'rgba(192,44,39,0.3)' }} />
                 </div>
                 <div className="flex-1 mx-4 h-6 rounded-lg px-3 flex items-center" style={{ background: 'rgba(255,255,255,0.04)' }}>
                   <span className="text-[10px]" style={{ color: '#52525b' }}>ikanova.dev</span>
                 </div>
               </div>
               <div className="p-6 space-y-3">
-                <div className="h-3 rounded-full w-3/4" style={{ background: 'rgba(212,168,67,0.15)' }} />
+                <div className="h-3 rounded-full w-3/4" style={{ background: 'rgba(192,44,39,0.15)' }} />
                 <div className="h-2 rounded-full w-full" style={{ background: 'rgba(255,255,255,0.04)' }} />
                 <div className="h-2 rounded-full w-5/6" style={{ background: 'rgba(255,255,255,0.04)' }} />
                 <div className="h-2 rounded-full w-2/3" style={{ background: 'rgba(255,255,255,0.04)' }} />
                 <div className="pt-4 flex gap-2">
-                  <div className="h-7 w-20 rounded-lg" style={{ background: 'linear-gradient(135deg, #ef4444, #f87171)' }} />
+                  <div className="h-7 w-20 rounded-lg" style={{ background: 'linear-gradient(135deg, #C02C27, #A32521)' }} />
                   <div className="h-7 w-20 rounded-lg" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }} />
                 </div>
               </div>
@@ -116,7 +116,7 @@ export default function WebDevelopmentPage() {
       }
       whatIsSection={
         <>
-          <p className="text-[11px] font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: '#ef4444' }}>What is web development?</p>
+          <p className="text-[11px] font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: '#C02C27' }}>What is web development?</p>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-[-0.03em] mb-6" style={{ color: '#fafafa' }}>
             Modern web development is about creating experiences, not just pages.
           </h2>

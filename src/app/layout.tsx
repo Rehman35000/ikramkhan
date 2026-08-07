@@ -77,7 +77,7 @@ export default function RootLayout({
       <head>
         <style
           dangerouslySetInnerHTML={{
-            __html: `html{background-color:#0F1115}html.light{background-color:#FFFFFF}`,
+            __html: `html{background-color:#FFFFFF}`,
           }}
         />
         <script

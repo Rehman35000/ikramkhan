@@ -3,6 +3,7 @@ import Script from "next/script";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import ThemeProvider from "@/components/ThemeProvider";
+import InternshipPopup from "@/components/InternshipPopup";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -56,7 +57,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   icons: {
-    icon: '/favicon.svg',
+    icon: '/image.png',
   },
   other: {
     'google-site-verification': 'sZAcrTDfkczgwhktPr6fK3kbp6nBffxCeeLZjjZyZuQ',
@@ -96,6 +97,7 @@ export default function RootLayout({
         </Script>
         <ThemeProvider>
           {children}
+          <InternshipPopup />
         </ThemeProvider>
       </body>
     </html>

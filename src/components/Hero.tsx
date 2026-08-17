@@ -3,157 +3,280 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import BookMeeting from './BookMeeting';
-import { useTheme } from './ThemeProvider';
-import { useThemeColors } from '@/hooks/useThemeColors';
 
-const stats = [
-  { value: '15+', label: 'Projects Delivered' },
-  { value: '100%', label: 'Client Satisfaction' },
-  { value: '24/7', label: 'Support' },
-];
+const RED = '#E84C3D';
+const BLACK = '#111111';
+
+const fadeUp = {
+  initial: { opacity: 0, y: 24 },
+  animate: { opacity: 1, y: 0 },
+};
+
+function AnalyticsIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={RED} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="6" y1="20" x2="6" y2="14" />
+      <line x1="12" y1="20" x2="12" y2="8" />
+      <line x1="18" y1="20" x2="18" y2="4" />
+    </svg>
+  );
+}
+
+function CodeIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={RED} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="16 18 22 12 16 6" />
+      <polyline points="8 6 2 12 8 18" />
+    </svg>
+  );
+}
+
+function GrowthIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={BLACK} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="3 17 9 11 13 15 21 7" />
+      <polyline points="15 7 21 7 21 13" />
+    </svg>
+  );
+}
+
+function ChatIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
+    </svg>
+  );
+}
+
+function VideoCallIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M23 7l-7 5 7 5V7z" />
+      <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+    </svg>
+  );
+}
 
 export default function Hero() {
-  const c = useThemeColors();
-  const { theme } = useTheme();
   const [isBookingOpen, setIsBookingOpen] = useState(false);
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section className="relative overflow-hidden bg-white">
       <div
-        className="absolute inset-0 z-0"
+        className="absolute inset-0"
         style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, ${theme === 'light' ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.06)'} 1px, transparent 0)`,
-          backgroundSize: '40px 40px',
+          backgroundImage: `radial-gradient(circle at 1px 1px, rgba(0,0,0,0.04) 1px, transparent 0)`,
+          backgroundSize: '44px 44px',
         }}
       />
+      <div className="absolute -top-40 -right-40 w-[640px] h-[640px] rounded-full blur-[160px] pointer-events-none" style={{ background: `radial-gradient(circle, rgba(232,76,61,0.08), transparent 70%)` }} />
+      <div className="absolute -bottom-52 -left-40 w-[560px] h-[560px] rounded-full blur-[160px] pointer-events-none" style={{ background: `radial-gradient(circle, rgba(232,76,61,0.05), transparent 70%)` }} />
 
-      <div className="absolute top-1/4 left-[15%] w-[600px] h-[600px] rounded-full opacity-[0.035] blur-[140px]">
-        <div className="w-full h-full rounded-full" style={{ background: c.accent }} />
-      </div>
-      <div className="absolute bottom-1/4 right-[10%] w-[500px] h-[500px] rounded-full opacity-[0.025] blur-[120px]">
-        <div className="w-full h-full rounded-full" style={{ background: c.accentSecondary }} />
-      </div>
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-8 pt-36 pb-20 lg:pt-44 lg:pb-28">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-12 items-center">
+          <motion.div className="lg:col-span-6" initial="initial" animate="animate" transition={{ staggerChildren: 0.08 }}>
+            <motion.div
+              {...fadeUp}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-2.5 pl-3 pr-4 py-2 rounded-full border bg-white"
+              style={{ borderColor: 'rgba(0,0,0,0.06)', boxShadow: '0 1px 2px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04)' }}
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75" style={{ animation: 'pulse-ring 2s ease-in-out infinite' }} />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+              </span>
+              <span className="text-xs font-semibold tracking-wide" style={{ color: '#666666' }}>
+                Registered &amp; Operating in DXB, Muscat &amp; NYC
+              </span>
+            </motion.div>
 
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] opacity-[0.06] blur-[200px] pointer-events-none" style={{ background: `radial-gradient(circle, ${c.accent}, transparent 70%)` }} />
+            <motion.h1
+              {...fadeUp}
+              transition={{ duration: 0.55, delay: 0.08 }}
+              className="mt-8 text-5xl sm:text-6xl lg:text-[4.4rem] font-bold leading-[1.02] tracking-[-0.03em]"
+              style={{ color: BLACK }}
+            >
+              AI Powered
+              <span className="block">Agency for</span>
+              <span className="block mt-1" style={{ color: RED }}>
+                Mobile Apps
+              </span>
+            </motion.h1>
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 py-32 lg:py-40">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-14 items-center">
-        <div className="max-w-4xl lg:col-span-6">
-          <div
-            className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border mb-10"
-            style={{ borderColor: theme === 'light' ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.06)', color: c.accent, background: `${c.accent}0a` }}
+            <motion.p
+              {...fadeUp}
+              transition={{ duration: 0.55, delay: 0.16 }}
+              className="mt-7 max-w-xl text-lg leading-[1.7]"
+              style={{ color: '#666666' }}
+            >
+              We engineer competitive software, AI solutions, and digital campaigns
+              for startups and global enterprises.
+            </motion.p>
+
+            <motion.div
+              {...fadeUp}
+              transition={{ duration: 0.55, delay: 0.24 }}
+              className="mt-10 flex flex-wrap items-center gap-4"
+            >
+              <button
+                onClick={() => setIsBookingOpen(true)}
+                className="group inline-flex items-center gap-2.5 px-8 py-4 rounded-full text-sm font-semibold tracking-wide transition-all duration-300 hover:scale-105 cursor-pointer"
+                style={{ background: RED, color: '#FFFFFF', boxShadow: '0 8px 24px rgba(232,76,61,0.28)' }}
+              >
+                Book a Free Call
+                <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </button>
+
+              <Link
+                href="/portfolio"
+                className="group inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold tracking-wide transition-all duration-300 hover:scale-105"
+                style={{ background: '#FFFFFF', color: BLACK, border: '1px solid rgba(0,0,0,0.08)', boxShadow: '0 1px 2px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04)' }}
+              >
+                View Portfolio
+                <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </Link>
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            className="lg:col-span-6"
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full rounded-full opacity-75" style={{ background: c.accent, animation: 'pulse-ring 2s ease-in-out infinite' }} />
-              <span className="relative inline-flex h-2 w-2 rounded-full" style={{ background: c.accent }} />
-            </span>
-            <span className="text-[11px] font-semibold tracking-wider uppercase">Available for new projects</span>
-          </div>
+            <div className="relative mx-auto max-w-[560px]">
+              <div
+                className="absolute -inset-3 rounded-[36px] opacity-60 pointer-events-none"
+                style={{ background: 'linear-gradient(135deg, rgba(232,76,61,0.1), rgba(17,17,17,0.04))' }}
+              />
+              <div className="relative overflow-hidden rounded-[28px] bg-white" style={{ border: '1px solid rgba(0,0,0,0.07)', boxShadow: '0 24px 80px rgba(17,17,17,0.12)' }}>
+                <div className="relative aspect-[3/2] w-full">
+                  <Image
+                    src="/image1.webp"
+                    alt="IKANOVA AI agency team"
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 560px"
+                    className="object-cover"
+                  />
+                </div>
+              </div>
 
-          <h1
-            className="text-[3rem] sm:text-6xl lg:text-[5.5rem] font-bold leading-[0.98] tracking-[-0.03em] mb-8"
-            style={{ color: c.fg, fontFeatureSettings: '"cv11", "ss01"' }}
-          >
-            <span className="block">We craft</span>
-            <span className="block mt-1 gradient-text">Digital Products</span>
-            <span className="block mt-1" style={{ color: c.fgSecondary }}>that scale.</span>
-          </h1>
+              <motion.div
+                className="absolute -top-7 -left-5 sm:-left-8"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+              >
+                <motion.div
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
+                  className="flex items-center gap-3 px-4 py-3 rounded-2xl bg-white"
+                  style={{ border: '1px solid rgba(0,0,0,0.06)', boxShadow: '0 12px 32px rgba(17,17,17,0.1)' }}
+                >
+                  <div className="flex items-center justify-center w-9 h-9 rounded-xl" style={{ background: 'rgba(232,76,61,0.1)' }}>
+                    <AnalyticsIcon />
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold leading-none" style={{ color: BLACK }}>+240%</p>
+                    <p className="text-[11px] mt-1" style={{ color: '#999999' }}>Analytics</p>
+                  </div>
+                </motion.div>
+              </motion.div>
 
-          <p className="text-lg sm:text-xl max-w-2xl mb-12 leading-[1.7]" style={{ color: c.muted }}>
-            IKANOVA is a premium software studio building scalable products
-            from concept to deployment. We help startups and enterprises ship faster.
-          </p>
+              <motion.div
+                className="absolute -top-8 right-2 sm:right-4"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+              >
+                <motion.div
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 0.6 }}
+                  className="flex items-center gap-3 px-4 py-3 rounded-2xl bg-white"
+                  style={{ border: '1px solid rgba(0,0,0,0.06)', boxShadow: '0 12px 32px rgba(17,17,17,0.1)' }}
+                >
+                  <div className="flex items-center justify-center w-9 h-9 rounded-xl" style={{ background: 'rgba(232,76,61,0.1)' }}>
+                    <CodeIcon />
+                  </div>
+                  <p className="text-sm font-semibold" style={{ color: BLACK }}>AI / Code</p>
+                </motion.div>
+              </motion.div>
 
-          <div className="flex flex-wrap gap-4">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full text-sm font-semibold tracking-wide transition-all duration-300 hover:shadow-[0_0_40px_rgba(192,44,39,0.25)] hover:scale-105 group"
-              style={{
-                background: c.gradient,
-                color: theme === 'light' ? '#FFFFFF' : '#111111',
-                borderRadius: '14px',
-              }}
-            >
-              Start a project
-              <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-              </svg>
-            </Link>
-            <button onClick={() => setIsBookingOpen(true)}
-              className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full text-sm font-semibold tracking-wide transition-all duration-300 hover:scale-105 group cursor-pointer"
-              style={{
-                background: `${c.accent}0f`,
-                color: c.accent,
-                border: `1px solid ${theme === 'light' ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.08)'}`,
-                borderRadius: '14px',
-              }}
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                <line x1="16" y1="2" x2="16" y2="6" />
-                <line x1="8" y1="2" x2="8" y2="6" />
-                <line x1="3" y1="10" x2="21" y2="10" />
-              </svg>
-              Book a Meeting
-            </button>
-            <Link
-              href="/portfolio"
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-medium transition-all duration-300 group"
-              style={{
-                border: `1px solid ${theme === 'light' ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.08)'}`,
-                color: c.fg,
-                borderRadius: '14px',
-              }}
-            >
-              View our work
-              <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-              </svg>
-            </Link>
-          </div>
+              <motion.div
+                className="absolute -left-6 sm:-left-10 bottom-28"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.7 }}
+              >
+                <motion.div
+                  animate={{ y: [0, 9, 0] }}
+                  transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut', delay: 1.2 }}
+                  className="flex items-center gap-3 px-4 py-3 rounded-2xl bg-white"
+                  style={{ border: '1px solid rgba(0,0,0,0.06)', boxShadow: '0 12px 32px rgba(17,17,17,0.1)' }}
+                >
+                  <div className="flex items-center justify-center w-9 h-9 rounded-xl" style={{ background: 'rgba(0,0,0,0.04)' }}>
+                    <GrowthIcon />
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold leading-none" style={{ color: BLACK }}>Growth</p>
+                    <p className="text-[11px] mt-1" style={{ color: '#999999' }}>+312% YOY</p>
+                  </div>
+                </motion.div>
+              </motion.div>
 
-        <div className="mt-24 grid grid-cols-3 gap-8 max-w-lg">
-          {stats.map((stat, i) => (
-            <div key={stat.label} className={i > 0 ? 'border-l pl-8' : ''} style={i > 0 ? { borderColor: theme === 'light' ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.06)' } : {}}>
-              <p className="text-3xl sm:text-4xl font-bold tracking-tight gradient-text">{stat.value}</p>
-              <p className="text-xs sm:text-sm mt-1.5 tracking-wide" style={{ color: c.fgSecondary }}>{stat.label}</p>
+              <motion.div
+                className="absolute -bottom-8 right-4 sm:right-8"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.8 }}
+              >
+                <motion.div
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 4.8, repeat: Infinity, ease: 'easeInOut', delay: 0.3 }}
+                  className="flex items-center gap-3 px-5 py-4 rounded-2xl bg-white"
+                  style={{ border: '1px solid rgba(0,0,0,0.06)', boxShadow: '0 16px 40px rgba(17,17,17,0.12)' }}
+                >
+                  <div className="relative flex items-center justify-center w-10 h-10 rounded-full shrink-0" style={{ background: RED, color: '#FFFFFF' }}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="#FFFFFF">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold leading-none" style={{ color: BLACK }}>96% Satisfaction</p>
+                    <p className="text-[11px] mt-1.5" style={{ color: '#999999' }}>Across 40+ Brands</p>
+                  </div>
+                </motion.div>
+              </motion.div>
+
+              <div className="absolute -bottom-6 -left-4 sm:-left-6 flex flex-col gap-3">
+                <motion.button
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                  className="flex items-center justify-center w-12 h-12 rounded-full cursor-pointer transition-transform duration-300 hover:scale-110"
+                  style={{ background: BLACK, color: '#FFFFFF', boxShadow: '0 12px 28px rgba(17,17,17,0.25)' }}
+                  aria-label="Chat with us"
+                >
+                  <ChatIcon />
+                </motion.button>
+                <motion.button
+                  animate={{ y: [0, 8, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+                  className="flex items-center justify-center w-12 h-12 rounded-full cursor-pointer transition-transform duration-300 hover:scale-110"
+                  style={{ background: RED, color: '#FFFFFF', boxShadow: '0 12px 28px rgba(232,76,61,0.35)' }}
+                  aria-label="Start a video call"
+                >
+                  <VideoCallIcon />
+                </motion.button>
+              </div>
             </div>
-          ))}
-        </div>
-        </div>
-        </div>
-
-        <div className="relative lg:col-span-6">
-          <div
-            className="absolute -inset-8 rounded-[36px] opacity-[0.14] blur-[60px] pointer-events-none"
-            style={{ background: `radial-gradient(circle, ${c.accent}, transparent 70%)` }}
-          />
-          <div
-            className="relative overflow-hidden rounded-[28px]"
-            style={{
-              border: `1px solid ${theme === 'light' ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.08)'}`,
-              boxShadow: theme === 'light' ? '0 24px 80px rgba(0,0,0,0.12)' : '0 24px 80px rgba(0,0,0,0.5)',
-            }}
-          >
-            <Image
-              src="/image1.png"
-              alt="IKANOVA digital products"
-              width={3000}
-              height={2000}
-              priority
-              className="w-full h-auto object-cover block"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
-        <div className="flex flex-col items-center gap-2">
-          <span className="text-[10px] font-medium tracking-[0.2em] uppercase" style={{ color: c.fgSecondary }}>Scroll</span>
-          <div className="w-px h-8 relative overflow-hidden" style={{ background: theme === 'light' ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.06)' }}>
-            <div className="absolute inset-x-0 top-0 h-1/3" style={{ background: `linear-gradient(180deg, ${c.accent}, transparent)`, animation: 'scroll-indicator 1.5s ease-in-out infinite' }} />
-          </div>
+          </motion.div>
         </div>
       </div>
 

@@ -24,6 +24,7 @@ const positions = [
   'DevOps & Cloud',
   'Full Stack Development',
   'QA / Testing',
+  'Other',
 ]
 
 export default function InternshipPopup() {
